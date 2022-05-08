@@ -1,0 +1,3 @@
+User-agent: *
+Disallow:
+Sitemap: https://baicai.icu/sitemap.xml
