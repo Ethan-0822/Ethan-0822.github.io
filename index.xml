@@ -6,7 +6,16 @@
     <description>Recent content on baicai Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Sun, 15 May 2022 03:23:33 +0800</lastBuildDate><atom:link href="https://baicai.icu/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 15 May 2022 03:36:59 +0800</lastBuildDate><atom:link href="https://baicai.icu/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>springboot复现JNDI注入log4j2过程</title>
+      <link>https://baicai.icu/posts/tech/springboot%E5%A4%8D%E7%8E%B0jndi%E6%B3%A8%E5%85%A5log4j2%E8%BF%87%E7%A8%8B/</link>
+      <pubDate>Sun, 15 May 2022 03:36:59 +0800</pubDate>
+      
+      <guid>https://baicai.icu/posts/tech/springboot%E5%A4%8D%E7%8E%B0jndi%E6%B3%A8%E5%85%A5log4j2%E8%BF%87%E7%A8%8B/</guid>
+      <description>最近Apache Log4j被爆出有JNDI注入的漏洞，网上已经有非常详细的解释了，咱们也跟风一次，复现一下过程。 【本地演示全部在本地进行，文</description>
+    </item>
+    
     <item>
       <title>Github自动将代码同步到Gitee</title>
       <link>https://baicai.icu/posts/tech/github%E8%87%AA%E5%8A%A8%E5%B0%86%E4%BB%A3%E7%A0%81%E5%90%8C%E6%AD%A5%E5%88%B0gitee/</link>
