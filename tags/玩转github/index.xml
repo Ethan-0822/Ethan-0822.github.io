@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
-    <title>tech on baicai Blog</title>
-    <link>https://baicai.icu/tags/tech/</link>
-    <description>Recent content in tech on baicai Blog</description>
+    <title>玩转GitHub on baicai Blog</title>
+    <link>https://baicai.icu/tags/%E7%8E%A9%E8%BD%ACgithub/</link>
+    <description>Recent content in 玩转GitHub on baicai Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Sun, 15 May 2022 03:23:33 +0800</lastBuildDate><atom:link href="https://baicai.icu/tags/tech/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 15 May 2022 03:23:33 +0800</lastBuildDate><atom:link href="https://baicai.icu/tags/%E7%8E%A9%E8%BD%ACgithub/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Github自动将代码同步到Gitee</title>
       <link>https://baicai.icu/posts/tech/github%E8%87%AA%E5%8A%A8%E5%B0%86%E4%BB%A3%E7%A0%81%E5%90%8C%E6%AD%A5%E5%88%B0gitee/</link>
@@ -14,15 +14,6 @@
       
       <guid>https://baicai.icu/posts/tech/github%E8%87%AA%E5%8A%A8%E5%B0%86%E4%BB%A3%E7%A0%81%E5%90%8C%E6%AD%A5%E5%88%B0gitee/</guid>
       <description>⭐创建自己工作流 打开Github仓库，在Actions创建自己的工作流 ⭐创建工作流脚本 工作流脚本在仓库的路径为.github/workflo</description>
-    </item>
-    
-    <item>
-      <title>Tech</title>
-      <link>https://baicai.icu/posts/tech/tech/</link>
-      <pubDate>Thu, 05 May 2022 00:17:58 +0800</pubDate>
-      
-      <guid>https://baicai.icu/posts/tech/tech/</guid>
-      <description></description>
     </item>
     
   </channel>
