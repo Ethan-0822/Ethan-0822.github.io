@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>常用命令 on baicai Blog</title>
+    <link>https://baicai.icu/tags/%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</link>
+    <description>Recent content in 常用命令 on baicai Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Mon, 16 May 2022 09:47:21 +0800</lastBuildDate><atom:link href="https://baicai.icu/tags/%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Git常用命令</title>
+      <link>https://baicai.icu/posts/tech/git%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</link>
+      <pubDate>Mon, 16 May 2022 09:47:21 +0800</pubDate>
+      
+      <guid>https://baicai.icu/posts/tech/git%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</guid>
+      <description>⭐本地仓库 ✅设置用户信息 用户名：git config --global user.name &amp;quot;Ethan&amp;quot; 邮箱：git config --global user.email &amp;quot;123@qq.com&amp;quot; ✅查看配置信息 查看用户名：git config --global user.name 查看邮箱：git config --global user.email ✅创建本地仓库</description>
+    </item>
+    
+  </channel>
+</rss>

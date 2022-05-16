@@ -6,7 +6,16 @@
     <description>Recent content on baicai Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Sun, 15 May 2022 03:36:59 +0800</lastBuildDate><atom:link href="https://baicai.icu/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 16 May 2022 09:47:21 +0800</lastBuildDate><atom:link href="https://baicai.icu/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Git常用命令</title>
+      <link>https://baicai.icu/posts/tech/git%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</link>
+      <pubDate>Mon, 16 May 2022 09:47:21 +0800</pubDate>
+      
+      <guid>https://baicai.icu/posts/tech/git%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</guid>
+      <description>⭐本地仓库 ✅设置用户信息 用户名：git config --global user.name &amp;quot;Ethan&amp;quot; 邮箱：git config --global user.email &amp;quot;123@qq.com&amp;quot; ✅查看配置信息 查看用户名：git config --global user.name 查看邮箱：git config --global user.email ✅创建本地仓库</description>
+    </item>
+    
     <item>
       <title>springboot复现JNDI注入log4j2过程</title>
       <link>https://baicai.icu/posts/tech/springboot%E5%A4%8D%E7%8E%B0jndi%E6%B3%A8%E5%85%A5log4j2%E8%BF%87%E7%A8%8B/</link>
