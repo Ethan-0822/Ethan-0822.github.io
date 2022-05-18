@@ -6,7 +6,16 @@
     <description>Recent content in 👨🏻‍💻 技术 on baicai Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Mon, 16 May 2022 09:47:21 +0800</lastBuildDate><atom:link href="https://baicai.icu/posts/tech/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 18 May 2022 04:34:07 +0800</lastBuildDate><atom:link href="https://baicai.icu/posts/tech/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Navicat操作Oracle数据库</title>
+      <link>https://baicai.icu/posts/tech/navicat%E6%93%8D%E4%BD%9Coracle%E6%95%B0%E6%8D%AE%E5%BA%93/</link>
+      <pubDate>Wed, 18 May 2022 04:34:07 +0800</pubDate>
+      
+      <guid>https://baicai.icu/posts/tech/navicat%E6%93%8D%E4%BD%9Coracle%E6%95%B0%E6%8D%AE%E5%BA%93/</guid>
+      <description>创建表空间 创建用户，并授权 工具-数据同步 需要注意的是源头的数据库和接收的数据库的表空间需要一致 删除用户 #执行数据库相关用户的修改与配置信息的</description>
+    </item>
+    
     <item>
       <title>Git常用命令</title>
       <link>https://baicai.icu/posts/tech/git%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</link>
