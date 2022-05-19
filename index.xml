@@ -80,6 +80,15 @@
     </item>
     
     <item>
+      <title>Mybatis-Plus介绍</title>
+      <link>https://baicai.icu/posts/tech/mybatisplus/</link>
+      <pubDate>Thu, 05 May 2022 00:17:58 +0800</pubDate>
+      
+      <guid>https://baicai.icu/posts/tech/mybatisplus/</guid>
+      <description>📌tip：MyBatis-Plus（简称 MP）是一个 MyBatis 的增强工具，在 MyBatis 的基础上只做增强不做改变，为简化开发、提高 效率而生。 Mybatis整合</description>
+    </item>
+    
+    <item>
       <title>Tech</title>
       <link>https://baicai.icu/posts/tech/tech/</link>
       <pubDate>Thu, 05 May 2022 00:17:58 +0800</pubDate>
