@@ -6,13 +6,22 @@
     <description>Recent content in Tags on baicai Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Wed, 18 May 2022 04:34:07 +0800</lastBuildDate><atom:link href="https://baicai.icu/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 19 May 2022 02:21:42 +0800</lastBuildDate><atom:link href="https://baicai.icu/tags/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>tech</title>
       <link>https://baicai.icu/tags/tech/</link>
-      <pubDate>Wed, 18 May 2022 04:34:07 +0800</pubDate>
+      <pubDate>Thu, 19 May 2022 02:21:42 +0800</pubDate>
       
       <guid>https://baicai.icu/tags/tech/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>技术</title>
+      <link>https://baicai.icu/tags/%E6%8A%80%E6%9C%AF/</link>
+      <pubDate>Thu, 19 May 2022 02:21:42 +0800</pubDate>
+      
+      <guid>https://baicai.icu/tags/%E6%8A%80%E6%9C%AF/</guid>
       <description></description>
     </item>
     
@@ -44,29 +53,20 @@
     </item>
     
     <item>
-      <title>aaa</title>
-      <link>https://baicai.icu/tags/aaa/</link>
-      <pubDate>Sun, 08 May 2022 04:55:08 +0800</pubDate>
+      <title>blog</title>
+      <link>https://baicai.icu/tags/blog/</link>
+      <pubDate>Thu, 05 May 2022 00:18:23 +0800</pubDate>
       
-      <guid>https://baicai.icu/tags/aaa/</guid>
+      <guid>https://baicai.icu/tags/blog/</guid>
       <description></description>
     </item>
     
     <item>
       <title>life</title>
       <link>https://baicai.icu/tags/life/</link>
-      <pubDate>Sun, 08 May 2022 04:55:08 +0800</pubDate>
+      <pubDate>Thu, 05 May 2022 00:18:15 +0800</pubDate>
       
       <guid>https://baicai.icu/tags/life/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>blog</title>
-      <link>https://baicai.icu/tags/blog/</link>
-      <pubDate>Thu, 05 May 2022 00:18:23 +0800</pubDate>
-      
-      <guid>https://baicai.icu/tags/blog/</guid>
       <description></description>
     </item>
     
