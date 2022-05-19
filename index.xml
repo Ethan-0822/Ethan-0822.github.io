@@ -89,6 +89,15 @@
     </item>
     
     <item>
+      <title>SpringBoot</title>
+      <link>https://baicai.icu/posts/tech/springboot/</link>
+      <pubDate>Thu, 05 May 2022 00:17:58 +0800</pubDate>
+      
+      <guid>https://baicai.icu/posts/tech/springboot/</guid>
+      <description>⭐创建模块 选择创建spring Initializr模块 三种方式创建模块 注意包的目录【一般默认调用组件包名】 ✅idea连接springboot</description>
+    </item>
+    
+    <item>
       <title>Tech</title>
       <link>https://baicai.icu/posts/tech/tech/</link>
       <pubDate>Thu, 05 May 2022 00:17:58 +0800</pubDate>
