@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>docker on baicai Blog</title>
+    <link>https://baicai.icu/tags/docker/</link>
+    <description>Recent content in docker on baicai Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Sat, 21 May 2022 04:03:27 +0800</lastBuildDate><atom:link href="https://baicai.icu/tags/docker/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>docker常用命令</title>
+      <link>https://baicai.icu/posts/tech/docker%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</link>
+      <pubDate>Sat, 21 May 2022 04:03:27 +0800</pubDate>
+      
+      <guid>https://baicai.icu/posts/tech/docker%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</guid>
+      <description>⭐服务 重启docker服务 systemctl restart docker 启动docker【root用戶】 systemctl start docker ⭐容器 停止某个容器 docker stop id 启动某个容器 docker start id 删除某个容器【需要先停止容器</description>
+    </item>
+    
+  </channel>
+</rss>

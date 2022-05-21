@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>GitHub on baicai Blog</title>
+    <link>https://baicai.icu/tags/github/</link>
+    <description>Recent content in GitHub on baicai Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Fri, 20 May 2022 10:05:36 +0800</lastBuildDate><atom:link href="https://baicai.icu/tags/github/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Github仓库自动同步到Gitee仓库</title>
+      <link>https://baicai.icu/posts/tech/github%E4%BB%93%E5%BA%93%E8%87%AA%E5%8A%A8%E5%90%8C%E6%AD%A5%E5%88%B0gitee%E4%BB%93%E5%BA%93/</link>
+      <pubDate>Fri, 20 May 2022 10:05:36 +0800</pubDate>
+      
+      <guid>https://baicai.icu/posts/tech/github%E4%BB%93%E5%BA%93%E8%87%AA%E5%8A%A8%E5%90%8C%E6%AD%A5%E5%88%B0gitee%E4%BB%93%E5%BA%93/</guid>
+      <description>1️⃣创建自己工作流 打开Github仓库，在Actions创建自己的工作流 2️⃣创建工作流脚本 工作流脚本在仓库的路径为.github/wor</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>ORM on baicai Blog</title>
+    <link>https://baicai.icu/tags/orm/</link>
+    <description>Recent content in ORM on baicai Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Thu, 19 May 2022 10:05:36 +0800</lastBuildDate><atom:link href="https://baicai.icu/tags/orm/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>来说说JPA、Hibernate、Spring Data JPA之间的什么关系</title>
+      <link>https://baicai.icu/posts/tech/%E6%9D%A5%E8%AF%B4%E8%AF%B4jpahibernatespring-data-jpa%E4%B9%8B%E9%97%B4%E7%9A%84%E4%BB%80%E4%B9%88%E5%85%B3%E7%B3%BB/</link>
+      <pubDate>Thu, 19 May 2022 10:05:36 +0800</pubDate>
+      
+      <guid>https://baicai.icu/posts/tech/%E6%9D%A5%E8%AF%B4%E8%AF%B4jpahibernatespring-data-jpa%E4%B9%8B%E9%97%B4%E7%9A%84%E4%BB%80%E4%B9%88%E5%85%B3%E7%B3%BB/</guid>
+      <description>⭐Java持久层框架访问数据库的方式 大致分为两种： 一种以 SQL 核心，封装一定程度的 JDBC 操作，比如： MyBatis。另一种是以 Java 实体类为核心，将实体</description>
+    </item>
+    
+    <item>
+      <title>Oracle-docker部署及入门</title>
+      <link>https://baicai.icu/posts/tech/oracle-docker%E9%83%A8%E7%BD%B2%E5%8F%8A%E5%85%A5%E9%97%A8/</link>
+      <pubDate>Tue, 17 May 2022 04:46:09 +0800</pubDate>
+      
+      <guid>https://baicai.icu/posts/tech/oracle-docker%E9%83%A8%E7%BD%B2%E5%8F%8A%E5%85%A5%E9%97%A8/</guid>
+      <description>test</description>
+    </item>
+    
+  </channel>
+</rss>

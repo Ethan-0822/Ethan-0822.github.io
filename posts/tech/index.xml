@@ -6,7 +6,106 @@
     <description>Recent content in 👨🏻‍💻 技术 on baicai Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Thu, 05 May 2022 00:17:58 +0800</lastBuildDate><atom:link href="https://baicai.icu/posts/tech/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 21 May 2022 04:03:27 +0800</lastBuildDate><atom:link href="https://baicai.icu/posts/tech/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>docker常用命令</title>
+      <link>https://baicai.icu/posts/tech/docker%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</link>
+      <pubDate>Sat, 21 May 2022 04:03:27 +0800</pubDate>
+      
+      <guid>https://baicai.icu/posts/tech/docker%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</guid>
+      <description>⭐服务 重启docker服务 systemctl restart docker 启动docker【root用戶】 systemctl start docker ⭐容器 停止某个容器 docker stop id 启动某个容器 docker start id 删除某个容器【需要先停止容器</description>
+    </item>
+    
+    <item>
+      <title>Git常用命令</title>
+      <link>https://baicai.icu/posts/tech/git%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</link>
+      <pubDate>Sat, 21 May 2022 04:03:27 +0800</pubDate>
+      
+      <guid>https://baicai.icu/posts/tech/git%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</guid>
+      <description>⭐本地仓库 ✅设置用户信息 用户名：git config --global user.name &amp;quot;Ethan&amp;quot; 邮箱：git config --global user.email &amp;quot;123@qq.com&amp;quot; ✅查看配置信息 查看用户名：git config --global user.name 查看邮箱：git config --global user.email ✅创建本地仓库</description>
+    </item>
+    
+    <item>
+      <title>Github仓库自动同步到Gitee仓库</title>
+      <link>https://baicai.icu/posts/tech/github%E4%BB%93%E5%BA%93%E8%87%AA%E5%8A%A8%E5%90%8C%E6%AD%A5%E5%88%B0gitee%E4%BB%93%E5%BA%93/</link>
+      <pubDate>Fri, 20 May 2022 10:05:36 +0800</pubDate>
+      
+      <guid>https://baicai.icu/posts/tech/github%E4%BB%93%E5%BA%93%E8%87%AA%E5%8A%A8%E5%90%8C%E6%AD%A5%E5%88%B0gitee%E4%BB%93%E5%BA%93/</guid>
+      <description>1️⃣创建自己工作流 打开Github仓库，在Actions创建自己的工作流 2️⃣创建工作流脚本 工作流脚本在仓库的路径为.github/wor</description>
+    </item>
+    
+    <item>
+      <title>来说说JPA、Hibernate、Spring Data JPA之间的什么关系</title>
+      <link>https://baicai.icu/posts/tech/%E6%9D%A5%E8%AF%B4%E8%AF%B4jpahibernatespring-data-jpa%E4%B9%8B%E9%97%B4%E7%9A%84%E4%BB%80%E4%B9%88%E5%85%B3%E7%B3%BB/</link>
+      <pubDate>Thu, 19 May 2022 10:05:36 +0800</pubDate>
+      
+      <guid>https://baicai.icu/posts/tech/%E6%9D%A5%E8%AF%B4%E8%AF%B4jpahibernatespring-data-jpa%E4%B9%8B%E9%97%B4%E7%9A%84%E4%BB%80%E4%B9%88%E5%85%B3%E7%B3%BB/</guid>
+      <description>⭐Java持久层框架访问数据库的方式 大致分为两种： 一种以 SQL 核心，封装一定程度的 JDBC 操作，比如： MyBatis。另一种是以 Java 实体类为核心，将实体</description>
+    </item>
+    
+    <item>
+      <title>Oracle-docker部署及入门</title>
+      <link>https://baicai.icu/posts/tech/oracle-docker%E9%83%A8%E7%BD%B2%E5%8F%8A%E5%85%A5%E9%97%A8/</link>
+      <pubDate>Tue, 17 May 2022 04:46:09 +0800</pubDate>
+      
+      <guid>https://baicai.icu/posts/tech/oracle-docker%E9%83%A8%E7%BD%B2%E5%8F%8A%E5%85%A5%E9%97%A8/</guid>
+      <description>test</description>
+    </item>
+    
+    <item>
+      <title>权限认证——基于HTTP协议WEB应用的权限认证过程（五）</title>
+      <link>https://baicai.icu/posts/tech/%E6%9D%83%E9%99%90%E8%AE%A4%E8%AF%81%E5%9F%BA%E4%BA%8Ehttp%E5%8D%8F%E8%AE%AEweb%E5%BA%94%E7%94%A8%E7%9A%84%E6%9D%83%E9%99%90%E8%AE%A4%E8%AF%81%E8%BF%87%E7%A8%8B%E4%BA%94/</link>
+      <pubDate>Sun, 15 May 2022 14:05:36 +0800</pubDate>
+      
+      <guid>https://baicai.icu/posts/tech/%E6%9D%83%E9%99%90%E8%AE%A4%E8%AF%81%E5%9F%BA%E4%BA%8Ehttp%E5%8D%8F%E8%AE%AEweb%E5%BA%94%E7%94%A8%E7%9A%84%E6%9D%83%E9%99%90%E8%AE%A4%E8%AF%81%E8%BF%87%E7%A8%8B%E4%BA%94/</guid>
+      <description>1️⃣认证过程的概念 ⭐认证 根据声明者持有的特定信息，来确认声明者的身份 例如身份证、用户名/密码、手机（包括短信、二维码、手势密码）、电子邮箱</description>
+    </item>
+    
+    <item>
+      <title>JavaWeb之会话——基于HTTP协议WEB应用的权限认证过程（四）</title>
+      <link>https://baicai.icu/posts/tech/javaweb%E4%B9%8B%E4%BC%9A%E8%AF%9D%E5%9F%BA%E4%BA%8Ehttp%E5%8D%8F%E8%AE%AEweb%E5%BA%94%E7%94%A8%E7%9A%84%E6%9D%83%E9%99%90%E8%AE%A4%E8%AF%81%E8%BF%87%E7%A8%8B%E5%9B%9B/</link>
+      <pubDate>Sun, 15 May 2022 13:05:36 +0800</pubDate>
+      
+      <guid>https://baicai.icu/posts/tech/javaweb%E4%B9%8B%E4%BC%9A%E8%AF%9D%E5%9F%BA%E4%BA%8Ehttp%E5%8D%8F%E8%AE%AEweb%E5%BA%94%E7%94%A8%E7%9A%84%E6%9D%83%E9%99%90%E8%AE%A4%E8%AF%81%E8%BF%87%E7%A8%8B%E5%9B%9B/</guid>
+      <description>1️⃣概述 概念：一次会话中包含多次请求和响应。浏览器第一次给服务器资源发送请求，会话建立，直到有一方断开为止 功能：在一次会话的范围内的多次请</description>
+    </item>
+    
+    <item>
+      <title>JavaWeb之三大组件——基于HTTP协议WEB应用的权限认证过程（三）</title>
+      <link>https://baicai.icu/posts/tech/javaweb%E4%B9%8B%E4%B8%89%E5%A4%A7%E7%BB%84%E4%BB%B6%E5%9F%BA%E4%BA%8Ehttp%E5%8D%8F%E8%AE%AEweb%E5%BA%94%E7%94%A8%E7%9A%84%E6%9D%83%E9%99%90%E8%AE%A4%E8%AF%81%E8%BF%87%E7%A8%8B%E4%B8%89/</link>
+      <pubDate>Sun, 15 May 2022 12:05:36 +0800</pubDate>
+      
+      <guid>https://baicai.icu/posts/tech/javaweb%E4%B9%8B%E4%B8%89%E5%A4%A7%E7%BB%84%E4%BB%B6%E5%9F%BA%E4%BA%8Ehttp%E5%8D%8F%E8%AE%AEweb%E5%BA%94%E7%94%A8%E7%9A%84%E6%9D%83%E9%99%90%E8%AE%A4%E8%AF%81%E8%BF%87%E7%A8%8B%E4%B8%89/</guid>
+      <description>1️⃣Servlet ⭐概述 Servlet是运行在Web服务器或应用服务器上的程序，它是作为来自 Web 浏览器或其他 HTTP 客户端的请求和 HTTP 服务器上的数据</description>
+    </item>
+    
+    <item>
+      <title>Nginx入门——基于HTTP协议WEB应用的权限认证过程（二）</title>
+      <link>https://baicai.icu/posts/tech/nginx%E5%85%A5%E9%97%A8%E5%9F%BA%E4%BA%8Ehttp%E5%8D%8F%E8%AE%AEweb%E5%BA%94%E7%94%A8%E7%9A%84%E6%9D%83%E9%99%90%E8%AE%A4%E8%AF%81%E8%BF%87%E7%A8%8B%E4%BA%8C/</link>
+      <pubDate>Sun, 15 May 2022 11:05:36 +0800</pubDate>
+      
+      <guid>https://baicai.icu/posts/tech/nginx%E5%85%A5%E9%97%A8%E5%9F%BA%E4%BA%8Ehttp%E5%8D%8F%E8%AE%AEweb%E5%BA%94%E7%94%A8%E7%9A%84%E6%9D%83%E9%99%90%E8%AE%A4%E8%AF%81%E8%BF%87%E7%A8%8B%E4%BA%8C/</guid>
+      <description>⭐概述 Nginx 是一款高性能的 http 服务器/反向代理服务器及电子邮件代理服务器，官方测试 nginx 能够支支撑 5 万并发链接，并且 cpu、内存等资源消耗却非常低，运</description>
+    </item>
+    
+    <item>
+      <title>HTTP协议——基于HTTP协议WEB应用的权限认证过程（一）</title>
+      <link>https://baicai.icu/posts/tech/http%E5%8D%8F%E8%AE%AE%E5%9F%BA%E4%BA%8Ehttp%E5%8D%8F%E8%AE%AEweb%E5%BA%94%E7%94%A8%E7%9A%84%E6%9D%83%E9%99%90%E8%AE%A4%E8%AF%81%E8%BF%87%E7%A8%8B%E4%B8%80/</link>
+      <pubDate>Sun, 15 May 2022 10:05:36 +0800</pubDate>
+      
+      <guid>https://baicai.icu/posts/tech/http%E5%8D%8F%E8%AE%AE%E5%9F%BA%E4%BA%8Ehttp%E5%8D%8F%E8%AE%AEweb%E5%BA%94%E7%94%A8%E7%9A%84%E6%9D%83%E9%99%90%E8%AE%A4%E8%AF%81%E8%BF%87%E7%A8%8B%E4%B8%80/</guid>
+      <description>⭐概述 全称：超文本传输协议（Hyper Text Transfer Protocol） 网络协议的定位：基于TCP/IP的应用层1协议 作用：定义了客户端和服务器端通信时</description>
+    </item>
+    
+    <item>
+      <title>springboot复现JNDI注入log4j2过程</title>
+      <link>https://baicai.icu/posts/tech/springboot%E5%A4%8D%E7%8E%B0jndi%E6%B3%A8%E5%85%A5log4j2%E8%BF%87%E7%A8%8B/</link>
+      <pubDate>Fri, 06 May 2022 10:05:36 +0800</pubDate>
+      
+      <guid>https://baicai.icu/posts/tech/springboot%E5%A4%8D%E7%8E%B0jndi%E6%B3%A8%E5%85%A5log4j2%E8%BF%87%E7%A8%8B/</guid>
+      <description>⭐前提说明 最近Apache Log4j被爆出有JNDI注入的漏洞，网上已经有非常详细的解释了，咱们也跟风一次，复现一下过程。 【本地演示全部在本</description>
+    </item>
+    
     <item>
       <title>Tech</title>
       <link>https://baicai.icu/posts/tech/tech/</link>

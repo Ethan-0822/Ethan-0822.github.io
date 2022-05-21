@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Spring全家桶 on baicai Blog</title>
+    <link>https://baicai.icu/tags/spring%E5%85%A8%E5%AE%B6%E6%A1%B6/</link>
+    <description>Recent content in Spring全家桶 on baicai Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Sun, 15 May 2022 14:05:36 +0800</lastBuildDate><atom:link href="https://baicai.icu/tags/spring%E5%85%A8%E5%AE%B6%E6%A1%B6/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>权限认证——基于HTTP协议WEB应用的权限认证过程（五）</title>
+      <link>https://baicai.icu/posts/tech/%E6%9D%83%E9%99%90%E8%AE%A4%E8%AF%81%E5%9F%BA%E4%BA%8Ehttp%E5%8D%8F%E8%AE%AEweb%E5%BA%94%E7%94%A8%E7%9A%84%E6%9D%83%E9%99%90%E8%AE%A4%E8%AF%81%E8%BF%87%E7%A8%8B%E4%BA%94/</link>
+      <pubDate>Sun, 15 May 2022 14:05:36 +0800</pubDate>
+      
+      <guid>https://baicai.icu/posts/tech/%E6%9D%83%E9%99%90%E8%AE%A4%E8%AF%81%E5%9F%BA%E4%BA%8Ehttp%E5%8D%8F%E8%AE%AEweb%E5%BA%94%E7%94%A8%E7%9A%84%E6%9D%83%E9%99%90%E8%AE%A4%E8%AF%81%E8%BF%87%E7%A8%8B%E4%BA%94/</guid>
+      <description>1️⃣认证过程的概念 ⭐认证 根据声明者持有的特定信息，来确认声明者的身份 例如身份证、用户名/密码、手机（包括短信、二维码、手势密码）、电子邮箱</description>
+    </item>
+    
+  </channel>
+</rss>
