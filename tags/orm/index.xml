@@ -22,7 +22,7 @@
       <pubDate>Tue, 17 May 2022 04:46:09 +0800</pubDate>
       
       <guid>https://baicai.icu/posts/tech/oracle-docker%E9%83%A8%E7%BD%B2%E5%8F%8A%E5%85%A5%E9%97%A8/</guid>
-      <description>test</description>
+      <description>⭐部署Oracle环境 #拉取镜像 docker pull registry.aliyuncs.com/helowin/oracle_11g #创建容器，容器名字：oracle，-p 1521【外部端口】：1521【容器内部接口】 指定拉取的ora</description>
     </item>
     
   </channel>
