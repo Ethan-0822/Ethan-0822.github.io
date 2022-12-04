@@ -1,0 +1,17 @@
+<svg width="120" height="20" xmlns="http://www.w3.org/2000/svg">
+ <g>
+  <title>Layer 1</title>
+  <path stroke="#000" filter="url(#svg_20_blur)" opacity="0.5" id="svg_20" d="m9.70736,2.74197l28.85802,0l0,0c3.78048,0 6.84516,3.33622 6.84516,7.45165c0,4.11543 -3.06468,7.45165 -6.84516,7.45165l-28.85802,0l0,0c-3.78048,0 -6.84516,-3.33622 -6.84516,-7.45165c0,-4.11543 3.06468,-7.45165 6.84516,-7.45165z" stroke-width="0" fill="#ffffff"/>
+  <text font-weight="normal" font-style="italic" transform="matrix(0.37076 0 0 0.413648 3.78821 11.1472)" stroke="#000" xml:space="preserve" text-anchor="start" font-family="'Gluten'" font-size="30" id="svg_15" y="8.77246" x="2.7345" stroke-width="0" fill="#000000">baicai：</text>
+  <path filter="url(#svg_25_blur)" opacity="0.5" stroke="#000" id="svg_25" d="m59.66684,2.28691l48.37963,0l0,0c6.33787,0 11.47571,3.51449 11.47571,7.84983c0,4.33534 -5.13784,7.84983 -11.47571,7.84983l-48.37963,0l0,0c-6.33786,0 -11.47571,-3.51449 -11.47571,-7.84983c0,-4.33534 5.13785,-7.84983 11.47571,-7.84983z" stroke-width="0" fill="#ffffff"/>
+  <text font-weight="normal" font-style="italic" transform="matrix(0.326185 0 0 0.339015 -26.7062 23.838)" stroke="#000" xml:space="preserve" text-anchor="start" font-family="'Caveat'" font-size="28" id="svg_17" y="-30.22678" x="239.10023" stroke-width="0" fill="#000000">亲，还在加班吗</text>
+ </g>
+ <defs>
+  <filter height="200%" width="200%" y="-50%" x="-50%" id="svg_20_blur">
+   <feGaussianBlur stdDeviation="2" in="SourceGraphic"/>
+  </filter>
+  <filter id="svg_25_blur">
+   <feGaussianBlur stdDeviation="2" in="SourceGraphic"/>
+  </filter>
+ </defs>
+</svg>
