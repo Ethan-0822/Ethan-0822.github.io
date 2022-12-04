@@ -6,7 +6,7 @@
 <meta property="og:description" content="⭐问题 一个六核十二线程为什么可以执行以一个300个线程的软件 首先6核只有6线程，但是通过超线程实现了12线程 其次，300线程的软件，300起了300条指令，最后执行的还是只有12条通道，可以理解为300线程是300辆车，12是12条车道 车载的是数据和资源，即线程在搬运数据和资源 车运行的过程就是指令执行的过程 执行指令的通道就12条 然后就是300线程是通过线程库产生的，那么问题由来了 这">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2022-12-04T05:23:44.036Z">
-<meta property="article:modified_time" content="2022-12-04T05:26:10.499Z">
+<meta property="article:modified_time" content="2022-12-04T06:08:55.280Z">
 <meta property="article:author" content="Ethan">
 <meta property="article:tag" content="大萨达撒多撒,ds,s4d,ada3s,das2d,ads1a">
 <meta name="twitter:card" content="summary"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="http://example.com/posts/98975d7d"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
@@ -51,7 +51,7 @@
   isHome: false,
   isHighlightShrink: false,
   isToc: true,
-  postUpdate: '2022-12-04 13:26:10'
+  postUpdate: '2022-12-04 14:08:55'
 }</script><noscript><style type="text/css">
   #nav {
     opacity: 1
@@ -140,7 +140,7 @@
       }
     }
     detectApple()
-    })(window)</script><meta name="generator" content="Hexo 6.3.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">2</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">0</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">0</div></a></div><hr/></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">Baicai`Blog</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">Hello World2</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2022-12-04T05:23:44.036Z" title="发表于 2022-12-04 13:23:44">2022-12-04</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2022-12-04T05:26:10.499Z" title="更新于 2022-12-04 13:26:10">2022-12-04</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="Hello World2"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h3 id="⭐问题"><a href="#⭐问题" class="headerlink" title="⭐问题"></a>⭐问题</h3><ul>
+    })(window)</script><meta name="generator" content="Hexo 6.3.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">2</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">0</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">0</div></a></div><hr/></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">Baicai`Blog</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">Hello World2</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2022-12-04T05:23:44.036Z" title="发表于 2022-12-04 13:23:44">2022-12-04</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2022-12-04T06:08:55.280Z" title="更新于 2022-12-04 14:08:55">2022-12-04</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="Hello World2"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h3 id="⭐问题"><a href="#⭐问题" class="headerlink" title="⭐问题"></a>⭐问题</h3><ul>
 <li>一个六核十二线程为什么可以执行以一个300个线程的软件<ul>
 <li>首先6核只有6线程，但是通过超线程实现了12线程</li>
 <li>其次，300线程的软件，300起了300条指令，最后执行的还是只有12条通道，可以理解为300线程是300辆车，12是12条车道</li>
@@ -195,13 +195,13 @@
 </ul>
 <h5 id="调度"><a href="#调度" class="headerlink" title="调度"></a>调度</h5><h5 id="上下文"><a href="#上下文" class="headerlink" title="上下文"></a>上下文</h5><h3 id="1-计算机硬件部分知识"><a href="#1-计算机硬件部分知识" class="headerlink" title="1.计算机硬件部分知识"></a>1.计算机硬件部分知识</h3><h3 id="1-1物理CPU"><a href="#1-1物理CPU" class="headerlink" title="1.1物理CPU"></a>1.1物理CPU</h3><p>一般指的是计算机的中央处理器 ，普通电脑一般只有一个CPU插槽，即只有一个物理CPU。</p>
 <p><strong>广义上的CPU</strong>：在日常生活中，CPU一般指的是封装好的物理CPU，例如英特尔的<code>酷睿</code>系列和AMD的<code>锐龙</code>系列。</p>
-<img src="C:\Users\YH\Desktop\cpu和线程的问题.assets\amd.jpg" alt="amd" style="zoom: 25%;" align="left" />
+<img src="http://pic.baicai.icu/cpu和线程的问题.assets/amd.jpg" alt="amd" style="zoom: 25%;" align="left" />
 
 
 <p><strong>狭义上的CPU</strong>：在编程的讨论情况下，CPU通常指的是一个运算单元，即下面的说的【<em>core</em>物理核心】。</p>
 <h3 id="1-2物理核心（core）"><a href="#1-2物理核心（core）" class="headerlink" title="1.2物理核心（core）"></a>1.2物理核心（core）</h3><p>在编程的讨论范围下，一般CPU指的是一个物理CPU中的一个核心。例如8核，即一个CPU有8个核心，拥有8个独立的运算单元。</p>
 <p>一般来说，一个物理核心就是一个独立的运算单元，一个物理核心同时最多运行一个线程。一个运算单元有一套寄存器，一般还有L1，L2的私有缓存等等。</p>
-<img src="C:\Users\YH\Desktop\cpu和线程的问题.assets\运算单元.jpg" alt="运算单元" style="zoom:100%;"  align="left" />
+<img src="http://pic.baicai.icu/cpu和线程的问题.assets/运算单元.jpg" alt="运算单元" style="zoom:100%;"  align="left" />
 
 
 
@@ -211,7 +211,7 @@
 <li>因为这是平衡了性能、晶体管效率、实现难度等等综合考虑的结果，事实还也有单核4线程的CPU，比如<code>intel Xeon Phi</code>。</li>
 </ul>
 <h3 id="1-4超线程（Hyper-Threading）"><a href="#1-4超线程（Hyper-Threading）" class="headerlink" title="1.4超线程（Hyper-Threading）"></a>1.4超线程（Hyper-Threading）</h3><h4 id="⭐什么是超线程？"><a href="#⭐什么是超线程？" class="headerlink" title="⭐什么是超线程？"></a>⭐什么是超线程？</h4><p>超线程是英特尔开发出来的一项技术，使得单个CPU可以像两个逻辑CPU那样运行。</p>
-<img src="C:\Users\YH\Desktop\cpu和线程的问题.assets\超线程.jpg" alt="超线程" style="zoom: 50%;"  align="left" />
+<img src="http://pic.baicai.icu/cpu和线程的问题.assets/超线程.jpg" alt="超线程" style="zoom: 50%;"  align="left" />
 
 
 
@@ -239,7 +239,7 @@
 <li>常见的ARM架构处理器，有Apple的<code>M1处理器</code>、高通的<code>骁龙处理器</code>和华为的<code>麒麟处理器</code>等。</li>
 <li>目前有UNIX、Linux以及包括iOS、Android、Windows Phone等在内的大多数移动操作系统运行在ARM处理器上。</li>
 </ul>
-<img src="C:\Users\YH\Desktop\cpu和线程的问题.assets\指令系统的演变.png" alt="指令系统的演变" style="zoom: 50%;" align="left" />
+<img src="http://pic.baicai.icu/cpu和线程的问题.assets/指令系统的演变.png" alt="指令系统的演变" style="zoom: 50%;" align="left" />
 
 
 
@@ -263,7 +263,7 @@
 <p>用户程序：运行在用户态，只能执行非特权指令。<br>内核程序：运行在核心态，既可以执行特权指令，也可以执行非特权指令。</p>
 </blockquote>
 <h3 id="2-2内核（kernel）"><a href="#2-2内核（kernel）" class="headerlink" title="2.2内核（kernel）"></a>2.2内核（kernel）</h3><h4 id="⭐什么是内核？"><a href="#⭐什么是内核？" class="headerlink" title="⭐什么是内核？"></a>⭐什么是内核？</h4><p>简单来说，<strong>「内核就是操作系统中的一组程序模块」</strong>，它负责管理系统的进程、内存、设备驱动程序、文件和网络系统等等，决定着系统的性能和稳定性，是连接应用程序和硬件的桥梁。</p>
-<p><img src="C:\Users\YH\Desktop\cpu和线程的问题.assets\计算机系统的层次结构.jpg" alt="计算机系统的层次结构"></p>
+<p><img src="http://pic.baicai.icu/cpu%E5%92%8C%E7%BA%BF%E7%A8%8B%E7%9A%84%E9%97%AE%E9%A2%98.assets/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F%E7%9A%84%E5%B1%82%E6%AC%A1%E7%BB%93%E6%9E%84.jpg" alt="计算机系统的层次结构"></p>
 <h4 id="⭐内核态和用户态"><a href="#⭐内核态和用户态" class="headerlink" title="⭐内核态和用户态"></a>⭐内核态和用户态</h4><p>由于内核可以使用特权指令，所以内核程序（也称为系统程序）作为资源的调度者，决定一个用户程序在什么时候对某部分硬件操作多长时间。</p>
 <p>从内核调度资源的视角再一次阐述CPU的状态</p>
 <ul>
@@ -284,7 +284,7 @@
 </ul>
 </li>
 </ul>
-<p><img src="C:\Users\YH\Desktop\cpu和线程的问题.assets\中断的分类.jpg" alt="中断的分类"></p>
+<p><img src="http://pic.baicai.icu/cpu%E5%92%8C%E7%BA%BF%E7%A8%8B%E7%9A%84%E9%97%AE%E9%A2%98.assets/%E4%B8%AD%E6%96%AD%E7%9A%84%E5%88%86%E7%B1%BB.jpg" alt="中断的分类"></p>
 <h4 id="⭐程序是如何被中断的"><a href="#⭐程序是如何被中断的" class="headerlink" title="⭐程序是如何被中断的"></a>⭐程序是如何被中断的</h4><ul>
 <li>1）程序请求操作系统服务，执行<code>系统调用</code>（执行系统调用也是发生了一次内中断）</li>
 <li>2）程序运行时产生外中断事件（比如 I&#x2F;O 操作完成），运行程序被中断，转向中断程序处理</li>
@@ -293,13 +293,13 @@
 <h3 id="2-4系统调用（system-call）"><a href="#2-4系统调用（system-call）" class="headerlink" title="2.4系统调用（system call）"></a>2.4系统调用（system call）</h3><h4 id="⭐什么是系统调用"><a href="#⭐什么是系统调用" class="headerlink" title="⭐什么是系统调用"></a>⭐什么是系统调用</h4><p>抽象点来说，指运行在<code>用户空间（User space）</code>的程序向操作系统内核请求需要更高权限运行的服务。</p>
 <blockquote>
 <p>在操作系统中，虚拟内存通常会被分成用户空间（又称使用者空间），与核心空间（Kernel space）这两个区块。</p>
-<img src="C:\Users\YH\Desktop\cpu和线程的问题.assets\系统调用-linux空间详细.jpg" alt="系统调用-linux空间详细" style="zoom: 80%;" />
+<img src="http://pic.baicai.icu/cpu和线程的问题.assets/系统调用-linux空间详细.jpg" alt="系统调用-linux空间详细" style="zoom: 80%;" />
 </blockquote>
 <p>详细点来说，操作系统作为用户和计算机硬件之间的接口，需要向上提供一些简单易用的服务，这个上层分为<code>用户</code>和<code>应用程序</code>。</p>
 <ul>
 <li><p>给用户提供的接口有图形界面 GUI 和命令接口，给应用程序提供的是<strong>「程序接口」</strong>，这个<strong>「程序接口」</strong>就是由一组<strong>系统调用</strong>组成的，是操作系统提供给开发人员使用的。</p>
 </li>
-<li><p><img src="C:\Users\YH\Desktop\cpu和线程的问题.assets\系统调用提供的接口.png" alt="系统调用提供的接口"></p>
+<li><p><img src="http://pic.baicai.icu/cpu%E5%92%8C%E7%BA%BF%E7%A8%8B%E7%9A%84%E9%97%AE%E9%A2%98.assets/%E7%B3%BB%E7%BB%9F%E8%B0%83%E7%94%A8%E6%8F%90%E4%BE%9B%E7%9A%84%E6%8E%A5%E5%8F%A3.png" alt="系统调用提供的接口"></p>
 </li>
 </ul>
 <h4 id="⭐操作系统为什么要提供“系统调用”功能？"><a href="#⭐操作系统为什么要提供“系统调用”功能？" class="headerlink" title="⭐操作系统为什么要提供“系统调用”功能？"></a>⭐操作系统为什么要提供“系统调用”功能？</h4><blockquote>
@@ -309,7 +309,7 @@
 </blockquote>
 <p>系统调用的设计就是为了预防用户非法操作以及用户程序恶意使用资源，从而确保操作系统自身能够稳定、高效、安全运行。</p>
 <p>系统调用按功能大致可分为如下几类：</p>
-<p><img src="C:\Users\YH\Desktop\cpu和线程的问题.assets\系统调用按功能分类.png" alt="系统调用按功能分类"></p>
+<p><img src="http://pic.baicai.icu/cpu%E5%92%8C%E7%BA%BF%E7%A8%8B%E7%9A%84%E9%97%AE%E9%A2%98.assets/%E7%B3%BB%E7%BB%9F%E8%B0%83%E7%94%A8%E6%8C%89%E5%8A%9F%E8%83%BD%E5%88%86%E7%B1%BB.png" alt="系统调用按功能分类"></p>
 <h4 id="⭐系统调用和库函数的区别"><a href="#⭐系统调用和库函数的区别" class="headerlink" title="⭐系统调用和库函数的区别"></a>⭐系统调用和库函数的区别</h4><ul>
 <li><p>用户程序其实是可以直接使用汇编语言的方式来调用计算机的<code>系统调用</code>功能，但是计算机发展到了现在，应用程序的开发语言几乎都是高级语言，高级语言通过<code>库函数</code>封装了<code>系统调用</code>给程序的接口，开发者只需要调用库函数就能完成对资源的调用。</p>
 </li>
@@ -317,7 +317,7 @@
 <ul>
 <li><font color="#ef7050"><strong>「不涉及系统调用的库函数，比如取绝对值」</strong></font></li>
 <li><font color="#ef7050"><strong>「涉及系统调用的库函数，比如创建一个文件」</strong></font></li>
-<li><img src="C:\Users\YH\Desktop\cpu和线程的问题.assets\系统调用和库函数.png" alt="系统调用和库函数"></li>
+<li><img src="http://pic.baicai.icu/cpu%E5%92%8C%E7%BA%BF%E7%A8%8B%E7%9A%84%E9%97%AE%E9%A2%98.assets/%E7%B3%BB%E7%BB%9F%E8%B0%83%E7%94%A8%E5%92%8C%E5%BA%93%E5%87%BD%E6%95%B0.png" alt="系统调用和库函数"></li>
 </ul>
 </li>
 </ul>
@@ -330,7 +330,7 @@
 <p>int x的int指的是CPU发生内中断的一系列陷入指令，x指的是从这一系列指令某一个。拿Linux来说，int 2就是让操作系统为我们创建一个进程，int 4就是进行一个写入操作。</p>
 </blockquote>
 </li>
-<li><p><img src="C:\Users\YH\Desktop\cpu和线程的问题.assets\系统调用背后的过程.jpg" alt="系统调用背后的过程"></p>
+<li><p><img src="http://pic.baicai.icu/cpu%E5%92%8C%E7%BA%BF%E7%A8%8B%E7%9A%84%E9%97%AE%E9%A2%98.assets/%E7%B3%BB%E7%BB%9F%E8%B0%83%E7%94%A8%E8%83%8C%E5%90%8E%E7%9A%84%E8%BF%87%E7%A8%8B.jpg" alt="系统调用背后的过程"></p>
 </li>
 </ul>
 </li>
@@ -349,7 +349,7 @@
 </ul>
 </li>
 <li>比如window操作系统中<code>任务管理器</code>就能看到所有的进程<ul>
-<li><img src="C:\Users\YH\Desktop\cpu和线程的问题.assets\window任务管理器中的进程.png" alt="window任务管理器中的进程"></li>
+<li><img src="http://pic.baicai.icu/cpu%E5%92%8C%E7%BA%BF%E7%A8%8B%E7%9A%84%E9%97%AE%E9%A2%98.assets/window%E4%BB%BB%E5%8A%A1%E7%AE%A1%E7%90%86%E5%99%A8%E4%B8%AD%E7%9A%84%E8%BF%9B%E7%A8%8B.png" alt="window任务管理器中的进程"></li>
 </ul>
 </li>
 </ul>
@@ -386,7 +386,7 @@
 <li>进程正在从系统中撤销，操作系统回收进程拥有的资源、撤销PCB</li>
 </ul>
 </li>
-<li><img src="C:\Users\YH\Desktop\cpu和线程的问题.assets\进程的状态切换.png" alt="进程的状态切换" style="zoom:50%;" /></li>
+<li><img src="http://pic.baicai.icu/cpu和线程的问题.assets/进程的状态切换.png" alt="进程的状态切换" style="zoom:50%;" /></li>
 </ul>
 <h3 id="2-6线程（thread）"><a href="#2-6线程（thread）" class="headerlink" title="2.6线程（thread）"></a>2.6线程（thread）</h3><h4 id="⭐什么是线程？"><a href="#⭐什么是线程？" class="headerlink" title="⭐什么是线程？"></a>⭐什么是线程？</h4><ul>
 <li>线程是也是一种抽象的概念，所以线程在<strong>不同的角度</strong>下，有不同的描述。<ul>
@@ -483,7 +483,7 @@
 <h4 id="⭐线程的实现方式"><a href="#⭐线程的实现方式" class="headerlink" title="⭐线程的实现方式"></a>⭐线程的实现方式</h4><h5 id="✅用户级线程（User-Level-Threads-ULT）"><a href="#✅用户级线程（User-Level-Threads-ULT）" class="headerlink" title="✅用户级线程（User-Level Threads ULT）"></a>✅用户级线程（User-Level Threads ULT）</h5><ul>
 <li><p>用户级**<font color="#ef7050">线程包</font>**</p>
 <ul>
-<li><img src="C:\Users\YH\Desktop\cpu和线程的问题.assets\用户级线程.jpg" alt="用户级线程"></li>
+<li><img src="http://pic.baicai.icu/cpu%E5%92%8C%E7%BA%BF%E7%A8%8B%E7%9A%84%E9%97%AE%E9%A2%98.assets/%E7%94%A8%E6%88%B7%E7%BA%A7%E7%BA%BF%E7%A8%8B.jpg" alt="用户级线程"></li>
 </ul>
 </li>
 <li><p>描述：用户级线程是一种在**<font color="#ef7050">用户空间</font><strong>实现的</strong><font color="#ef7050">线程机制</font><strong>，它不依赖于</strong><font color="#ef7050">操作系统的内核</font><strong>，由一组用户级的</strong><font color="#ef7050">线程库函数</font><strong>来完成线程的</strong><font color="#ef7050">管理</font>**</p>
@@ -525,7 +525,7 @@
 <h5 id="✅内核级线程（Kernel-Level-Threads-KLT）"><a href="#✅内核级线程（Kernel-Level-Threads-KLT）" class="headerlink" title="✅内核级线程（Kernel-Level Threads, KLT）"></a>✅内核级线程（Kernel-Level Threads, KLT）</h5><ul>
 <li><p>由内核管理的**<font color="#ef7050">线程包</font>**</p>
 <ul>
-<li><img src="C:\Users\YH\Desktop\cpu和线程的问题.assets\内核线程.jpg" alt="内核线程"></li>
+<li><img src="http://pic.baicai.icu/cpu%E5%92%8C%E7%BA%BF%E7%A8%8B%E7%9A%84%E9%97%AE%E9%A2%98.assets/%E5%86%85%E6%A0%B8%E7%BA%BF%E7%A8%8B.jpg" alt="内核线程"></li>
 </ul>
 </li>
 <li><p>描述：内核级线程是一种在**<font color="#ef7050">内核</font><strong>实现的</strong><font color="#ef7050">线程机制</font><strong>，由</strong><font color="#ef7050">操作系统的内核</font><strong>来完成线程的</strong><font color="#ef7050">管理</font>**</p>
@@ -556,14 +556,14 @@
 <h5 id="✅轻量级进程（Light-Weight-Process）"><a href="#✅轻量级进程（Light-Weight-Process）" class="headerlink" title="✅轻量级进程（Light Weight Process）"></a>✅轻量级进程（Light Weight Process）</h5><ul>
 <li><p>描述：内核支持的用户线程。一个进程可有一个或多个轻量级进程，每个轻权进程由一个单独的内核级线程来支持。(Linux &#x2F; Solaris)</p>
 <ul>
-<li><img src="C:\Users\YH\Desktop\cpu和线程的问题.assets\轻量级进程.jpg" alt="轻量级进程"></li>
+<li><img src="http://pic.baicai.icu/cpu%E5%92%8C%E7%BA%BF%E7%A8%8B%E7%9A%84%E9%97%AE%E9%A2%98.assets/%E8%BD%BB%E9%87%8F%E7%BA%A7%E8%BF%9B%E7%A8%8B.jpg" alt="轻量级进程"></li>
 </ul>
 </li>
 <li><p>在实际程序中我们一般不直接使用内核线程，用户线程与内核线程之间需要一种中间数据结构，它由内核支持且是内核线程的高级抽象，这个高级接口被称为轻量级进程。从某种层面上看，LWP最多算是广义的用户线程，即我们通常所讲的线程。LWP线程库以内核为基础，很多操作要进行内核调用。</p>
 </li>
 </ul>
 <h4 id="⭐线程实现的位置"><a href="#⭐线程实现的位置" class="headerlink" title="⭐线程实现的位置"></a>⭐线程实现的位置</h4><h5 id="✅线程实现在用户空间下"><a href="#✅线程实现在用户空间下" class="headerlink" title="✅线程实现在用户空间下"></a>✅线程实现在用户空间下</h5><p><strong><font color="#ef7050">「在早期的操作系统中，所有的线程都是在用户空间下实现的，即不支持内核级线程，只支持用户级线程，CPU的时间片切换是以进程为维度的。」</font></strong></p>
-<p><img src="C:\Users\YH\Desktop\cpu和线程的问题.assets\线程实现在用户空间_r.jpg" alt="线程实现在用户空间_r"></p>
+<p><img src="http://pic.baicai.icu/cpu%E5%92%8C%E7%BA%BF%E7%A8%8B%E7%9A%84%E9%97%AE%E9%A2%98.assets/%E7%BA%BF%E7%A8%8B%E5%AE%9E%E7%8E%B0%E5%9C%A8%E7%94%A8%E6%88%B7%E7%A9%BA%E9%97%B4_r.jpg" alt="线程实现在用户空间_r"></p>
 <h5 id="✅线程实现在内核空间下"><a href="#✅线程实现在内核空间下" class="headerlink" title="✅线程实现在内核空间下"></a>✅线程实现在内核空间下</h5><ul>
 <li>由于现在主流的操作系统都支持<code>用户级线程</code>和<code>内核级线程</code>，而这两种线程存在于两个不同的内存空间，如何使用合理地使用这两种线程就成为了一个问题，于是就<code>“多线程模型”</code>。</li>
 </ul>
