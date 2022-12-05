@@ -122,7 +122,7 @@
       <link href="/categories/index.html"/>
       <url>/categories/index.html</url>
       
-        <content type="html"><![CDATA[]]></content>
+        <content type="html"><![CDATA[<div id="categories-chart" class="js-pjax"></div><div id="categories-radar" class="js-pjax"></div>]]></content>
       
     </entry>
     
@@ -188,7 +188,7 @@
       <link href="/tags/index.html"/>
       <url>/tags/index.html</url>
       
-        <content type="html"><![CDATA[]]></content>
+        <content type="html"><![CDATA[<!-- "data-length" = how many tags to show, default 10 --><div id="tags-chart" data-length="10" class="js-pjax"></div>]]></content>
       
     </entry>
     
