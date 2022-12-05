@@ -1,9 +1,17 @@
-<svg width="200" height="50" xmlns="http://www.w3.org/2000/svg">
+<svg width="120" height="20" xmlns="http://www.w3.org/2000/svg">
  <g>
   <title>Layer 1</title>
-  <text font-weight="bold" font-style="italic" fill="#535F75" stroke="#000" stroke-width="0" x="11.97036" y="40.68539" id="svg_2" font-size="30" font-family="'Quicksand'" text-anchor="start" xml:space="preserve">baicai</text>
-  <path stroke="#000" id="svg_6" d="m135.76312,1.29414c-18.77779,0 -33.99999,6.49209 -33.99999,14.50025c0,2.73662 1.79958,5.29315 4.89616,7.47613l-4.89616,6.10389l13.6315,-1.9902c5.6804,1.81895 12.71848,2.90993 20.3685,2.90993c18.77781,0 34,-6.4921 34,-14.49975c0,-8.00815 -15.22219,-14.50025 -34,-14.50025l0,0z" stroke-width="0" fill="#535F75"/>
-  <text font-style="italic" transform="matrix(0.580191 0 0 0.550685 19.5688 -14.4528)" stroke="#000" xml:space="preserve" text-anchor="start" font-family="'Syne'" font-size="30" id="svg_7" y="65.04045" x="155.42746" stroke-width="0" fill="#BBBBBB">上班啦</text>
+  <path stroke="#000" filter="url(#svg_20_blur)" opacity="0.5" id="svg_20" d="m9.70736,2.74197l28.85802,0l0,0c3.78048,0 6.84516,3.33622 6.84516,7.45165c0,4.11543 -3.06468,7.45165 -6.84516,7.45165l-28.85802,0l0,0c-3.78048,0 -6.84516,-3.33622 -6.84516,-7.45165c0,-4.11543 3.06468,-7.45165 6.84516,-7.45165z" stroke-width="0" fill="#ffffff"/>
+  <text font-weight="normal" font-style="italic" transform="matrix(0.37076 0 0 0.413648 3.78821 11.1472)" stroke="#000" xml:space="preserve" text-anchor="start" font-family="'Gluten'" font-size="30" id="svg_15" y="8.77246" x="2.7345" stroke-width="0" fill="#000000">baicai：</text>
+  <path filter="url(#svg_25_blur)" opacity="0.5" stroke="#000" id="svg_25" d="m59.66684,2.28691l48.37963,0l0,0c6.33787,0 11.47571,3.51449 11.47571,7.84983c0,4.33534 -5.13784,7.84983 -11.47571,7.84983l-48.37963,0l0,0c-6.33786,0 -11.47571,-3.51449 -11.47571,-7.84983c0,-4.33534 5.13785,-7.84983 11.47571,-7.84983z" stroke-width="0" fill="#ffffff"/>
+  <text font-weight="normal" font-style="italic" transform="matrix(0.326185 0 0 0.339015 -26.7062 23.838)" stroke="#000" xml:space="preserve" text-anchor="start" font-family="'Caveat'" font-size="28" id="svg_17" y="-30.22678" x="243.9831" stroke-width="0" fill="#000000">上班开心摸鱼~</text>
  </g>
-
+ <defs>
+  <filter height="200%" width="200%" y="-50%" x="-50%" id="svg_20_blur">
+   <feGaussianBlur stdDeviation="2" in="SourceGraphic"/>
+  </filter>
+  <filter id="svg_25_blur">
+   <feGaussianBlur stdDeviation="2" in="SourceGraphic"/>
+  </filter>
+ </defs>
 </svg>
