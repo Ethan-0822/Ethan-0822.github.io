@@ -1,0 +1,804 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>Hello World2 | Baicai`Blog</title><meta name="author" content="Ethan"><meta name="copyright" content="Ethan"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="？？问题 一个六核十二线程为什么可以执行以一个300个线程的软件 首先6核只有6线程，但是通过超线程实现了12线程 其次，300线程的软件，300起了300条指令，最后11执行的还是只有12条通道，可以理解为300线程是300辆车，12是12条车道 车载的是数据和资源，即线程在搬运数据和资源 车运行的过程就是指令执行的过程 执行指令的通道就12条 然后就是300线程是通过线程库产生的，那么问题由来">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Hello World2">
+<meta property="og:url" content="https://baicai.icu/posts/98975d7d%EF%BC%9F.html">
+<meta property="og:site_name" content="Baicai&#96;Blog">
+<meta property="og:description" content="？？问题 一个六核十二线程为什么可以执行以一个300个线程的软件 首先6核只有6线程，但是通过超线程实现了12线程 其次，300线程的软件，300起了300条指令，最后11执行的还是只有12条通道，可以理解为300线程是300辆车，12是12条车道 车载的是数据和资源，即线程在搬运数据和资源 车运行的过程就是指令执行的过程 执行指令的通道就12条 然后就是300线程是通过线程库产生的，那么问题由来">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://pic.baicai.icu/imagehost/article/CoverRandomPicture/8.jpg">
+<meta property="article:published_time" content="2022-12-05T17:04:31.773Z">
+<meta property="article:modified_time" content="2022-12-05T17:04:31.773Z">
+<meta property="article:author" content="Ethan">
+<meta property="article:tag" content="tags1">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://pic.baicai.icu/imagehost/article/CoverRandomPicture/8.jpg"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://baicai.icu/posts/98975d7d%EF%BC%9F"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":true,"languages":{"hits_empty":"找不到您查询的内容：${query}"}},
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":230},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'Hello World2',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2022-12-05 17:04:31'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          const now = new Date()
+          const hour = now.getHours()
+          const isNight = hour <= 6 || hour >= 18
+          if (t === undefined) isNight ? activateDarkMode() : activateLightMode()
+          else if (t === 'light') activateLightMode()
+          else activateDarkMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><link rel="stylesheet" href="/css/custom.css" media="defer" onload="this.media='all'"><link rel="stylesheet" href="/css/universe.css"><!-- hexo injector head_end start --><link rel="stylesheet" href="/css/runtime/runtime.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.cbd.int/hexo-butterfly-swiper-anzhiyu@1.0.4/lib/swiper.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.cbd.int/hexo-butterfly-swiper-anzhiyu@1.0.4/lib/swiperstyle.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.cbd.int/hexo-butterfly-tag-plugins-plus@latest/lib/assets/font-awesome-animation.min.css" media="defer" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.cbd.int/hexo-butterfly-tag-plugins-plus@latest/lib/tag_plugins.css" media="defer" onload="this.media='all'"><script src="https://cdn.cbd.int/hexo-butterfly-tag-plugins-plus@latest/lib/assets/carousel-touch.js"></script><link rel="stylesheet" href="https://cdn.cbd.int/hexo-butterfly-wowjs/lib/animate.min.css" media="print" onload="this.media='screen'"><link rel="stylesheet" href="https://cdn.cbd.int/hexo-filter-gitcalendar/lib/gitcalendar.css" media="print" onload="this.media='all'"><!-- hexo injector head_end end --><meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/atom.xml" title="Baicai`Blog" type="application/atom+xml">
+</head><body><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/avatar.gif" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">4</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">3</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">3</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page faa-parent animated-hover" href="/"><i class="fa-fw fas fa-home faa-tada"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page faa-parent animated-hover" href="/archives/"><i class="fa-fw fas fa-archive faa-tada"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page faa-parent animated-hover" href="/tags/"><i class="fa-fw fas fa-tags faa-tada"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page faa-parent animated-hover" href="/categories/"><i class="fa-fw fas fa-folder-open faa-tada"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page faa-parent animated-hover" href="/comments/"><i class="fa-fw fas fa-envelope faa-tada"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page faa-parent animated-hover" href="/link/"><i class="fa-fw fas fa-link faa-tada"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page faa-parent animated-hover" href="/about/"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-zhifeiji"></use></svg><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://pic.baicai.icu/imagehost/article/CoverRandomPicture/8.jpg')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">Baicai`Blog</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page faa-parent animated-hover" href="/"><i class="fa-fw fas fa-home faa-tada"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page faa-parent animated-hover" href="/archives/"><i class="fa-fw fas fa-archive faa-tada"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page faa-parent animated-hover" href="/tags/"><i class="fa-fw fas fa-tags faa-tada"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page faa-parent animated-hover" href="/categories/"><i class="fa-fw fas fa-folder-open faa-tada"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page faa-parent animated-hover" href="/comments/"><i class="fa-fw fas fa-envelope faa-tada"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page faa-parent animated-hover" href="/link/"><i class="fa-fw fas fa-link faa-tada"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page faa-parent animated-hover" href="/about/"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-zhifeiji"></use></svg><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">Hello World2</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2022-12-05T17:04:31.773Z" title="发表于 2022-12-05 17:04:31">2022-12-05</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2022-12-05T17:04:31.773Z" title="更新于 2022-12-05 17:04:31">2022-12-05</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/categories1/">categories1</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">6.9k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>20分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="Hello World2"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="？？问题"><a href="#？？问题" class="headerlink" title="？？问题"></a>？？问题</h1><ul>
+<li>一个六核十二线程为什么可以执行以一个300个线程的软件<ul>
+<li>首先6核只有6线程，但是通过超线程实现了12线程</li>
+<li>其次，300线程的软件，300起了300条指令，最后11执行的还是只有12条通道，可以理解为300线程是300辆车，12是12条车道</li>
+<li>车载的是数据和资源，即线程在搬运数据和资源</li>
+<li>车运行的过程就是指令执行的过程</li>
+<li>执行指令的通道就12条</li>
+<li>然后就是300线程是通过线程库产生的，那么问题由来了<ul>
+<li>这300个线程是运行在一个物理核心上的，那么不会慢吗，有其他解决办法吗</li>
+</ul>
+</li>
+<li>因为300是用户线程，用户知道系统不知道，12线程是内核级，操心系统知道</li>
+</ul>
+</li>
+<li>CPU，一个独立的运算单元，同时只能运行一个进程吗<ul>
+<li>应该是，因为一个物理核心同时最多运行一个线程，而线程属于进程的一部分</li>
+</ul>
+</li>
+<li>那一个物理CPU可以同时运行一个进程吗<ul>
+<li>是可以的，因为一个进程的多个线程可以分配不同的物理核心</li>
+</ul>
+</li>
+</ul>
+<p>CPU核心只能看到线程和操作系统眼里还是只有这一个进程。分开</p>
+<ul>
+<li>操作系统眼里还是只有这一个进程。<ul>
+<li>操作系统：谁知道你的线程是属于哪个进程的，在这里，我就知道我要执行哪个进程（比如我打开某个电脑软件），以至于它怎么打开的（执行了多少线程），我不知道</li>
+</ul>
+</li>
+</ul>
+<p>那我用线程库写的一个多线程进程，</p>
+<ul>
+<li>即打开tomcat，就申请了300个线程</li>
+</ul>
+<p>那我用线程库写的一个多线程进程，多个线程也就都只能在一个CPU核心上运行</p>
+<ul>
+<li>用户级线程，这个就没办法跑到多个核上了</li>
+</ul>
+<p>，只能等待A主动放弃CPU。</p>
+<ul>
+<li>比如a执行完毕了</li>
+</ul>
+<p>用java做比分，java线程就是一个用户线程对应一个内核线程，而多个用户线程对应一个内核线程则是指更轻量级的线程，即多用户线程不用经过内核态进行切换，可以理解为是协程</p>
+<p>再提一下，如果是多核的cpu，只有内核态的线程才能利用多核，用户态线程不行，所以需要将用户线程与内核线程映射，多个用户线程对应一个内核线程从本质来说其实只会用一个核</p>
+<ul>
+<li>跟知乎问对上了</li>
+</ul>
+<h2 id="0各种概念"><a href="#0各种概念" class="headerlink" title="0各种概念"></a>0各种概念</h2><h3 id="处理机（processor）"><a href="#处理机（processor）" class="headerlink" title="处理机（processor）"></a>处理机（<em>processor</em>）</h3><ul>
+<li>处理机包括中央处理器，主存储器，输入-输出接口，加接外围设备就构成完整的计算机系统。</li>
+</ul>
+<h3 id="并发和并行"><a href="#并发和并行" class="headerlink" title="并发和并行"></a>并发和并行</h3><ul>
+<li>如果一个计算机有6个核心，只运行了6个线程，即线程数不大于物理核心数，那么就不需要分时处理，是真正的同时执行。现在计算机在启动时，已经执行了很多进程，线程数量更多，所以需要分时切片来执行</li>
+</ul>
+<h3 id="调度"><a href="#调度" class="headerlink" title="调度"></a>调度</h3><h3 id="上下文"><a href="#上下文" class="headerlink" title="上下文"></a>上下文</h3><h1 id="计算机硬件部分知识"><a href="#计算机硬件部分知识" class="headerlink" title="计算机硬件部分知识"></a>计算机硬件部分知识</h1><h2 id="🚩物理CPU"><a href="#🚩物理CPU" class="headerlink" title="🚩物理CPU"></a>🚩物理CPU</h2><p>一般指的是计算机的中央处理器 ，普通电脑一般只有一个CPU插槽，即只有一个物理CPU。</p>
+<p><strong>广义上的CPU</strong>：在日常生活中，CPU一般指的是封装好的物理CPU，例如英特尔的<code>酷睿</code>系列和AMD的<code>锐龙</code>系列。</p>
+<p><img src="http://pic.baicai.icu/cpu和线程的问题.assets/amd.jpg" alt="amd" style="zoom: 25%;" align="left" /></p>
+<p><strong>狭义上的CPU</strong>：在编程的讨论情况下，CPU通常指的是一个运算单元，即下面的说的【<em>core</em>物理核心】。</p>
+<h2 id="🚩物理核心（core）"><a href="#🚩物理核心（core）" class="headerlink" title="🚩物理核心（core）"></a>🚩物理核心（core）</h2><p>在编程的讨论范围下，一般CPU指的是一个物理CPU中的一个核心。例如8核，即一个CPU有8个核心，拥有8个独立的运算单元。</p>
+<p>一般来说，一个物理核心就是一个独立的运算单元，一个物理核心同时最多运行一个线程。一个运算单元有一套寄存器，一般还有L1，L2的私有缓存等等。</p>
+<p><img src="http://pic.baicai.icu/cpu和线程的问题.assets/运算单元.jpg" alt="运算单元" style="zoom:100%;"  align="left" /></p>
+<h2 id="🚩逻辑核心（logic-core）"><a href="#🚩逻辑核心（logic-core）" class="headerlink" title="🚩逻辑核心（logic core）"></a>🚩逻辑核心（logic core）</h2><p>由于英特尔的超线程技术，可以实现一个核心同时执行多个线程，则产生了逻辑核心的说法，也就是说，平日里我们说的8核16线程，一个物理核心硬件级模拟运行了二个线程，按照一个线程对应一个核心的说法，此处的逻辑核心为16。</p>
+<p>为什么 Intel 的超线程技术是一个核两条线程，而不是更多？</p>
+<ul>
+<li>因为这是平衡了性能、晶体管效率、实现难度等等综合考虑的结果，事实还也有单核4线程的CPU，比如<code>intel Xeon Phi</code>。</li>
+</ul>
+<h2 id="🚩超线程（Hyper-Threading）"><a href="#🚩超线程（Hyper-Threading）" class="headerlink" title="🚩超线程（Hyper-Threading）"></a>🚩超线程（Hyper-Threading）</h2><h3 id="⭐什么是超线程？"><a href="#⭐什么是超线程？" class="headerlink" title="⭐什么是超线程？"></a>⭐什么是超线程？</h3><p>超线程是英特尔开发出来的一项技术，使得单个CPU可以像两个逻辑CPU那样运行。</p>
+<p><img src="http://pic.baicai.icu/cpu和线程的问题.assets/超线程.jpg" alt="超线程" style="zoom: 50%;"  align="left" /></p>
+<h3 id="⭐超线程技术实现并行操作的原理？"><a href="#⭐超线程技术实现并行操作的原理？" class="headerlink" title="⭐超线程技术实现并行操作的原理？"></a>⭐超线程技术实现并行操作的原理？</h3><p>问题：一个线程在执行时会占用CPU资源，其他线程想要得到执行就必须等待该线程将CPU资源让出，但是需要注意的是，此时占用CPU的线程<strong>可能并不是完全地利用CPU所有的资源</strong>，这造成了资源的浪费。</p>
+<p>解决：超线程技术允许两个线程<strong>同时不冲突</strong>地使用CPU中的资源。</p>
+<ul>
+<li>比如一条整数运算指令只会用到整数运算单元，此时浮点运算单元就空闲了，若使用了超线程技术，且另一个线程刚好此时要执行一个浮点运算指令，CPU就允许属于两个不同线程的整数运算指令和浮点运算指令同时执行，所以这两个线程共享同一个CPU资源。</li>
+<li>超线程技术，只是模拟出的两个逻辑内核来共享同一个CPU资源，但这也并不意味着两个线程在同一个CPU中一直都可以并行执行，只有两个线程在不使用相同的CPU资源的情况下，才可以真正地并行执行。</li>
+<li>简单点来说，就是假设CPU拥有ABCD资源，线程1需要A资源，线程2需要B资源，此次两个线程就能并行执行在这个CPU上。</li>
+<li>以上的CPU，是指物理CPU中的一个核心<em>（core）</em>。</li>
+</ul>
+<h2 id="🚩指令集架构（ISA）"><a href="#🚩指令集架构（ISA）" class="headerlink" title="🚩指令集架构（ISA）"></a>🚩指令集架构（ISA）</h2><p>在计算机发展中，出现了很多指令集架构，目前比较主流有如下2个架构：</p>
+<p><strong>复杂指令集运算（Complex Instruction Set Computing，CISC）</strong></p>
+<ul>
+<li>CISC处理器架构家族最出名的架构，就是x86架构。</li>
+<li><p>市场上常见的Intel和AMD处理器大多数都属于x86架构。</p>
+</li>
+<li><p>目前支持x86处理器操作系统有，微软的Windows和苹果公司的macOS。另外Linux，一些UNIX等，都可以运行在x86架构的处理器。</p>
+</li>
+</ul>
+<p><strong>精简指令集运算（Reduced Instruction Set Computing，RISC）</strong></p>
+<ul>
+<li>RISC处理器架构家族最出名的架构，就是ARM架构。</li>
+<li>常见的ARM架构处理器，有Apple的<code>M1处理器</code>、高通的<code>骁龙处理器</code>和华为的<code>麒麟处理器</code>等。</li>
+<li>目前有UNIX、Linux以及包括iOS、Android、Windows Phone等在内的大多数移动操作系统运行在ARM处理器上。</li>
+</ul>
+<p><img src="http://pic.baicai.icu/cpu和线程的问题.assets/指令系统的演变.png" alt="指令系统的演变" style="zoom: 50%;" align="left" /></p>
+<h1 id="计算机操作系统"><a href="#计算机操作系统" class="headerlink" title="计算机操作系统"></a>计算机操作系统</h1><h2 id="🚩指令（Instruction）"><a href="#🚩指令（Instruction）" class="headerlink" title="🚩指令（Instruction）"></a>🚩指令（Instruction）</h2><p>指令是由指令集架构定义的单个的CPU操作，即CPU能识别、执行的最基本命令，比如四则运算、寄存器读写等。简单来说，指令就是通过硬件刻录进物理CPU内的一个最基础功能点，而指令集就是物理CPU的操作说明书，通过不同的指令组合就能实现不同的复杂功能。</p>
+<p><strong>在操作系统中，根据指令的权限等级，分为特权指令和非特权指令。很明显，执行特权指令需要高权限，如果某个用户使用了一个比如内存清零的特权指令，就能将其他用户的内存数据清零，这样显然是危险的，所以用户级程序是不能使用特权指令的。</strong></p>
+<blockquote>
+<p>特权指令：如内存清零指令<br>非特权指令：如普通的运行指令</p>
+</blockquote>
+<h4 id="📗CPU的状态"><a href="#📗CPU的状态" class="headerlink" title="📗CPU的状态"></a>📗CPU的状态</h4><ul>
+<li><em>CPU是如何界定特权指令的使用标准的呢？</em></li>
+</ul>
+<blockquote>
+<p>将CPU运行指令的状态来划分为2种，用户态和核心态（也叫内核态）。</p>
+<p>用户态（user mode）：CPU只能执行非特权指令。<br>核心态（kernel mode）：CPU既可以执行特权指令，也可以执行非特权指令。</p>
+</blockquote>
+<h4 id="📗程序的种类"><a href="#📗程序的种类" class="headerlink" title="📗程序的种类"></a>📗程序的种类</h4><ul>
+<li><em>如何规定哪些程序可以使用特权指令呢？</em></li>
+</ul>
+<blockquote>
+<p>将CPU运行程序的状态来划分为2种，内核程序和应用程序。</p>
+<p>用户程序：运行在用户态，只能执行非特权指令。<br>内核程序：运行在核心态，既可以执行特权指令，也可以执行非特权指令。</p>
+</blockquote>
+<h2 id="🚩内核（kernel）"><a href="#🚩内核（kernel）" class="headerlink" title="🚩内核（kernel）"></a>🚩内核（kernel）</h2><h3 id="⭐什么是内核？"><a href="#⭐什么是内核？" class="headerlink" title="⭐什么是内核？"></a>⭐什么是内核？</h3><p>简单来说，<strong>「内核就是操作系统中的一组程序模块」</strong>，它负责管理系统的进程、内存、设备驱动程序、文件和网络系统等等，决定着系统的性能和稳定性，是连接应用程序和硬件的桥梁。</p>
+<p><img src="http://pic.baicai.icu/cpu和线程的问题.assets/计算机系统的层次结构.jpg" alt="计算机系统的层次结构"></p>
+<h3 id="⭐内核态和用户态"><a href="#⭐内核态和用户态" class="headerlink" title="⭐内核态和用户态"></a>⭐内核态和用户态</h3><p>由于内核可以使用特权指令，所以内核程序（也称为系统程序）作为资源的调度者，决定一个用户程序在什么时候对某部分硬件操作多长时间。</p>
+<p>从内核调度资源的视角再一次阐述CPU的状态</p>
+<ul>
+<li><strong>「内核态」</strong>（kernel mode）：当 CPU 处于内核态时，这是操作系统管理程序（也就是内核）运行时所处的状态。运行在内核态的程序可以访问计算机的任何资源，不受限制，为所欲为，例如协调 CPU 资源，分配内存资源，提供稳定的环境供应用程序运行等。</li>
+<li><strong>「用户态」</strong>（user mode）：应用程序基本都是运行在用户态的，或者说用户态就是提供应用程序运行的空间。运行在用户态的程序只能访问当前 CPU 上执行程序所在的地址空间，这样有效地防止了操作系统程序受到应用程序的侵害。</li>
+</ul>
+<h2 id="🚩中断机制（Interrupt）"><a href="#🚩中断机制（Interrupt）" class="headerlink" title="🚩中断机制（Interrupt）"></a>🚩中断机制（Interrupt）</h2><h3 id="⭐什么是中断？"><a href="#⭐什么是中断？" class="headerlink" title="⭐什么是中断？"></a>⭐什么是中断？</h3><p>在合适的情况下，操作系统的内核会把 CPU 的使用权主动让给应用程序，也就是使 CPU 从内核态转换到用户态。而 CPU 要想从用户态回到内核态，只能通过中断机制完成，如果没有中断机制，那么一旦应用程序上 CPU 运行（用户态），CPU 就会一直运行这个应用程序。也就是说，<strong>「中断是让操作系统内核夺回 CPU 使用权的唯一途径」</strong>。可以说，<strong>「操作系统是由中断驱动的」</strong>。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">graph LR</span><br><span class="line">A[内核态] --&gt;|执行某一个特权指令,该指令会修改程序状态标识,从而转成用户态|B(用户态)</span><br><span class="line">B[用户态] --&gt;|只能通过中断|A(内核态)</span><br></pre></td></tr></table></figure>
+<h3 id="⭐中断的分类"><a href="#⭐中断的分类" class="headerlink" title="⭐中断的分类"></a>⭐中断的分类</h3><p>按照中断信号来源于CPU 的外部还是内部，将中断类型分为外中断和内中断：</p>
+<ul>
+<li><strong>「外中断」（也称中断，狭义上的中断）</strong> <ul>
+<li>外中断与当前执行的指令无关，中断信号来源于 CPU 外部。如 I/O 完成中断，表示设备输入/输出处理已经完成，CPU 能够发送下一个输入/输出请求。此外还有时钟中断、控制台中断等。</li>
+</ul>
+</li>
+<li><strong>「内中断」（也称 异常、例外）</strong><ul>
+<li>内中断与当前执行的指令有关，中断信号来源于 CPU 内部。如非法操作码、地址越界、算术溢出，除数为 0 等。</li>
+</ul>
+</li>
+</ul>
+<p><img src="http://pic.baicai.icu/cpu和线程的问题.assets/中断的分类.jpg" alt="中断的分类"></p>
+<h3 id="⭐程序是如何被中断的"><a href="#⭐程序是如何被中断的" class="headerlink" title="⭐程序是如何被中断的"></a>⭐程序是如何被中断的</h3><ul>
+<li>1）程序请求操作系统服务，执行<code>系统调用</code>（执行系统调用也是发生了一次内中断）</li>
+<li>2）程序运行时产生外中断事件（比如 I/O 操作完成），运行程序被中断，转向中断程序处理</li>
+<li>3）在程序运行时发生内中断（异常）事件，运行程序被打断，转向异常处理程序工作</li>
+</ul>
+<h2 id="🚩系统调用（system-call）"><a href="#🚩系统调用（system-call）" class="headerlink" title="🚩系统调用（system call）"></a>🚩系统调用（system call）</h2><h3 id="⭐什么是系统调用"><a href="#⭐什么是系统调用" class="headerlink" title="⭐什么是系统调用"></a>⭐什么是系统调用</h3><p>抽象点来说，指运行在<code>用户空间（User space）</code>的程序向操作系统内核请求需要更高权限运行的服务。</p>
+<blockquote>
+<p>在操作系统中，虚拟内存通常会被分成用户空间（又称使用者空间），与核心空间（Kernel space）这两个区块。</p>
+<p><img src="http://pic.baicai.icu/cpu和线程的问题.assets/系统调用-linux空间详细.jpg" alt="系统调用-linux空间详细" style="zoom: 80%;" /></p>
+</blockquote>
+<p>详细点来说，操作系统作为用户和计算机硬件之间的接口，需要向上提供一些简单易用的服务，这个上层分为<code>用户</code>和<code>应用程序</code>。</p>
+<ul>
+<li><p>给用户提供的接口有图形界面 GUI 和命令接口，给应用程序提供的是<strong>「程序接口」</strong>，这个<strong>「程序接口」</strong>就是由一组<strong>系统调用</strong>组成的，是操作系统提供给开发人员使用的。</p>
+</li>
+<li><p><img src="http://pic.baicai.icu/cpu和线程的问题.assets/系统调用提供的接口.png" alt="系统调用提供的接口"></p>
+</li>
+</ul>
+<h3 id="⭐操作系统为什么要提供“系统调用”功能？"><a href="#⭐操作系统为什么要提供“系统调用”功能？" class="headerlink" title="⭐操作系统为什么要提供“系统调用”功能？"></a>⭐操作系统为什么要提供“系统调用”功能？</h3><blockquote>
+<p>举个例子：我们去学校打印店打印论文，你按下了 WPS 的 “打印” 选项，于是打印机开始工作。 你的论文打印到一半时，另一位同学按下了 Word 的 “打印” 按钮，开始打印他自己的论文。想象一下如果两个进程可以随意的、并发的共享打印机资源，会发生什么情况？</p>
+<p>显然，两个进程并发运行，导致打印机设备交替的收到 WPS 和 Word 两个进程发来的打印请求，结果两篇论文的内容混杂在一起了。</p>
+<p>如何解决这个问题？操作系统提供“系统调用”功能，用户进程想要使用打印机这种共享的资源，只能通过系统调用向操作系统内核发出请求，内核会对各个请求进行协调处理（进程调度），所以说内核才是操作系统的管理者。</p>
+</blockquote>
+<p>系统调用的设计就是为了预防用户非法操作以及用户程序恶意使用资源，从而确保操作系统自身能够稳定、高效、安全运行。</p>
+<p>系统调用按功能大致可分为如下几类：</p>
+<p><img src="http://pic.baicai.icu/cpu和线程的问题.assets/系统调用按功能分类.png" alt="系统调用按功能分类"></p>
+<h3 id="⭐系统调用和库函数的区别"><a href="#⭐系统调用和库函数的区别" class="headerlink" title="⭐系统调用和库函数的区别"></a>⭐系统调用和库函数的区别</h3><ul>
+<li><p>用户程序其实是可以直接使用汇编语言的方式来调用计算机的<code>系统调用</code>功能，但是计算机发展到了现在，应用程序的开发语言几乎都是高级语言，高级语言通过<code>库函数</code>封装了<code>系统调用</code>给程序的接口，开发者只需要调用库函数就能完成对资源的调用。</p>
+</li>
+<li><p>需要注意的是，不是所有的库函数都涉及系统的调用，比如下面两个例子</p>
+<ul>
+<li><font color="#ef7050">**「不涉及系统调用的库函数，比如取绝对值」**</font></li>
+<li><font color="#ef7050">**「涉及系统调用的库函数，比如创建一个文件」**</font></li>
+<li><img src="http://pic.baicai.icu/cpu和线程的问题.assets/系统调用和库函数.png" alt="系统调用和库函数"></li>
+</ul>
+</li>
+</ul>
+<h3 id="⭐系统调用背后的过程"><a href="#⭐系统调用背后的过程" class="headerlink" title="⭐系统调用背后的过程"></a>⭐系统调用背后的过程</h3><ul>
+<li><p>编译器将高级语言的代码编译成汇编指令后，CPU就能识别该汇编指令。下面举一个例子：向一个文件写入数据。</p>
+<ul>
+<li><p>高级语言的代码中使用了write库函数，编译器就会识别出该行为属于系统调用，就会在汇编指令中添加<code>陷入指令（int x）</code>，<code>陷入指令</code>的作用是将CPU的控制权交还给操作系统，由操作系统完成由后续相对应的文件写入操作（写入用户程序提供的abc参数）。</p>
+<blockquote>
+<p>参数abc也需要使用movl指令写入到寄存器。</p>
+<p>int x的int指的是CPU发生内中断的一系列陷入指令，x指的是从这一系列指令某一个。拿Linux来说，int 2就是让操作系统为我们创建一个进程，int 4就是进行一个写入操作。</p>
+</blockquote>
+</li>
+<li><p><img src="http://pic.baicai.icu/cpu和线程的问题.assets/系统调用背后的过程.jpg" alt="系统调用背后的过程"></p>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="🚩进程（process）"><a href="#🚩进程（process）" class="headerlink" title="🚩进程（process）"></a>🚩进程（process）</h2><h3 id="⭐什么是进程？"><a href="#⭐什么是进程？" class="headerlink" title="⭐什么是进程？"></a>⭐什么是进程？</h3><ul>
+<li>进程是一种抽象的概念，所以进程在<strong>不同的角度</strong>下，有不同的定义，比较常见的描述有如下<ul>
+<li><em>进程是程序的一次执行过程</em></li>
+<li><em>进程是操作系统分配资源的最小单位，此处的资源包括不限于：CPU『指core核心』、内存、磁盘等</em></li>
+<li><em>进程是线程的容器</em></li>
+<li><em>进程有时候也被称为<strong>作业</strong>（job）和<strong>任务</strong>（task）</em></li>
+</ul>
+</li>
+<li>为什么出现进程这种概念？<ul>
+<li>由于硬件的发展，一个程序可以在计算机中运行多个实例（如打开2个QQ），多个实例在内存中怎么来表示呢？所以引出了进程的概念。</li>
+<li>为了能更好地描述程序在计算机运行的过程。</li>
+</ul>
+</li>
+<li>比如window操作系统中<code>任务管理器</code>就能看到所有的进程<ul>
+<li><img src="http://pic.baicai.icu/cpu和线程的问题.assets/window任务管理器中的进程.png" alt="window任务管理器中的进程"></li>
+</ul>
+</li>
+</ul>
+<h3 id="⭐组成"><a href="#⭐组成" class="headerlink" title="⭐组成"></a>⭐组成</h3><ul>
+<li>进程由程序、数据和进程控制块（PCB）三部分组成。</li>
+</ul>
+<h3 id="⭐特征"><a href="#⭐特征" class="headerlink" title="⭐特征"></a>⭐特征</h3><ul>
+<li><strong>动态性</strong>：可动态地创建、结束进程</li>
+<li><strong>并发性</strong>：任何进程都可以同其他进程一起<strong>并发执行</strong></li>
+<li><strong>独立性</strong>：进程是能独立运行、独立获得资源、独立接受调度的基本单位</li>
+<li><strong>异步性</strong>：由于进程间的相互制约，使进程具有执行的间断性，即进程按各自独立的、不可预知的速度向前推进</li>
+</ul>
+<h3 id="⭐生命周期"><a href="#⭐生命周期" class="headerlink" title="⭐生命周期"></a>⭐生命周期</h3><ul>
+<li><strong>创建（<em>new</em>）</strong><ul>
+<li>进程正在被创建，操作系统为进程分配资源、初始化PCB。</li>
+</ul>
+</li>
+<li><strong>运行（<em>running</em>）</strong><ul>
+<li>一个进程正在处理机运行时。</li>
+<li>单核处理机环境下，每个时刻最多只有一个进程处于运行态。</li>
+<li>双核环境下，可以同时有两个进程处于运行态。</li>
+</ul>
+</li>
+<li><strong>等待（<em>waiting</em>）</strong><ul>
+<li>又称为称“阻塞状态”（<em>blocked</em>）。</li>
+<li>一个进程正在等待某一时间而暂停运行时。如等待某资源，等待输入 <em>/</em> 输出完成、</li>
+</ul>
+</li>
+<li><strong>就绪（<em>ready</em>）</strong><ul>
+<li>一个进程获得了除了处理机之外的一切所需资源，一旦得到处理机即可运行。</li>
+</ul>
+</li>
+<li><strong>结束（<em>terminated</em>）</strong><ul>
+<li>进程正在从系统中撤销，操作系统回收进程拥有的资源、撤销PCB</li>
+</ul>
+</li>
+<li><img src="http://pic.baicai.icu/cpu和线程的问题.assets/进程的状态切换.png" alt="进程的状态切换" style="zoom:50%;" /></li>
+</ul>
+<h2 id="🚩线程（thread）"><a href="#🚩线程（thread）" class="headerlink" title="🚩线程（thread）"></a>🚩线程（thread）</h2><h3 id="⭐什么是线程？"><a href="#⭐什么是线程？" class="headerlink" title="⭐什么是线程？"></a>⭐什么是线程？</h3><ul>
+<li>线程是也是一种抽象的概念，所以线程在<strong>不同的角度</strong>下，有不同的描述。<ul>
+<li>指令视角<ul>
+<li>在计算机科学中，一条线程是最小的<strong><font color="#ef7050">程序指令序列</font></strong>。</li>
+</ul>
+</li>
+<li>操作系统视角<ul>
+<li>线程是<strong><font color="#ef7050">操作系统</font></strong>能够进行运算<strong><font color="#ef7050">调度</font></strong>的最小单位，它被包含在进程之中，是进程中的实际运作单位。</li>
+</ul>
+</li>
+<li>系统资源视角<ul>
+<li><strong><font color="#ef7050">进程</font></strong>只作为<strong><font color="#ef7050">除了CPU以外的其他系统资源的分配单元</font></strong>（如打印机、内存地址都是分配给进程的），即<strong><font color="#ef7050">线程</font></strong>负责实际执行任务，进程负责申请资源。</li>
+</ul>
+</li>
+<li>调度视角<ul>
+<li>线程由操作系统的<strong><font color="#ef7050">调度程序</font></strong>独立管理。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>于是就有了<font color="#ef7050"><strong>「CPU核心（core）只能看到线程」</strong></font>和<font color="#ef7050"><strong>「操作系统眼里只有进程」</strong></font>这一说法，即core负责执行程序指令序列，而操作系统负责管理CPU的同时还负责系统资源的调度。</li>
+</ul>
+<h3 id="⭐为什么出现线程？"><a href="#⭐为什么出现线程？" class="headerlink" title="⭐为什么出现线程？"></a>⭐为什么出现线程？</h3><ul>
+<li><p>由于程序是以进程的方式出现在操作系统中，然而一个进程可能包含了很多功能模块，举一个例子：MP3播放软件。</p>
+<ul>
+<li>一个MP3播放软件核心功能模块有3个<ul>
+<li>从MP3音频文件当中读取数据</li>
+<li>对数据进行解压</li>
+<li>把解压后的音频数据播放出来</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>在没有线程的情况下，当第一步read文件操作时阻塞了，由于是一个执行流程，然后其剩下2个模块自然也会阻塞。那我们进一步优化该软件，可以把这个播放软件拆分成3个进程，第一步read文件操作优先执行一段时间，来当做<strong>缓冲数据</strong>。结合3者交替执行，就能形成一边播放音乐一边解压和读取音频数据。但是进程创建、消亡、通讯等等都会消耗大量资源，为了节省资源于是就有了线程这个概念。总的来说，线程的出现就是为了<strong><font color="#ef7050">「把进程作为资源分配单位和调度单位这两个属性分开处理」</font></strong>。</p>
+</li>
+</ul>
+<h3 id="⭐线程的特征"><a href="#⭐线程的特征" class="headerlink" title="⭐线程的特征"></a>⭐线程的特征</h3><ul>
+<li><p>各个线程之间可以并发执行。</p>
+</li>
+<li><p>线程具有就绪、阻塞、运行三种基本状态，同样具有状态之间的转换关系。</p>
+</li>
+<li>在支持多核的操作系统中，一个进程的各个线程可以分派到不同的核心（core）上执行任务。</li>
+</ul>
+<h3 id="⭐线程的优缺点"><a href="#⭐线程的优缺点" class="headerlink" title="⭐线程的优缺点"></a>⭐线程的优缺点</h3><h4 id="📗优点"><a href="#📗优点" class="headerlink" title="📗优点"></a>📗优点</h4><ul>
+<li><p>线程能减少并发执行的时间和空间开支，即开销更小，比如：</p>
+<ul>
+<li><p>线程创建的时间比进程短。</p>
+</li>
+<li><p>线程终止的时间比进程短。</p>
+</li>
+<li><p>同一进程内的线程切换时间比进程短。</p>
+</li>
+<li>由于同一进程的各个线程共享内容和文件资源，可直接进行不通过内核进行通信</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li>总的来说，进程操作需要执行的步骤，线程只会更少。</li>
+</ul>
+<h4 id="📗缺点"><a href="#📗缺点" class="headerlink" title="📗缺点"></a>📗缺点</h4><ul>
+<li>一个线程崩溃，可能会导致其属所属进程的所有线程崩溃，因为其他线程可能也需要该资源。</li>
+</ul>
+<h4 id="📗何时用进程，何时用线程"><a href="#📗何时用进程，何时用线程" class="headerlink" title="📗何时用进程，何时用线程"></a>📗何时用进程，何时用线程</h4><ul>
+<li>线程特点，高性能，数据容易不安全</li>
+<li>进程特点，相对低性能，数据隔离，安全</li>
+</ul>
+<h3 id="⭐线程库（Thread-library）"><a href="#⭐线程库（Thread-library）" class="headerlink" title="⭐线程库（Thread library）"></a>⭐线程库（Thread library）</h3><ul>
+<li><p>线程库是操作系统提供开发人员管理线程的一套 API。线程库不仅可以在用户空间中实现，还可以在内核空间中实现。</p>
+</li>
+<li><p>线程库的出现为了解决<code>用户级线程</code>与<code>内核级线程</code>的某种映射关系。</p>
+<blockquote>
+<p>线程库有时候也叫线程包。</p>
+<p>在用户空间实现的线程库，没有内核支持。</p>
+<p>在内核空间实现的线程库，会导致对内核的<strong>系统调用</strong>。</p>
+</blockquote>
+</li>
+<li><p>简单介绍下三个主要的线程库</p>
+<p> <a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/POSIX%E7%BA%BF%E7%A8%8B">POSIX线程</a>：<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E5%8F%AF%E7%A7%BB%E6%A4%8D%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E6%8E%A5%E5%8F%A3">POSIX</a> 标准的拓展，可以提供用户级和内核级的库。</p>
+<blockquote>
+<p>POSIX，Portable Operating System Interface of UNIX的缩写，中文释义为<code>可移植操作系统接口</code>，是IEEE为要在各种UNIX操作系统上运行软件，而定义API的一系列互相关联标准的总称。总的来说，POSIX就是一个标准化规范接口，所以<strong>POSIX线程仅仅是线程行为规范，而不是实现</strong>。</p>
+<p>实现POSIX线程标准的库常也被称作<strong>pthreads</strong>，如Linux、Mac OS、Solaris 等 OS 都实现了这个规范，但是Microsoft Windows也实现一部分标准。</p>
+</blockquote>
+</li>
+</ul>
+<ol>
+<li><p>Win32线程：适用于 Windows OS 的内核级线程库</p>
+</li>
+<li><p>UNIX International线程：<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/Solaris">SUN Solaris操作系统</a>使用的线程，支持内核线程、轻权进程和用户线程。</p>
+</li>
+</ol>
+<h3 id="⭐线程的实现方式"><a href="#⭐线程的实现方式" class="headerlink" title="⭐线程的实现方式"></a>⭐线程的实现方式</h3><h4 id="📗用户级线程（User-Level-Threads-ULT）"><a href="#📗用户级线程（User-Level-Threads-ULT）" class="headerlink" title="📗用户级线程（User-Level Threads ULT）"></a>📗用户级线程（User-Level Threads ULT）</h4><ul>
+<li><p>用户级<strong><font color="#ef7050">线程包</font></strong></p>
+<ul>
+<li><img src="http://pic.baicai.icu/cpu和线程的问题.assets/用户级线程.jpg" alt="用户级线程"></li>
+</ul>
+</li>
+<li><p>描述：用户级线程是一种在<strong><font color="#ef7050">用户空间</font></strong>实现的<strong><font color="#ef7050">线程机制</font></strong>，它不依赖于<strong><font color="#ef7050">操作系统的内核</font></strong>，由一组用户级的<strong><font color="#ef7050">线程库函数</font></strong>来完成线程的<strong><font color="#ef7050">管理</font></strong></p>
+</li>
+<li><p>优点</p>
+<ul>
+<li><p>线程位于用户空间，即线程的切换在用户态就能完成切换，无需切换CPU的状态。</p>
+</li>
+<li><p>完全控制线程调度器，即允许该进程的线程拥有自定义的线程调度算法。</p>
+</li>
+<li><p>独立于操作系统的内核，即可用于不支持线程技术的多进程操作系统。</p>
+</li>
+<li><p>运行时系统(runtime system)可以切换用户空间中的本地阻塞线程（例如:等待另一个线程完成)。</p>
+<blockquote>
+<p><a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Runtime_system">运行时系统</a>，指的是某门语言的宿主环境，比如 Java 的运行时是 JRE。</p>
+</blockquote>
+</li>
+</ul>
+</li>
+<li><p>缺点</p>
+<ul>
+<li><p>当一个线程因发起系统调用而阻塞，将会阻塞整个进程。</p>
+</li>
+<li><p>当一个线程开始运行时，除非它主动交出CPU使用权，否则它所属进程的其他线程无法执行。</p>
+<blockquote>
+<p>用户空间的线程库一直执行在用户态，所以无法主动打断当前线程的执行，但是操作系统有中断机制，可以夺回CPU的控制权来切换当前线程。</p>
+</blockquote>
+</li>
+<li><p>非真正意义的线程并行。</p>
+<blockquote>
+<p>由于内核无法感知用户级线程，所以内核认为该线程所属进程只有一个线程，因此该进程只会分配到单个CPU上。</p>
+</blockquote>
+</li>
+<li><p>由于时间片是分配给进程，故与其他进程相比，在多线程执行时，每个线程得到的时间片较少，执行会较慢。</p>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="📗内核级线程（Kernel-Level-Threads-KLT）"><a href="#📗内核级线程（Kernel-Level-Threads-KLT）" class="headerlink" title="📗内核级线程（Kernel-Level Threads, KLT）"></a>📗内核级线程（Kernel-Level Threads, KLT）</h4><ul>
+<li><p>由内核管理的<strong><font color="#ef7050">线程包</font></strong></p>
+<ul>
+<li><img src="http://pic.baicai.icu/cpu和线程的问题.assets/内核线程.jpg" alt="内核线程"></li>
+</ul>
+</li>
+<li><p>描述：内核级线程是一种在<strong><font color="#ef7050">内核</font></strong>实现的<strong><font color="#ef7050">线程机制</font></strong>，由<strong><font color="#ef7050">操作系统的内核</font></strong>来完成线程的<strong><font color="#ef7050">管理</font></strong></p>
+</li>
+<li><p>优点</p>
+<ul>
+<li><p>实现了真正意义上的线程并行</p>
+<blockquote>
+<p>内核可以感知到内核级线程，因此操作系统可以将进程的不同线程分配给不同的CPU，并行完成任务。</p>
+</blockquote>
+</li>
+<li><p>一个进程当中，某个内核级线程因发起系统调用而阻塞，并不会影响其他内核级线程的运行。</p>
+</li>
+<li><p>不需要运行时系统(runtime system)的参与。</p>
+</li>
+</ul>
+</li>
+<li><p>缺点</p>
+<ul>
+<li><p>频繁的切换CPU状态增加系统的开销。</p>
+<blockquote>
+<p>内核级线程的管理，都是通过系统调用/内核函数的方式进行的，即需要CPU「<strong>陷入</strong>」内核态，因此相较于用户级线程会有系统开销的增加。</p>
+</blockquote>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="📗轻量级进程（Light-Weight-Process）"><a href="#📗轻量级进程（Light-Weight-Process）" class="headerlink" title="📗轻量级进程（Light Weight Process）"></a>📗轻量级进程（Light Weight Process）</h4><ul>
+<li><p>描述：内核支持的用户线程。一个进程可有一个或多个轻量级进程，每个轻权进程由一个单独的内核级线程来支持。(Linux / Solaris)</p>
+<ul>
+<li><img src="http://pic.baicai.icu/cpu和线程的问题.assets/轻量级进程.jpg" alt="轻量级进程"></li>
+</ul>
+</li>
+<li><p>在实际程序中我们一般不直接使用内核线程，用户线程与内核线程之间需要一种中间数据结构，它由内核支持且是内核线程的高级抽象，这个高级接口被称为轻量级进程。从某种层面上看，LWP最多算是广义的用户线程，即我们通常所讲的线程。LWP线程库以内核为基础，很多操作要进行内核调用。</p>
+</li>
+</ul>
+<h4 id="⭐线程实现的位置"><a href="#⭐线程实现的位置" class="headerlink" title="⭐线程实现的位置"></a>⭐线程实现的位置</h4><h4 id="📗线程实现在用户空间下"><a href="#📗线程实现在用户空间下" class="headerlink" title="📗线程实现在用户空间下"></a>📗线程实现在用户空间下</h4><p><strong><font color="#ef7050">「在早期的操作系统中，所有的线程都是在用户空间下实现的，即不支持内核级线程，只支持用户级线程，CPU的时间片切换是以进程为维度的。」</font></strong></p>
+<p><img src="http://pic.baicai.icu/cpu和线程的问题.assets/线程实现在用户空间_r.jpg" alt="线程实现在用户空间_r"></p>
+<h4 id="📗线程实现在内核空间下"><a href="#📗线程实现在内核空间下" class="headerlink" title="📗线程实现在内核空间下"></a>📗线程实现在内核空间下</h4><ul>
+<li>由于现在主流的操作系统都支持<code>用户级线程</code>和<code>内核级线程</code>，而这两种线程存在于两个不同的内存空间，如何使用合理地使用这两种线程就成为了一个问题，于是就<code>“多线程模型”</code>。</li>
+</ul>
+<h5 id="📌多对一线程模型"><a href="#📌多对一线程模型" class="headerlink" title="📌多对一线程模型"></a>📌多对一线程模型</h5><ul>
+<li><img src="C:\Users\YH\Desktop\多对一模型.png" alt="多对一模型"></li>
+<li>虽然该线程模型实现了<code>内核级线程</code>，但是</li>
+<li>一个进程对应一个内核级线程</li>
+</ul>
+<p>对着王道的视频看完，结合三秋，和google的总结一下。得出个了覆盖了王道的视频全部，然后去清华那边对比将内容补充完整，最后与剩下的资料一一校对</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1YE411D7nH/?spm_id_from=333.337.search-card.all.click">王道</a></li>
+<li><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/343597285">知乎-用户空间和内核空间的区别</a></li>
+<li><a target="_blank" rel="noopener" href="https://fhfirehuo.github.io/Attacking-Java-Rookie/Chapter07/Thread.html">Java线程与内核线程</a></li>
+</ul>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="https://baicai.icu">Ethan</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://baicai.icu/posts/98975d7d%EF%BC%9F.html">https://baicai.icu/posts/98975d7d%EF%BC%9F.html</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://baicai.icu" target="_blank">Baicai`Blog</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/tags1/">tags1</a></div><div class="post_share"><div class="social-share" data-image="https://pic.baicai.icu/imagehost/article/CoverRandomPicture/8.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><link rel="stylesheet" href="/css/coin/coin.css" media="defer" onload="this.media='all'"/><div class="post-reward"><button class="tip-button reward-button"><span class="tip-button__text">不给糖果就捣蛋</span><div class="coin-wrapper"><div class="coin"><div class="coin__middle"></div><div class="coin__back"></div><div class="coin__front"></div></div></div><div class="reward-main"><ul class="reward-all"><li class="reward-item"><a href="/img/wechat.png" target="_blank"><img class="post-qr-code-img" src="/img/wechat.png" alt="wechat"/></a><div class="post-qr-code-desc">wechat</div></li><li class="reward-item"><a href="/img/alipay.png" target="_blank"><img class="post-qr-code-img" src="/img/alipay.png" alt="alipay"/></a><div class="post-qr-code-desc">alipay</div></li></ul></div></button></div><audio id="coinAudio" src="https://cdn.cbd.int/akilar-candyassets@1.0.36/audio/aowu.m4a"></audio><script defer="defer" src="/js/coin/coin.js"></script><nav class="pagination-post" id="pagination"><div class="next-post pull-full"><a href="/posts/4a17b156.html"><img class="next-cover" src="https://pic.baicai.icu/imagehost/article/CoverRandomPicture/5.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">Hello World</div></div></a></div></nav><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div id="twikoo-wrap"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/img/avatar.gif" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">Ethan</div><div class="author-info__description">🍺还是要好好努力的呀！</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">4</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">3</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">3</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/Ethan-0822"><i class="fab fa-github"></i><span>🚑交流一下病情可好？</span></a><div class="card-info-social-icons is-center"><a class="social-icon faa-parent animated-hover" href="https://github.com/Ethan-0822" target="_blank" title="Github"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-gitHub"></use></svg></a><a class="social-icon faa-parent animated-hover" href="https://mail.qq.com/cgi-bin/qm_share?t=qm_mailme&amp;email=1005900419@qq.com" target="_blank" title="Email"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-youxiang"></use></svg></a><a class="social-icon faa-parent animated-hover" href="/atom.xml" target="_blank" title="RSS"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-rss"></use></svg></a><a class="social-icon faa-parent animated-hover" href="https://space.bilibili.com/272053208" target="_blank" title="BiliBili"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-bilibili"></use></svg></a><a class="social-icon faa-parent animated-hover" href="tencent://Message/?Uin=1005900419&amp;amp;websiteName=local.edu.com:8888=&amp;amp;Menu=yes" target="_blank" title="QQ"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-QQ1"></use></svg></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">欢迎来到我的博客！</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%EF%BC%9F%EF%BC%9F%E9%97%AE%E9%A2%98"><span class="toc-number">1.</span> <span class="toc-text">？？问题</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#0%E5%90%84%E7%A7%8D%E6%A6%82%E5%BF%B5"><span class="toc-number">1.1.</span> <span class="toc-text">0各种概念</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A4%84%E7%90%86%E6%9C%BA%EF%BC%88processor%EF%BC%89"><span class="toc-number">1.1.1.</span> <span class="toc-text">处理机（processor）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B9%B6%E5%8F%91%E5%92%8C%E5%B9%B6%E8%A1%8C"><span class="toc-number">1.1.2.</span> <span class="toc-text">并发和并行</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%B0%83%E5%BA%A6"><span class="toc-number">1.1.3.</span> <span class="toc-text">调度</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%8A%E4%B8%8B%E6%96%87"><span class="toc-number">1.1.4.</span> <span class="toc-text">上下文</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%A1%AC%E4%BB%B6%E9%83%A8%E5%88%86%E7%9F%A5%E8%AF%86"><span class="toc-number">2.</span> <span class="toc-text">计算机硬件部分知识</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%F0%9F%9A%A9%E7%89%A9%E7%90%86CPU"><span class="toc-number">2.1.</span> <span class="toc-text">🚩物理CPU</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%F0%9F%9A%A9%E7%89%A9%E7%90%86%E6%A0%B8%E5%BF%83%EF%BC%88core%EF%BC%89"><span class="toc-number">2.2.</span> <span class="toc-text">🚩物理核心（core）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%F0%9F%9A%A9%E9%80%BB%E8%BE%91%E6%A0%B8%E5%BF%83%EF%BC%88logic-core%EF%BC%89"><span class="toc-number">2.3.</span> <span class="toc-text">🚩逻辑核心（logic core）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%F0%9F%9A%A9%E8%B6%85%E7%BA%BF%E7%A8%8B%EF%BC%88Hyper-Threading%EF%BC%89"><span class="toc-number">2.4.</span> <span class="toc-text">🚩超线程（Hyper-Threading）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E2%AD%90%E4%BB%80%E4%B9%88%E6%98%AF%E8%B6%85%E7%BA%BF%E7%A8%8B%EF%BC%9F"><span class="toc-number">2.4.1.</span> <span class="toc-text">⭐什么是超线程？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E2%AD%90%E8%B6%85%E7%BA%BF%E7%A8%8B%E6%8A%80%E6%9C%AF%E5%AE%9E%E7%8E%B0%E5%B9%B6%E8%A1%8C%E6%93%8D%E4%BD%9C%E7%9A%84%E5%8E%9F%E7%90%86%EF%BC%9F"><span class="toc-number">2.4.2.</span> <span class="toc-text">⭐超线程技术实现并行操作的原理？</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%F0%9F%9A%A9%E6%8C%87%E4%BB%A4%E9%9B%86%E6%9E%B6%E6%9E%84%EF%BC%88ISA%EF%BC%89"><span class="toc-number">2.5.</span> <span class="toc-text">🚩指令集架构（ISA）</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%AE%A1%E7%AE%97%E6%9C%BA%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F"><span class="toc-number">3.</span> <span class="toc-text">计算机操作系统</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%F0%9F%9A%A9%E6%8C%87%E4%BB%A4%EF%BC%88Instruction%EF%BC%89"><span class="toc-number">3.1.</span> <span class="toc-text">🚩指令（Instruction）</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%F0%9F%93%97CPU%E7%9A%84%E7%8A%B6%E6%80%81"><span class="toc-number">3.1.0.1.</span> <span class="toc-text">📗CPU的状态</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%F0%9F%93%97%E7%A8%8B%E5%BA%8F%E7%9A%84%E7%A7%8D%E7%B1%BB"><span class="toc-number">3.1.0.2.</span> <span class="toc-text">📗程序的种类</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%F0%9F%9A%A9%E5%86%85%E6%A0%B8%EF%BC%88kernel%EF%BC%89"><span class="toc-number">3.2.</span> <span class="toc-text">🚩内核（kernel）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E2%AD%90%E4%BB%80%E4%B9%88%E6%98%AF%E5%86%85%E6%A0%B8%EF%BC%9F"><span class="toc-number">3.2.1.</span> <span class="toc-text">⭐什么是内核？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E2%AD%90%E5%86%85%E6%A0%B8%E6%80%81%E5%92%8C%E7%94%A8%E6%88%B7%E6%80%81"><span class="toc-number">3.2.2.</span> <span class="toc-text">⭐内核态和用户态</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%F0%9F%9A%A9%E4%B8%AD%E6%96%AD%E6%9C%BA%E5%88%B6%EF%BC%88Interrupt%EF%BC%89"><span class="toc-number">3.3.</span> <span class="toc-text">🚩中断机制（Interrupt）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E2%AD%90%E4%BB%80%E4%B9%88%E6%98%AF%E4%B8%AD%E6%96%AD%EF%BC%9F"><span class="toc-number">3.3.1.</span> <span class="toc-text">⭐什么是中断？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E2%AD%90%E4%B8%AD%E6%96%AD%E7%9A%84%E5%88%86%E7%B1%BB"><span class="toc-number">3.3.2.</span> <span class="toc-text">⭐中断的分类</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E2%AD%90%E7%A8%8B%E5%BA%8F%E6%98%AF%E5%A6%82%E4%BD%95%E8%A2%AB%E4%B8%AD%E6%96%AD%E7%9A%84"><span class="toc-number">3.3.3.</span> <span class="toc-text">⭐程序是如何被中断的</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%F0%9F%9A%A9%E7%B3%BB%E7%BB%9F%E8%B0%83%E7%94%A8%EF%BC%88system-call%EF%BC%89"><span class="toc-number">3.4.</span> <span class="toc-text">🚩系统调用（system call）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E2%AD%90%E4%BB%80%E4%B9%88%E6%98%AF%E7%B3%BB%E7%BB%9F%E8%B0%83%E7%94%A8"><span class="toc-number">3.4.1.</span> <span class="toc-text">⭐什么是系统调用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E2%AD%90%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E4%B8%BA%E4%BB%80%E4%B9%88%E8%A6%81%E6%8F%90%E4%BE%9B%E2%80%9C%E7%B3%BB%E7%BB%9F%E8%B0%83%E7%94%A8%E2%80%9D%E5%8A%9F%E8%83%BD%EF%BC%9F"><span class="toc-number">3.4.2.</span> <span class="toc-text">⭐操作系统为什么要提供“系统调用”功能？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E2%AD%90%E7%B3%BB%E7%BB%9F%E8%B0%83%E7%94%A8%E5%92%8C%E5%BA%93%E5%87%BD%E6%95%B0%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="toc-number">3.4.3.</span> <span class="toc-text">⭐系统调用和库函数的区别</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E2%AD%90%E7%B3%BB%E7%BB%9F%E8%B0%83%E7%94%A8%E8%83%8C%E5%90%8E%E7%9A%84%E8%BF%87%E7%A8%8B"><span class="toc-number">3.4.4.</span> <span class="toc-text">⭐系统调用背后的过程</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%F0%9F%9A%A9%E8%BF%9B%E7%A8%8B%EF%BC%88process%EF%BC%89"><span class="toc-number">3.5.</span> <span class="toc-text">🚩进程（process）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E2%AD%90%E4%BB%80%E4%B9%88%E6%98%AF%E8%BF%9B%E7%A8%8B%EF%BC%9F"><span class="toc-number">3.5.1.</span> <span class="toc-text">⭐什么是进程？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E2%AD%90%E7%BB%84%E6%88%90"><span class="toc-number">3.5.2.</span> <span class="toc-text">⭐组成</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E2%AD%90%E7%89%B9%E5%BE%81"><span class="toc-number">3.5.3.</span> <span class="toc-text">⭐特征</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E2%AD%90%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F"><span class="toc-number">3.5.4.</span> <span class="toc-text">⭐生命周期</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%F0%9F%9A%A9%E7%BA%BF%E7%A8%8B%EF%BC%88thread%EF%BC%89"><span class="toc-number">3.6.</span> <span class="toc-text">🚩线程（thread）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E2%AD%90%E4%BB%80%E4%B9%88%E6%98%AF%E7%BA%BF%E7%A8%8B%EF%BC%9F"><span class="toc-number">3.6.1.</span> <span class="toc-text">⭐什么是线程？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E2%AD%90%E4%B8%BA%E4%BB%80%E4%B9%88%E5%87%BA%E7%8E%B0%E7%BA%BF%E7%A8%8B%EF%BC%9F"><span class="toc-number">3.6.2.</span> <span class="toc-text">⭐为什么出现线程？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E2%AD%90%E7%BA%BF%E7%A8%8B%E7%9A%84%E7%89%B9%E5%BE%81"><span class="toc-number">3.6.3.</span> <span class="toc-text">⭐线程的特征</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E2%AD%90%E7%BA%BF%E7%A8%8B%E7%9A%84%E4%BC%98%E7%BC%BA%E7%82%B9"><span class="toc-number">3.6.4.</span> <span class="toc-text">⭐线程的优缺点</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%F0%9F%93%97%E4%BC%98%E7%82%B9"><span class="toc-number">3.6.4.1.</span> <span class="toc-text">📗优点</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%F0%9F%93%97%E7%BC%BA%E7%82%B9"><span class="toc-number">3.6.4.2.</span> <span class="toc-text">📗缺点</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%F0%9F%93%97%E4%BD%95%E6%97%B6%E7%94%A8%E8%BF%9B%E7%A8%8B%EF%BC%8C%E4%BD%95%E6%97%B6%E7%94%A8%E7%BA%BF%E7%A8%8B"><span class="toc-number">3.6.4.3.</span> <span class="toc-text">📗何时用进程，何时用线程</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E2%AD%90%E7%BA%BF%E7%A8%8B%E5%BA%93%EF%BC%88Thread-library%EF%BC%89"><span class="toc-number">3.6.5.</span> <span class="toc-text">⭐线程库（Thread library）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E2%AD%90%E7%BA%BF%E7%A8%8B%E7%9A%84%E5%AE%9E%E7%8E%B0%E6%96%B9%E5%BC%8F"><span class="toc-number">3.6.6.</span> <span class="toc-text">⭐线程的实现方式</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%F0%9F%93%97%E7%94%A8%E6%88%B7%E7%BA%A7%E7%BA%BF%E7%A8%8B%EF%BC%88User-Level-Threads-ULT%EF%BC%89"><span class="toc-number">3.6.6.1.</span> <span class="toc-text">📗用户级线程（User-Level Threads ULT）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%F0%9F%93%97%E5%86%85%E6%A0%B8%E7%BA%A7%E7%BA%BF%E7%A8%8B%EF%BC%88Kernel-Level-Threads-KLT%EF%BC%89"><span class="toc-number">3.6.6.2.</span> <span class="toc-text">📗内核级线程（Kernel-Level Threads, KLT）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%F0%9F%93%97%E8%BD%BB%E9%87%8F%E7%BA%A7%E8%BF%9B%E7%A8%8B%EF%BC%88Light-Weight-Process%EF%BC%89"><span class="toc-number">3.6.6.3.</span> <span class="toc-text">📗轻量级进程（Light Weight Process）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E2%AD%90%E7%BA%BF%E7%A8%8B%E5%AE%9E%E7%8E%B0%E7%9A%84%E4%BD%8D%E7%BD%AE"><span class="toc-number">3.6.6.4.</span> <span class="toc-text">⭐线程实现的位置</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%F0%9F%93%97%E7%BA%BF%E7%A8%8B%E5%AE%9E%E7%8E%B0%E5%9C%A8%E7%94%A8%E6%88%B7%E7%A9%BA%E9%97%B4%E4%B8%8B"><span class="toc-number">3.6.6.5.</span> <span class="toc-text">📗线程实现在用户空间下</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%F0%9F%93%97%E7%BA%BF%E7%A8%8B%E5%AE%9E%E7%8E%B0%E5%9C%A8%E5%86%85%E6%A0%B8%E7%A9%BA%E9%97%B4%E4%B8%8B"><span class="toc-number">3.6.6.6.</span> <span class="toc-text">📗线程实现在内核空间下</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%F0%9F%93%8C%E5%A4%9A%E5%AF%B9%E4%B8%80%E7%BA%BF%E7%A8%8B%E6%A8%A1%E5%9E%8B"><span class="toc-number">3.6.6.6.1.</span> <span class="toc-text">📌多对一线程模型</span></a></li></ol></li></ol></li></ol></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/posts/98975d7d%EF%BC%9F.html" title="Hello World2"><img src="https://pic.baicai.icu/imagehost/article/CoverRandomPicture/8.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Hello World2"/></a><div class="content"><a class="title" href="/posts/98975d7d%EF%BC%9F.html" title="Hello World2">Hello World2</a><time datetime="2022-12-05T17:04:31.773Z" title="发表于 2022-12-05 17:04:31">2022-12-05</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/4a17b156.html" title="Hello World"><img src="https://pic.baicai.icu/imagehost/article/CoverRandomPicture/5.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Hello World"/></a><div class="content"><a class="title" href="/posts/4a17b156.html" title="Hello World">Hello World</a><time datetime="2022-12-05T17:04:31.773Z" title="发表于 2022-12-05 17:04:31">2022-12-05</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/b860aee8.html" title="休息休息"><img src="https://pic.baicai.icu/imagehost/article/CoverRandomPicture/6.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="休息休息"/></a><div class="content"><a class="title" href="/posts/b860aee8.html" title="休息休息">休息休息</a><time datetime="2022-12-05T17:04:31.773Z" title="发表于 2022-12-05 17:04:31">2022-12-05</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/6803c72c.html" title="大萨达"><img src="https://pic.baicai.icu/imagehost/article/CoverRandomPicture/7.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="大萨达"/></a><div class="content"><a class="title" href="/posts/6803c72c.html" title="大萨达">大萨达</a><time datetime="2022-12-05T17:04:31.773Z" title="发表于 2022-12-05 17:04:31">2022-12-05</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2022 By Ethan</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div></div></div><div id="search-mask"></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.min.js"></script><script src="/js/search/local-search.js"></script><div class="js-pjax"><script>(()=>{
+  const init = () => {
+    twikoo.init(Object.assign({
+      el: '#twikoo-wrap',
+      envId: 'https://twikoo-hexo.baicai.icu/',
+      region: '',
+      onCommentLoaded: function () {
+        btf.loadLightbox(document.querySelectorAll('#twikoo .tk-content img:not(.tk-owo-emotion)'))
+      }
+    }, null))
+  }
+
+  const getCount = () => {
+    const countELement = document.getElementById('twikoo-count')
+    if(!countELement) return
+    twikoo.getCommentsCount({
+      envId: 'https://twikoo-hexo.baicai.icu/',
+      region: '',
+      urls: [window.location.pathname],
+      includeReply: false
+    }).then(function (res) {
+      countELement.innerText = res[0].count
+    }).catch(function (err) {
+      console.error(err);
+    });
+  }
+
+  const runFn = () => {
+    init()
+    
+  }
+
+  const loadTwikoo = () => {
+    if (typeof twikoo === 'object') {
+      setTimeout(runFn,0)
+      return
+    } 
+    getScript('https://cdn.jsdelivr.net/npm/twikoo/dist/twikoo.all.min.js').then(runFn)
+  }
+
+  if ('Twikoo' === 'Twikoo' || !true) {
+    if (true) btf.loadComment(document.getElementById('twikoo-wrap'), loadTwikoo)
+    else loadTwikoo()
+  } else {
+    window.loadOtherComment = () => {
+      loadTwikoo()
+    }
+  }
+})()</script></div><div class="aplayer no-destroy" data-id="7623436042" data-server="netease" data-type="playlist"   data-order="list" data-fixed="true" data-preload="auto" data-autoplay="false" data-mutex="true" ></div><canvas id="universe"></canvas><script defer src="/js/universe.js"></script><script id="click-heart" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/click-heart.min.js" async="async" mobile="false"></script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/metingjs/dist/Meting.min.js"></script><script src="https://cdn.jsdelivr.net/npm/pjax/pjax.min.js"></script><script>let pjaxSelectors = ["head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
+
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:send', function () {
+
+  // removeEventListener scroll 
+  window.tocScrollFn && window.removeEventListener('scroll', window.tocScrollFn)
+  window.scrollCollect && window.removeEventListener('scroll', scrollCollect)
+
+  document.getElementById('rightside').style.cssText = "opacity: ''; transform: ''"
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+
+  typeof disqusjs === 'object' && disqusjs.destroy()
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof chatBtnFn === 'function' && chatBtnFn()
+  typeof panguInit === 'function' && panguInit()
+
+  // google analytics
+  typeof gtag === 'function' && gtag('config', '', {'page_path': window.location.pathname});
+
+  // baidu analytics
+  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+})
+
+document.addEventListener('pjax:error', (e) => {
+  if (e.request.status === 404) {
+    pjax.loadUrl('/404.html')
+  }
+})</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div><!-- hexo injector body_end start --><script data-pjax>
+  function butterfly_footer_beautify_injector_config(){
+    var parent_div_git = document.getElementById('footer-wrap');
+    var item_html = '<div id="workboard"></div><p id="ghbdages"><a class="github-badge" target="_blank" href="https://hexo.io/" style="margin-inline:5px" data-title="博客框架为Hexo_v5.4.0" title=""><img src="https://img.shields.io/badge/Frame-Hexo-blue?style=flat&amp;logo=hexo" alt=""/></a><a class="github-badge" target="_blank" href="https://butterfly.js.org/" style="margin-inline:5px" data-title="主题版本Butterfly_v4.2.2" title=""><img src="https://img.shields.io/badge/Theme-Butterfly-6513df?style=flat&amp;logo=bitdefender" alt=""/></a><a class="github-badge" target="_blank" href="https://www.jsdelivr.com/" style="margin-inline:5px" data-title="本站使用JsDelivr为静态资源提供CDN加速" title=""><img src="https://img.shields.io/badge/CDN-jsDelivr-orange?style=flat&amp;logo=jsDelivr" alt=""/></a><a class="github-badge" target="_blank" href="https://github.com/" style="margin-inline:5px" data-title="本站项目由Github托管" title=""><img src="https://img.shields.io/badge/Source-Github-d021d6?style=flat&amp;logo=GitHub" alt=""/></a><a class="github-badge" target="_blank" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" style="margin-inline:5px" data-title="本站采用知识共享署名-非商业性使用-相同方式共享4.0国际许可协议进行许可" title=""><img src="https://img.shields.io/badge/Copyright-BY--NC--SA%204.0-d42328?style=flat&amp;logo=Claris" alt=""/></a></p>';
+    console.log('已挂载butterfly_footer_beautify')
+    parent_div_git.insertAdjacentHTML("beforeend",item_html)
+    }
+  var elist = 'null'.split(',');
+  var cpage = location.pathname;
+  var epage = 'all';
+  var flag = 0;
+
+  for (var i=0;i<elist.length;i++){
+    if (cpage.includes(elist[i])){
+      flag++;
+    }
+  }
+
+  if ((epage ==='all')&&(flag == 0)){
+    butterfly_footer_beautify_injector_config();
+  }
+  else if (epage === cpage){
+    butterfly_footer_beautify_injector_config();
+  }
+  </script><script async src="/js/runtime/runtime.min.js"></script><script data-pjax>
+  function butterfly_swiper_injector_config(){
+    var parent_div_git = document.getElementById('recent-posts');
+    var item_html = '<div class="recent-post-item swiper_container_card" style="height: auto;width: 100%"><div id="random"><div id="random-banner"><canvas id="peoplecanvas"></canvas></div><a id="random-hover" style="width:100%;height:auto;" href="javascript:toRandomPost()" rel="external nofollow noreferrer" one-link-mark="yes"><i class="fa fa-paper-plane" style="margin-left:10px"></i><div style="margin-left:10px">随便逛逛<i class="fa-solid fa-arrow-right" style="margin-left:10px"></i></div></a></div><div class="blog-slider swiper-container-fade swiper-container-horizontal" id="swiper_container"><div class="blog-slider__wrp swiper-wrapper" style="transition-duration: 0ms;"><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;"><a class="blog-slider__img" onclick="pjax.loadUrl(&quot;posts/6803c72c.html&quot;);" href="javascript:void(0);" alt=""><img width="48" height="48" src="https://pic.baicai.icu/imagehost/article/CoverRandomPicture/7.jpg" alt="" onerror="this.src=https://cdn.cbd.int/akilar-candyassets/image/loading.gif; this.onerror = null;"/></a><div class="blog-slider__content"><span class="blog-slider__code">2022-12-05</span><a class="blog-slider__title" onclick="pjax.loadUrl(&quot;posts/6803c72c.html&quot;);" href="javascript:void(0);" alt="">大萨达</a><div class="blog-slider__text">再怎么看我也不知道怎么描述它的啦！</div><a class="blog-slider__button" onclick="pjax.loadUrl(&quot;posts/6803c72c.html&quot;);" href="javascript:void(0);" alt="">详情       </a></div></div><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;"><a class="blog-slider__img" onclick="pjax.loadUrl(&quot;posts/b860aee8.html&quot;);" href="javascript:void(0);" alt=""><img width="48" height="48" src="https://pic.baicai.icu/imagehost/article/CoverRandomPicture/6.jpg" alt="" onerror="this.src=https://cdn.cbd.int/akilar-candyassets/image/loading.gif; this.onerror = null;"/></a><div class="blog-slider__content"><span class="blog-slider__code">2022-12-05</span><a class="blog-slider__title" onclick="pjax.loadUrl(&quot;posts/b860aee8.html&quot;);" href="javascript:void(0);" alt="">休息休息</a><div class="blog-slider__text">再怎么看我也不知道怎么描述它的啦！</div><a class="blog-slider__button" onclick="pjax.loadUrl(&quot;posts/b860aee8.html&quot;);" href="javascript:void(0);" alt="">详情       </a></div></div><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;"><a class="blog-slider__img" onclick="pjax.loadUrl(&quot;posts/98975d7d？.html&quot;);" href="javascript:void(0);" alt=""><img width="48" height="48" src="https://pic.baicai.icu/imagehost/article/CoverRandomPicture/8.jpg" alt="" onerror="this.src=https://cdn.cbd.int/akilar-candyassets/image/loading.gif; this.onerror = null;"/></a><div class="blog-slider__content"><span class="blog-slider__code">2022-12-05</span><a class="blog-slider__title" onclick="pjax.loadUrl(&quot;posts/98975d7d？.html&quot;);" href="javascript:void(0);" alt="">Hello World2</a><div class="blog-slider__text">再怎么看我也不知道怎么描述它的啦！</div><a class="blog-slider__button" onclick="pjax.loadUrl(&quot;posts/98975d7d？.html&quot;);" href="javascript:void(0);" alt="">详情       </a></div></div></div><div class="blog-slider__pagination swiper-pagination-clickable swiper-pagination-bullets"></div></div></div>';
+    console.log('已挂载butterfly_swiper')
+    parent_div_git.insertAdjacentHTML("afterbegin",item_html)
+    }
+  var elist = 'undefined'.split(',');
+  var cpage = location.pathname;
+  var epage = '/';
+  var flag = 0;
+
+  for (var i=0;i<elist.length;i++){
+    if (cpage.includes(elist[i])){
+      flag++;
+    }
+  }
+
+  if ((epage ==='all')&&(flag == 0)){
+    butterfly_swiper_injector_config();
+  }
+  else if (epage === cpage){
+    butterfly_swiper_injector_config();
+  }
+  </script><script defer src="https://npm.elemecdn.com/anzhiyu-blog@1.1.6/js/swiper.min.js"></script><script defer data-pjax src="https://cdn.cbd.int/hexo-butterfly-swiper-anzhiyu@1.0.4/lib/swiper_init.js"></script><script data-pjax src="https://lf26-cdn-tos.bytecdntp.com/cdn/expire-1-M/gsap/3.9.1/gsap.min.js"></script><script defer src="https://npm.elemecdn.com/hexo-butterfly-swiper-anzhiyu@1.0.4/lib/people.min.js"></script><script async src="/anzhiyu/random.js"></script><script async src="/js/ali_font.js"></script><div class="js-pjax"><script async="async">var arr = document.getElementsByClassName('recent-post-item');
+for(var i = 0;i<arr.length;i++){
+    arr[i].classList.add('wow');
+    arr[i].classList.add('animate__zoomIn');
+    arr[i].setAttribute('data-wow-duration', '1.5s');
+    arr[i].setAttribute('data-wow-delay', '200ms');
+    arr[i].setAttribute('data-wow-offset', '30');
+    arr[i].setAttribute('data-wow-iteration', '1');
+  }</script><script async="async">var arr = document.getElementsByClassName('card-widget');
+for(var i = 0;i<arr.length;i++){
+    arr[i].classList.add('wow');
+    arr[i].classList.add('animate__zoomIn');
+    arr[i].setAttribute('data-wow-duration', '');
+    arr[i].setAttribute('data-wow-delay', '200ms');
+    arr[i].setAttribute('data-wow-offset', '');
+    arr[i].setAttribute('data-wow-iteration', '');
+  }</script><script async="async">var arr = document.getElementsByClassName('flink-list-card');
+for(var i = 0;i<arr.length;i++){
+    arr[i].classList.add('wow');
+    arr[i].classList.add('animate__flipInY');
+    arr[i].setAttribute('data-wow-duration', '3s');
+    arr[i].setAttribute('data-wow-delay', '');
+    arr[i].setAttribute('data-wow-offset', '');
+    arr[i].setAttribute('data-wow-iteration', '');
+  }</script><script async="async">var arr = document.getElementsByClassName('flink-list-card');
+for(var i = 0;i<arr.length;i++){
+    arr[i].classList.add('wow');
+    arr[i].classList.add('animate__animated');
+    arr[i].setAttribute('data-wow-duration', '3s');
+    arr[i].setAttribute('data-wow-delay', '');
+    arr[i].setAttribute('data-wow-offset', '');
+    arr[i].setAttribute('data-wow-iteration', '');
+  }</script><script async="async">var arr = document.getElementsByClassName('article-sort-item');
+for(var i = 0;i<arr.length;i++){
+    arr[i].classList.add('wow');
+    arr[i].classList.add('animate__slideInRight');
+    arr[i].setAttribute('data-wow-duration', '1.5s');
+    arr[i].setAttribute('data-wow-delay', '');
+    arr[i].setAttribute('data-wow-offset', '');
+    arr[i].setAttribute('data-wow-iteration', '');
+  }</script><script async="async">var arr = document.getElementsByClassName('site-card');
+for(var i = 0;i<arr.length;i++){
+    arr[i].classList.add('wow');
+    arr[i].classList.add('animate__flipInY');
+    arr[i].setAttribute('data-wow-duration', '3s');
+    arr[i].setAttribute('data-wow-delay', '');
+    arr[i].setAttribute('data-wow-offset', '');
+    arr[i].setAttribute('data-wow-iteration', '');
+  }</script><script async="async">var arr = document.getElementsByClassName('site-card');
+for(var i = 0;i<arr.length;i++){
+    arr[i].classList.add('wow');
+    arr[i].classList.add('animate__animated');
+    arr[i].setAttribute('data-wow-duration', '3s');
+    arr[i].setAttribute('data-wow-delay', '');
+    arr[i].setAttribute('data-wow-offset', '');
+    arr[i].setAttribute('data-wow-iteration', '');
+  }</script></div><script defer src="https://cdn.cbd.int/hexo-butterfly-wowjs/lib/wow.min.js"></script><script defer src="https://cdn.cbd.int/hexo-butterfly-wowjs/lib/wow_init.js"></script><script data-pjax src="https://cdn.cbd.int/hexo-filter-gitcalendar/lib/gitcalendar.js"></script><script data-pjax>
+  function gitcalendar_injector_config(){
+      var parent_div_git = document.getElementById('recent-posts');
+      var item_html = '<div class="recent-post-item" style="width:100%;height:auto;padding:10px;"><style>#git_container{min-height: 280px}@media screen and (max-width:650px) {#git_container{min-height: 0px}}</style><div id="git_loading" style="width:10%;height:100%;margin:0 auto;display: block;"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 50 50" style="enable-background:new 0 0 50 50" xml:space="preserve"><path fill="#d0d0d0" d="M25.251,6.461c-10.318,0-18.683,8.365-18.683,18.683h4.068c0-8.071,6.543-14.615,14.615-14.615V6.461z" transform="rotate(275.098 25 25)"><animatetransform attributeType="xml" attributeName="transform" type="rotate" from="0 25 25" to="360 25 25" dur="0.6s" repeatCount="indefinite"></animatetransform></path></svg><style>#git_container{display: none;}</style></div><div id="git_container"></div></div>';
+      parent_div_git.insertAdjacentHTML("afterbegin",item_html)
+      console.log('已挂载gitcalendar')
+      }
+
+    if( document.getElementById('recent-posts') && (location.pathname ==='/'|| '/' ==='all')){
+        gitcalendar_injector_config()
+        GitCalendarInit("https://github.anzhiy.cn/api?Ethan-0822",['#e4dfd7', '#f9f4dc', '#f7e8aa', '#f7e8aa', '#f8df72', '#fcd217', '#fcc515', '#f28e16', '#fb8b05', '#d85916', '#f43e06'],'Ethan-0822')
+    }
+  </script><!-- hexo injector body_end end --><script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/koharu.model.json"},"display":{"position":"left","width":150,"height":300},"mobile":{"show":false},"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/"});</script></body></html>
