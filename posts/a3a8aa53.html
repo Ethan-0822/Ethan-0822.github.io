@@ -1,0 +1,764 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>HTTP协议 | Baicai`Blog</title><meta name="author" content="Ethan"><meta name="copyright" content="Ethan"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="⭐概述 全称：超文本传输协议（Hyper Text Transfer Protocol） 网络协议的定位：基于TCP&#x2F;IP的应用层协议（网络协议层级图） 作用：定义了客户端和服务器端通信时的格式，不涉及数据包传输 端口：默认使用80端口   ⭐与TCP&#x2F;IP协议的区别 TCP&#x2F;IP是传输层协议，主要解决数据如何在网络中传输（搬运） 而HTTP是应用层协议，主要解决如何包装数据（装配）。 我们在传输">
+<meta property="og:type" content="article">
+<meta property="og:title" content="HTTP协议">
+<meta property="og:url" content="https://baicai.icu/posts/a3a8aa53.html">
+<meta property="og:site_name" content="Baicai&#96;Blog">
+<meta property="og:description" content="⭐概述 全称：超文本传输协议（Hyper Text Transfer Protocol） 网络协议的定位：基于TCP&#x2F;IP的应用层协议（网络协议层级图） 作用：定义了客户端和服务器端通信时的格式，不涉及数据包传输 端口：默认使用80端口   ⭐与TCP&#x2F;IP协议的区别 TCP&#x2F;IP是传输层协议，主要解决数据如何在网络中传输（搬运） 而HTTP是应用层协议，主要解决如何包装数据（装配）。 我们在传输">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://pic.baicai.icu/imagehost/article/CoverRandomPicture/5.jpg">
+<meta property="article:published_time" content="2022-02-26T18:39:56.000Z">
+<meta property="article:modified_time" content="2022-12-06T18:49:20.000Z">
+<meta property="article:author" content="Ethan">
+<meta property="article:tag" content="各种协议">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://pic.baicai.icu/imagehost/article/CoverRandomPicture/5.jpg"><link rel="shortcut icon" href="/img/icon.png"><link rel="canonical" href="https://baicai.icu/posts/a3a8aa53"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":true,"languages":{"hits_empty":"找不到您查询的内容：${query}"}},
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":230},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'HTTP协议',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2022-12-06 18:49:20'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          const now = new Date()
+          const hour = now.getHours()
+          const isNight = hour <= 6 || hour >= 18
+          if (t === undefined) isNight ? activateDarkMode() : activateLightMode()
+          else if (t === 'light') activateLightMode()
+          else activateDarkMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><link rel="stylesheet" href="/css/custom.css" media="defer" onload="this.media='all'"><link rel="stylesheet" href="/css/universe.css"><!-- hexo injector head_end start --><link rel="stylesheet" href="/css/runtime/runtime.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.cbd.int/hexo-butterfly-swiper-anzhiyu@1.0.4/lib/swiper.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.cbd.int/hexo-butterfly-swiper-anzhiyu@1.0.4/lib/swiperstyle.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.cbd.int/hexo-butterfly-tag-plugins-plus@latest/lib/assets/font-awesome-animation.min.css" media="defer" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.cbd.int/hexo-butterfly-tag-plugins-plus@latest/lib/tag_plugins.css" media="defer" onload="this.media='all'"><script src="https://cdn.cbd.int/hexo-butterfly-tag-plugins-plus@latest/lib/assets/carousel-touch.js"></script><link rel="stylesheet" href="https://cdn.cbd.int/hexo-butterfly-wowjs/lib/animate.min.css" media="print" onload="this.media='screen'"><link rel="stylesheet" href="https://cdn.cbd.int/hexo-filter-gitcalendar/lib/gitcalendar.css" media="print" onload="this.media='all'"><!-- hexo injector head_end end --><meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/atom.xml" title="Baicai`Blog" type="application/atom+xml">
+</head><body><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/avatar.gif" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">12</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">10</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">5</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page faa-parent animated-hover" href="/"><i class="fa-fw fas fa-home faa-tada"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page faa-parent animated-hover" href="/archives/"><i class="fa-fw fas fa-archive faa-tada"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page faa-parent animated-hover" href="/tags/"><i class="fa-fw fas fa-tags faa-tada"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page faa-parent animated-hover" href="/categories/"><i class="fa-fw fas fa-folder-open faa-tada"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page faa-parent animated-hover" href="/comments/"><i class="fa-fw fas fa-envelope faa-tada"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page faa-parent animated-hover" href="/link/"><i class="fa-fw fas fa-link faa-tada"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page faa-parent animated-hover" href="/about/"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-zhifeiji"></use></svg><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://pic.baicai.icu/imagehost/article/CoverRandomPicture/5.jpg')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">Baicai`Blog</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page faa-parent animated-hover" href="/"><i class="fa-fw fas fa-home faa-tada"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page faa-parent animated-hover" href="/archives/"><i class="fa-fw fas fa-archive faa-tada"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page faa-parent animated-hover" href="/tags/"><i class="fa-fw fas fa-tags faa-tada"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page faa-parent animated-hover" href="/categories/"><i class="fa-fw fas fa-folder-open faa-tada"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page faa-parent animated-hover" href="/comments/"><i class="fa-fw fas fa-envelope faa-tada"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page faa-parent animated-hover" href="/link/"><i class="fa-fw fas fa-link faa-tada"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page faa-parent animated-hover" href="/about/"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-zhifeiji"></use></svg><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">HTTP协议</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2022-02-26T18:39:56.000Z" title="发表于 2022-02-26 18:39:56">2022-02-26</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2022-12-06T18:49:20.000Z" title="更新于 2022-12-06 18:49:20">2022-12-06</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E6%8A%80%E6%9C%AF/">技术</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">3.4k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>11分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="HTTP协议"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h3 id="⭐概述"><a href="#⭐概述" class="headerlink" title="⭐概述"></a>⭐概述</h3><ul>
+<li><code>全称</code>：超文本传输协议（Hyper Text Transfer Protocol）</li>
+<li><code>网络协议的定位</code>：基于TCP/IP的应用层协议（<a href="#wlxy">网络协议层级图</a>）</li>
+<li><code>作用</code>：定义了客户端和服务器端通信时的格式，不涉及数据包传输</li>
+<li><code>端口</code>：默认使用80端口</li>
+</ul>
+<p><br/></p>
+<h3 id="⭐与TCP-IP协议的区别"><a href="#⭐与TCP-IP协议的区别" class="headerlink" title="⭐与TCP/IP协议的区别"></a>⭐与TCP/IP协议的区别</h3><ul>
+<li>TCP/IP是传输层协议，主要解决数据如何在网络中传输（搬运）</li>
+<li>而HTTP是应用层协议，主要解决如何包装数据（装配）。</li>
+<li><p>我们在传输数据时，可以只使用（传输层）TCP/IP协议。但是那样的话，如果没有应用层，便无法识别数据内容，如果想要使传输的数据有意义，则必须使用到应用层协议，应用层协议有很多，比如HTTP、FTP、TELNET等，也可以自己定义应用层协议。</p>
+</li>
+<li><p>所以web应用通常使用http协议做应用层协议，以封装http文本信息，然后使用TCP/IP做传输层协议，将其发到网络上。</p>
+</li>
+</ul>
+<p><br/></p>
+<h3 id="⭐特点"><a href="#⭐特点" class="headerlink" title="⭐特点"></a>⭐特点</h3><ul>
+<li>通讯模型<ul>
+<li>基于请求/响应模型的：一次请求对应一次响应</li>
+</ul>
+</li>
+<li>一次完整的通讯过程<ul>
+<li><code>客户端</code>通过将数据封装在<code>请求消息</code>中，发送给<code>服务器端</code>。这个过程的意义是因为<code>客户端</code>需要获取<code>服务器端</code>的资源或者数据</li>
+<li><code>服务器端</code>接收<code>请求消息</code>并处理，处理完毕后将数据封装在<code>响应消息</code>中，返回给<code>客户端</code>。这个过程的意义<code>服务器端</code>完成了<code>客户端</code>的需求</li>
+<li><img src="http://pic.baicai.icu/基于HTTP协议WEB应用的权限认证过程.assets/一次http通讯过程.png" alt="一次http通讯过程"></li>
+</ul>
+</li>
+<li>无状态<ul>
+<li>无状态是指协议对于事务处理没有记忆能力。</li>
+<li>细化到每次客户端请求服务器之间相互独立，即上下两次请求不能交互数据</li>
+</ul>
+</li>
+<li><p>数据格式</p>
+<ul>
+<li><p>为了实现客户端与服务端统一编码格式，HTTP协议规定了以下规范</p>
+<ol>
+<li><code>请求消息</code>和<code>响应消息</code>的<code>头部信息</code>（即请求头和请求行，响应头和响应行），统一采用<code>ASCII</code>编码方式。</li>
+<li><code>消息具体内容</code>（即请求体，响应体），统一采用类似于<a href="#mime">MIME</a>的格式。</li>
+</ol>
+</li>
+<li>对于浏览器发送的请求，浏览器会对他们进行自动编码，所以URL地址的中文路径会出现一堆数字与符合的字符串，这是因为中文被编译成了ASCII码。</li>
+<li>而对于通过<code>javascript</code>的ajax发送的请求，需要通过js的方法手工编码。</li>
+<li>如果使用未编码的中文URL，服务器就可能读取数据失败从而请求失败。</li>
+</ul>
+</li>
+</ul>
+<p><br/></p>
+<h3 id="⭐历史版本"><a href="#⭐历史版本" class="headerlink" title="⭐历史版本"></a>⭐历史版本</h3><p>🥝HTTP/0.9</p>
+<ul>
+<li>该版本极其简单，只有一个命令<code>GET</code></li>
+<li>协议规定，服务器只能回应HTML格式的字符串，不能回应别的格式。</li>
+</ul>
+<p><br/></p>
+<p>🥝HTTP/1.0</p>
+<ol>
+<li><p>首先，任何格式的内容都可以发送。这使得互联网不仅可以传输文字，还能传输图像、视频、二进制文件。这为互联网的大发展奠定了基础。</p>
+</li>
+<li><p>其次，除了<code>GET</code>命令，还引入了<code>POST</code>命令和<code>HEAD</code>命令，丰富了浏览器与服务器的互动手段。</p>
+</li>
+<li><p>再次，HTTP请求和回应的格式也变了。除了数据部分，每次通信都必须包括头信息（HTTP header），用来描述一些元数据。</p>
+</li>
+<li><p>其他的新增功能还包括状态码（status code）、多字符集支持、多部分发送（multi-part type）、权限（authorization）、缓存（cache）、内容编码（content encoding）等。</p>
+</li>
+<li><p><strong>缺点</strong></p>
+</li>
+</ol>
+<ul>
+<li><p>HTTP/1.0 版的主要缺点是，每个TCP连接只能发送一个请求。发送数据完毕，连接就关闭，<strong>如果还要请求其他资源，就必须再新建一个连接</strong>。</p>
+</li>
+<li><p>TCP连接的新建成本很高，因为需要客户端和服务器三次握手，并且开始时发送速率较慢（slow start）。所以，HTTP 1.0版本的性能比较差。随着网页加载的外部资源越来越多，这个问题就愈发突出了。</p>
+</li>
+<li><p>为了解决这个问题，有些浏览器在请求时，用了一个非标准的<code>Connection</code>字段。这个字段要求服务器不要关闭TCP连接，以便其他请求复用。服务器同样回应这个字段。但是，这不是标准字段，不同实现的行为可能不一致，因此不是根本的解决办法。</p>
+</li>
+</ul>
+<p><br/></p>
+<p>🥝HTTP/1.1</p>
+<ul>
+<li>1997年1月，HTTP/1.1 版本发布，只比 1.0 版本晚了半年。它进一步完善了 HTTP 协议，一直用到了20年后的今天，直到现在还是最流行的版本。</li>
+<li>1.1 版的最大变化，就是引入了持久连接（persistent connection），即<strong>TCP连接默认不关闭</strong>，可以被<strong>多个请求复用</strong>，不用声明<code>Connection</code>字段了。</li>
+<li>客户端和服务器发现对方一段时间没有活动，就可以主动关闭连接。不过，规范的做法是，客户端在最后一个请求时，发送<code>Connection: close</code>，明确要求服务器关闭TCP连接。</li>
+<li>目前，对于同一个域名，大多数浏览器允许同时建立6个持久连接。</li>
+</ul>
+<p><br/></p>
+<p>🥝HTTP/2.0</p>
+<ul>
+<li>新的二进制格式（Binary Format），HTTP1.x的解析是基于文本。基于文本协议的格式解析存在天然缺陷，文本的表现形式有多样性，要做到健壮性考虑的场景必然很多，<strong>二进制则不同，只认0和1的组合</strong>。基于这种考虑HTTP2.0的协议解析决定采用二进制格式，实现方便且健壮。</li>
+<li>多路复用（MultiPlexing），即连接共享，即每一个request都是是用作连接共享机制的。一个request对应一个id，这样一个连接上可以有多个request，每个连接的request可以随机的混杂在一起，接收方可以根据request的 id将request再归属到各自不同的服务端请求里面。</li>
+<li>header压缩，如上文中所言，对前面提到过HTTP1.x的header带有大量信息，而且每次都要重复发送，HTTP2.0使用encoder来减少需要传输的header大小，通讯双方各自cache一份header fields表，既避免了重复header的传输，又减小了需要传输的大小。</li>
+<li>服务端推送（server push），同SPDY一样，HTTP2.0也具有server push功能。</li>
+<li>HTTP2.0 目前还没有被广泛应用，阿里系的淘宝，天猫已经开始使用HTTP2.0。<ul>
+<li><img src="http://pic.baicai.icu/基于HTTP协议WEB应用的权限认证过程.assets/天猫使用http2.0版本.png" alt="天猫使用http2.0版本"></li>
+</ul>
+</li>
+</ul>
+<p><br/></p>
+<h3 id="⭐请求消息"><a href="#⭐请求消息" class="headerlink" title="⭐请求消息"></a>⭐请求消息</h3><p>🥝概述</p>
+<ul>
+<li>客户端发送给服务器端的数据</li>
+<li>一共分为四部分<ul>
+<li>请求行</li>
+<li>请求头</li>
+<li>空行</li>
+<li>请求体</li>
+</ul>
+</li>
+</ul>
+<p><br/></p>
+<p>🥝示例</p>
+<ol>
+<li>浏览器解析请求消息的格式</li>
+</ol>
+<ul>
+<li><img src="http://pic.baicai.icu/基于HTTP协议WEB应用的权限认证过程.assets/请求消息实例.png" alt="请求消息实例"></li>
+</ul>
+<ol>
+<li><p>使用抓包工具抓取的http请求消息的数据如下    </p>
+<figure class="highlight http"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">GET /login.html	HTTP/1.1</span><br><span class="line"><span class="attribute">Host</span><span class="punctuation">: </span>localhost</span><br><span class="line"><span class="attribute">User-Agent</span><span class="punctuation">: </span>Mozilla/5.0 (Windows NT 6.1; Win64; x64; rv:60.0) Gecko/20100101 Firefox/60.0</span><br><span class="line"><span class="attribute">Accept</span><span class="punctuation">: </span>text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8</span><br><span class="line"><span class="attribute">Accept-Language</span><span class="punctuation">: </span>zh-CN,zh;q=0.8,zh-TW;q=0.7,zh-HK;q=0.5,en-US;q=0.3,en;q=0.2</span><br><span class="line"><span class="attribute">Accept-Encoding</span><span class="punctuation">: </span>gzip, deflate</span><br><span class="line"><span class="attribute">Referer</span><span class="punctuation">: </span>http://localhost/login.html</span><br><span class="line"><span class="attribute">Connection</span><span class="punctuation">: </span>keep-alive</span><br><span class="line"><span class="attribute">Upgrade-Insecure-Requests</span><span class="punctuation">: </span>1</span><br><span class="line"></span><br><span class="line">username=zhangsan	</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p><br/></p>
+<p>🥝请求行</p>
+<ol>
+<li><p>格式：<code>请求方式</code> + <code>请求url</code> + <code>请求协议/版本</code></p>
+<ul>
+<li>例：<code>POST /login.html HTTP/1.1</code></li>
+</ul>
+</li>
+<li><p>请求方式</p>
+<ul>
+<li><p>HTTP协议有7中请求方式</p>
+<ul>
+<li>GET： 请求获取Request-URI所标识的资源</li>
+<li>POST： 在Request-URI所标识的资源后增加新的数据</li>
+<li>HEAD： 请求获取由Request-URI所标识的资源的响应消息报头</li>
+<li>PUT： 请求服务器存储或修改一个资源，并用Request-URI作为其标识</li>
+<li>DELETE： 请求服务器删除Request-URI所标识的资源</li>
+<li>TRACE： 请求服务器回送收到的请求信息，主要用于测试或诊断</li>
+<li>CONNECT： 保留将来使用</li>
+<li>OPTIONS： 请求查询服务器的性能，或者查询与资源相关的选项和需求</li>
+</ul>
+</li>
+<li><p>在前后端分离的项目中，通常使用<a href="#Restful">Restful</a>风格来设计API，实际上就是通过不同的请求方式来语义化操作数据</p>
+</li>
+<li>最常用的一般都是 GET 和 POST</li>
+</ul>
+</li>
+<li><p>GET</p>
+<ul>
+<li><p>请求参数在<strong>请求行</strong>中，即url后面</p>
+</li>
+<li><p>请求的url长度有限制的</p>
+</li>
+<li><p>除了form表单大多数是get请求，例如请求各种资源等</p>
+</li>
+</ul>
+</li>
+<li><p>POST</p>
+<ul>
+<li><p>请求参数在<strong>请求体</strong>中</p>
+</li>
+<li><p>请求的url长度没有限制的</p>
+</li>
+<li><p>表单可以选择post请求</p>
+</li>
+<li><p>所以post相对于get是<strong>相对</strong>安全，因为两者的数据都是http传输中，安全的区别在于数据存放的位置</p>
+</li>
+</ul>
+</li>
+</ol>
+<p><br/></p>
+<p>🥝请求头</p>
+<ol>
+<li><p>作用</p>
+<ul>
+<li>客户端浏览器告诉服务器一些信息</li>
+</ul>
+</li>
+<li><p>数据格式</p>
+<ul>
+<li>一般都是<code>键:值</code>的形式出现</li>
+</ul>
+</li>
+<li><p>常见的请求头</p>
+<ul>
+<li><p><strong><em>User-Agent</em></strong></p>
+<ul>
+<li>例：<code>User-Agent:Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:99.0) Gecko/20100101 Firefox/99.0</code></li>
+<li>作用：浏览器告诉服务器，使用的浏览器版本信息。利用这一点服务器根据可以不同浏览器，解决一些浏览器的兼容性问题</li>
+</ul>
+</li>
+<li><p><strong><em>Referer</em></strong></p>
+<ul>
+<li>例：<code>http://localhost/login.html</code></li>
+<li>作用：<ul>
+<li>告诉服务器，请求端从哪里来的，利用这一点，可以做以下的功能</li>
+<li>防盗链（可以判断当前请求是否来自对应的网站）</li>
+<li>统计工作（统计不同请求端的数据）</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><strong><em>Authorization</em></strong><ul>
+<li>例：<code>Authorization:37c6160600434bc999c1fb2be8c9a169</code></li>
+<li>作用：如果服务器想做<strong>认证与权限</strong>的处理，由于http无状态原因不能识别出哪些请求是属于同一个来访者，所以需要在请求消息中加入此请求头。此后服务器就能从此请求头来匹配请求与来访者的关系，从而达到权限权限处理。</li>
+</ul>
+</li>
+<li><strong><em>Content-Type</em></strong><ul>
+<li>作用：客户器告诉服务端本次请求体数据格式以及编码格式</li>
+<li>需要注意的是，由于只有POST请求才会有请求体，所以POST请求才会携带此请求头</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<p><br/></p>
+<p>🥝请求空行</p>
+<ul>
+<li>空出一行，服务器通过该空行解析出请求消息的<code>请求头</code>和<code>请求体</code></li>
+</ul>
+<p><br/></p>
+<p>🥝请求体</p>
+<ul>
+<li>封装POST请求消息的请求参数</li>
+<li>GET请求没有请求体</li>
+</ul>
+<p><br/></p>
+<h3 id="⭐响应消息"><a href="#⭐响应消息" class="headerlink" title="⭐响应消息"></a>⭐响应消息</h3><p>🥝概述</p>
+<ul>
+<li>服务器端发送给客户端的数据</li>
+<li>一共分为四部分<ul>
+<li>响应行</li>
+<li>响应头</li>
+<li>空行</li>
+<li>响应体</li>
+</ul>
+</li>
+</ul>
+<p><br/></p>
+<p>🥝示例</p>
+<ol>
+<li><p>浏览器解析响应消息的格式</p>
+<ul>
+<li><img src="http://pic.baicai.icu/基于HTTP协议WEB应用的权限认证过程.assets/响应消息之浏览器解析.png" alt="响应消息之浏览器解析"></li>
+</ul>
+</li>
+<li><p>使用抓包工具抓取的http响应消息的数据如下    </p>
+<figure class="highlight http"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">HTTP/1.1</span> <span class="number">200</span> OK</span><br><span class="line"><span class="attribute">Content-Type</span><span class="punctuation">: </span>text/html;charset=UTF-8</span><br><span class="line"><span class="attribute">Content-Length</span><span class="punctuation">: </span>101</span><br><span class="line"><span class="attribute">Date</span><span class="punctuation">: </span>Wed, 06 Jun 2018 07:08:42 GMT</span><br><span class="line"></span><br><span class="line"><span class="language-xml"><span class="meta">&lt;!DOCTYPE <span class="keyword">html</span>&gt;</span></span></span><br><span class="line"><span class="language-xml"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">&quot;en&quot;</span>&gt;</span></span></span><br><span class="line"><span class="language-xml"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">&quot;UTF-8&quot;</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>Title<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span></span><br><span class="line"><span class="language-xml"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span></span><br><span class="line"><span class="language-xml"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">hello,Security</span></span><br><span class="line"><span class="language-xml"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span></span><br><span class="line"><span class="language-xml"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span></span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p><br/></p>
+<p>🥝响应行</p>
+<ul>
+<li>格式：<code>协议/版本</code>  + <code>响应状态码</code> + <code>状态码描述</code><ul>
+<li>例：<code>HTTP/1.1 200 OK</code></li>
+</ul>
+</li>
+<li>响应状态码：服务器告诉客户端浏览器本次请求和响应的一个状态<ul>
+<li>状态码都是3位数字 </li>
+<li>分类<ul>
+<li>1xx：服务器就收客户端消息，但没有接受完成，等待一段时间后，发送1xx多状态码</li>
+<li>2xx：成功。代表：200</li>
+<li>3xx：<strong>重定向</strong>。代表：302(重定向)，304(访问缓存)</li>
+<li>4xx：客户端错误。<ul>
+<li>400：客户端请求格式错误</li>
+<li>404：请求路径没有对应的资源</li>
+<li>405：请求方式没有对应的doXxx方法</li>
+</ul>
+</li>
+<li>5xx：服务器端错误。<ul>
+<li>500：服务器理解了请求，但是服务器内部处理的出现异常</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p><br/></p>
+<p>🥝响应头</p>
+<ul>
+<li><p>一般都是<code>键:值</code>的形式出现</p>
+</li>
+<li><p>常见的请求头的值</p>
+<ul>
+<li><strong><em>Content-Type</em></strong><ul>
+<li>作用：服务器告诉客户端本次响应体数据格式以及编码格式</li>
+</ul>
+</li>
+<li><strong><em>Content-disposition</em></strong><ul>
+<li>作用：服务器告诉客户端以什么格式打开响应体数据</li>
+<li><code>in-line</code>：默认值，表示在当前页面内打开</li>
+<li><code>attachment;filename=xxx</code>：表示以附件形式打开响应体。可以用来做文件下载功能</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p><br/></p>
+<p>🥝响应空行</p>
+<ul>
+<li>空出一行，服务器通过该空行解析出响应消息的<code>响应头</code>和<code>响应体</code></li>
+</ul>
+<p><br/></p>
+<p>🥝响应体</p>
+<ul>
+<li>传输的数据，包含照片或者其他文件以二进制形式进行数据传输等等</li>
+</ul>
+<p><br/></p>
+<h3 id="⭐MIME类型"><a href="#⭐MIME类型" class="headerlink" title="⭐MIME类型"></a>⭐<span id="mime">MIME类型</span></h3><p>🥝概述</p>
+<ul>
+<li>在互联网通信过程中定义的一种文件数据类型</li>
+<li>格式<ul>
+<li>大类型/小类型，例：<code>text/html</code>，<code>image/jpeg</code></li>
+</ul>
+</li>
+<li>在HTTP中应用<ul>
+<li>由于互联网的文件类型非常多，而消息头只负责通讯，消息内容才是需要传递的数据，所以需要一种标准来描述消息内容的数据格式</li>
+<li>在HTTP协议中，通过设置<code>请求头或者响应头</code>的<code>Content-Type</code>，从而指定了此次<code>请求体</code>或者<code>响应体</code>的数据格式，这样接收方就能使用指定的MIME-type 来处理数据内容。</li>
+<li>具体Mime类型对应的文件扩展名可以参考，<a target="_blank" rel="noopener" href="https://www.w3school.com.cn/media/media_mimeref.asp">MIME参考手册 - w3school</a></li>
+</ul>
+</li>
+</ul>
+<p><br/></p>
+<p>🥝文件上传下载的Content-Type与MIME</p>
+<ul>
+<li>文件上传<ul>
+<li>例：<code>Content-Type: multipart/form-data</code></li>
+<li>基于<strong>post</strong>请求的请求体来传递数据，请求体的编码为二进制</li>
+<li>另外，该格式会生成一个<code>boundary</code>字符串来分割请求头与请求体的，具体的是以一个<code>boundary=$&#123;boundary&#125;</code>来进行分割</li>
+<li><img src="http://pic.baicai.icu/基于HTTP协议WEB应用的权限认证过程.assets/文件上传.png" alt="文件上传"></li>
+</ul>
+</li>
+</ul>
+<ul>
+<li>文件下载<ul>
+<li>例：<code>Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet</code></li>
+<li>一般使用GET请求就能获取指定资源，再通过MIME来翻译请求体的文件扩展名，例：以附件的形式下载照片文件</li>
+<li><img src="http://pic.baicai.icu/基于HTTP协议WEB应用的权限认证过程.assets/文件下载.png" alt="文件下载"></li>
+</ul>
+</li>
+</ul>
+<p><br/></p>
+<p>🥝前后端分离项目常见的的Content-Type与MIME</p>
+<ul>
+<li>…</li>
+</ul>
+<p>🥝传统项目常见的Content-Type与MIME</p>
+<ul>
+<li>…</li>
+</ul>
+<p><br/></p>
+<h3 id="📚参考文档"><a href="#📚参考文档" class="headerlink" title="📚参考文档"></a>📚参考文档</h3><ul>
+<li><a target="_blank" rel="noopener" href="https://baike.baidu.com/item/HTTP/243074?fromtitle=HTTP%E5%8D%8F%E8%AE%AE&amp;fromid=1276942&amp;fr=aladdin#3">HTTP协议 - 百度百科</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.ruanyifeng.com/blog/2016/08/http.html">互联网协议入门（一）- 阮一峰</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.cnblogs.com/fnng/p/14783322.html">HTTP2.0 - 虫师</a></li>
+<li><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/452221091">深入理解HTTP协议 - 啊谢</a></li>
+<li>网络协议：<span id="wlxy"><img src="http://pic.baicai.icu/基于HTTP协议WEB应用的权限认证过程.assets/网络协议.jpg" alt="网络协议"></span></li>
+<li>Restful：<span id="Restful"><img src="http://pic.baicai.icu/基于HTTP协议WEB应用的权限认证过程.assets/Restful.png" alt="Restful"></span></li>
+</ul>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="https://baicai.icu">Ethan</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://baicai.icu/posts/a3a8aa53.html">https://baicai.icu/posts/a3a8aa53.html</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://baicai.icu" target="_blank">Baicai`Blog</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E5%90%84%E7%A7%8D%E5%8D%8F%E8%AE%AE/">各种协议</a></div><div class="post_share"><div class="social-share" data-image="https://pic.baicai.icu/imagehost/article/CoverRandomPicture/5.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><link rel="stylesheet" href="/css/coin/coin.css" media="defer" onload="this.media='all'"/><div class="post-reward"><button class="tip-button reward-button"><span class="tip-button__text">不给糖果就捣蛋</span><div class="coin-wrapper"><div class="coin"><div class="coin__middle"></div><div class="coin__back"></div><div class="coin__front"></div></div></div><div class="reward-main"><ul class="reward-all"><li class="reward-item"><a href="/img/wechat.png" target="_blank"><img class="post-qr-code-img" src="/img/wechat.png" alt="wechat"/></a><div class="post-qr-code-desc">wechat</div></li><li class="reward-item"><a href="/img/alipay.png" target="_blank"><img class="post-qr-code-img" src="/img/alipay.png" alt="alipay"/></a><div class="post-qr-code-desc">alipay</div></li></ul></div></button></div><audio id="coinAudio" src="https://cdn.cbd.int/akilar-candyassets@1.0.36/audio/aowu.m4a"></audio><script defer="defer" src="/js/coin/coin.js"></script><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/posts/fbf9d696.html"><img class="prev-cover" src="https://pic.baicai.icu/imagehost/article/CoverRandomPicture/6.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">Nginx入门</div></div></a></div><div class="next-post pull-right"><a href="/posts/ee11ede9.html"><img class="next-cover" src="https://pic.baicai.icu/imagehost/article/CoverRandomPicture/4.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">什么是人们常说的认知</div></div></a></div></nav><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div id="twikoo-wrap"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/img/avatar.gif" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">Ethan</div><div class="author-info__description">🍺还是要好好努力的呀！</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">12</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">10</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">5</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/Ethan-0822"><i class="fab fa-github"></i><span>🚑交流一下病情可好？</span></a><div class="card-info-social-icons is-center"><a class="social-icon faa-parent animated-hover" href="https://github.com/Ethan-0822" target="_blank" title="Github"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-gitHub"></use></svg></a><a class="social-icon faa-parent animated-hover" href="https://mail.qq.com/cgi-bin/qm_share?t=qm_mailme&amp;email=1005900419@qq.com" target="_blank" title="Email"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-youxiang"></use></svg></a><a class="social-icon faa-parent animated-hover" href="/atom.xml" target="_blank" title="RSS"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-rss"></use></svg></a><a class="social-icon faa-parent animated-hover" href="https://space.bilibili.com/272053208" target="_blank" title="BiliBili"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-bilibili"></use></svg></a><a class="social-icon faa-parent animated-hover" href="tencent://Message/?Uin=1005900419&amp;amp;websiteName=local.edu.com:8888=&amp;amp;Menu=yes" target="_blank" title="QQ"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-QQ1"></use></svg></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">欢迎来到我的博客！</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E2%AD%90%E6%A6%82%E8%BF%B0"><span class="toc-number">1.</span> <span class="toc-text">⭐概述</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E2%AD%90%E4%B8%8ETCP-IP%E5%8D%8F%E8%AE%AE%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="toc-number">2.</span> <span class="toc-text">⭐与TCP&#x2F;IP协议的区别</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E2%AD%90%E7%89%B9%E7%82%B9"><span class="toc-number">3.</span> <span class="toc-text">⭐特点</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E2%AD%90%E5%8E%86%E5%8F%B2%E7%89%88%E6%9C%AC"><span class="toc-number">4.</span> <span class="toc-text">⭐历史版本</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E2%AD%90%E8%AF%B7%E6%B1%82%E6%B6%88%E6%81%AF"><span class="toc-number">5.</span> <span class="toc-text">⭐请求消息</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E2%AD%90%E5%93%8D%E5%BA%94%E6%B6%88%E6%81%AF"><span class="toc-number">6.</span> <span class="toc-text">⭐响应消息</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E2%AD%90MIME%E7%B1%BB%E5%9E%8B"><span class="toc-number">7.</span> <span class="toc-text">⭐MIME类型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%F0%9F%93%9A%E5%8F%82%E8%80%83%E6%96%87%E6%A1%A3"><span class="toc-number">8.</span> <span class="toc-text">📚参考文档</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/posts/98975d7d%EF%BC%9F.html" title="Hello World2"><img src="https://pic.baicai.icu/imagehost/article/CoverRandomPicture/10.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Hello World2"/></a><div class="content"><a class="title" href="/posts/98975d7d%EF%BC%9F.html" title="Hello World2">Hello World2</a><time datetime="2022-12-06T14:50:24.931Z" title="发表于 2022-12-06 14:50:24">2022-12-06</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/4a17b156.html" title="Hello World"><img src="https://pic.baicai.icu/imagehost/article/CoverRandomPicture/8.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Hello World"/></a><div class="content"><a class="title" href="/posts/4a17b156.html" title="Hello World">Hello World</a><time datetime="2022-12-06T14:50:24.931Z" title="发表于 2022-12-06 14:50:24">2022-12-06</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/b860aee8.html" title="休息休息"><img src="https://pic.baicai.icu/imagehost/article/CoverRandomPicture/9.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="休息休息"/></a><div class="content"><a class="title" href="/posts/b860aee8.html" title="休息休息">休息休息</a><time datetime="2022-12-06T14:50:24.931Z" title="发表于 2022-12-06 14:50:24">2022-12-06</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/6803c72c.html" title="大萨达"><img src="https://pic.baicai.icu/imagehost/article/CoverRandomPicture/2.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="大萨达"/></a><div class="content"><a class="title" href="/posts/6803c72c.html" title="大萨达">大萨达</a><time datetime="2022-12-06T14:50:24.931Z" title="发表于 2022-12-06 14:50:24">2022-12-06</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/698624a2.html" title="分析一下权限认证过程"><img src="https://pic.baicai.icu/imagehost/article/CoverRandomPicture/9.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="分析一下权限认证过程"/></a><div class="content"><a class="title" href="/posts/698624a2.html" title="分析一下权限认证过程">分析一下权限认证过程</a><time datetime="2022-03-12T18:39:56.000Z" title="发表于 2022-03-12 18:39:56">2022-03-12</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2022 By Ethan</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div></div></div><div id="search-mask"></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.min.js"></script><script src="/js/search/local-search.js"></script><div class="js-pjax"><script>(() => {
+  const $mermaidWrap = document.querySelectorAll('#article-container .mermaid-wrap')
+  if ($mermaidWrap.length) {
+    window.runMermaid = () => {
+      window.loadMermaid = true
+      const theme = document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'default'
+
+      Array.from($mermaidWrap).forEach((item, index) => {
+        const mermaidSrc = item.firstElementChild
+        const mermaidThemeConfig = '%%{init:{ \'theme\':\'' + theme + '\'}}%%\n'
+        const mermaidID = 'mermaid-' + index
+        const mermaidDefinition = mermaidThemeConfig + mermaidSrc.textContent
+        mermaid.mermaidAPI.render(mermaidID, mermaidDefinition, (svgCode) => {
+          mermaidSrc.insertAdjacentHTML('afterend', svgCode)
+        })
+      })
+    }
+
+    const loadMermaid = () => {
+      window.loadMermaid ? runMermaid() : getScript('https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js').then(runMermaid)
+    }
+
+    window.pjax ? loadMermaid() : document.addEventListener('DOMContentLoaded', loadMermaid)
+  }
+})()</script><script>(()=>{
+  const init = () => {
+    twikoo.init(Object.assign({
+      el: '#twikoo-wrap',
+      envId: 'https://twikoo-hexo.baicai.icu/',
+      region: '',
+      onCommentLoaded: function () {
+        btf.loadLightbox(document.querySelectorAll('#twikoo .tk-content img:not(.tk-owo-emotion)'))
+      }
+    }, null))
+  }
+
+  const getCount = () => {
+    const countELement = document.getElementById('twikoo-count')
+    if(!countELement) return
+    twikoo.getCommentsCount({
+      envId: 'https://twikoo-hexo.baicai.icu/',
+      region: '',
+      urls: [window.location.pathname],
+      includeReply: false
+    }).then(function (res) {
+      countELement.innerText = res[0].count
+    }).catch(function (err) {
+      console.error(err);
+    });
+  }
+
+  const runFn = () => {
+    init()
+    
+  }
+
+  const loadTwikoo = () => {
+    if (typeof twikoo === 'object') {
+      setTimeout(runFn,0)
+      return
+    } 
+    getScript('https://cdn.jsdelivr.net/npm/twikoo/dist/twikoo.all.min.js').then(runFn)
+  }
+
+  if ('Twikoo' === 'Twikoo' || !true) {
+    if (true) btf.loadComment(document.getElementById('twikoo-wrap'), loadTwikoo)
+    else loadTwikoo()
+  } else {
+    window.loadOtherComment = () => {
+      loadTwikoo()
+    }
+  }
+})()</script></div><div class="aplayer no-destroy" data-id="7623436042" data-server="netease" data-type="playlist"   data-order="list" data-fixed="true" data-preload="auto" data-autoplay="false" data-mutex="true" ></div><canvas id="universe"></canvas><script defer src="/js/universe.js"></script><script id="click-heart" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/click-heart.min.js" async="async" mobile="false"></script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/metingjs/dist/Meting.min.js"></script><script src="https://cdn.jsdelivr.net/npm/pjax/pjax.min.js"></script><script>let pjaxSelectors = ["head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
+
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:send', function () {
+
+  // removeEventListener scroll 
+  window.tocScrollFn && window.removeEventListener('scroll', window.tocScrollFn)
+  window.scrollCollect && window.removeEventListener('scroll', scrollCollect)
+
+  document.getElementById('rightside').style.cssText = "opacity: ''; transform: ''"
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+
+  typeof disqusjs === 'object' && disqusjs.destroy()
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof chatBtnFn === 'function' && chatBtnFn()
+  typeof panguInit === 'function' && panguInit()
+
+  // google analytics
+  typeof gtag === 'function' && gtag('config', '', {'page_path': window.location.pathname});
+
+  // baidu analytics
+  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+})
+
+document.addEventListener('pjax:error', (e) => {
+  if (e.request.status === 404) {
+    pjax.loadUrl('/404.html')
+  }
+})</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div><!-- hexo injector body_end start --><script data-pjax>
+  function butterfly_footer_beautify_injector_config(){
+    var parent_div_git = document.getElementById('footer-wrap');
+    var item_html = '<div id="workboard"></div><p id="ghbdages"><a class="github-badge" target="_blank" href="https://hexo.io/" style="margin-inline:5px" data-title="博客框架为Hexo_v5.4.0" title=""><img src="https://img.shields.io/badge/Frame-Hexo-blue?style=flat&amp;logo=hexo" alt=""/></a><a class="github-badge" target="_blank" href="https://butterfly.js.org/" style="margin-inline:5px" data-title="主题版本Butterfly_v4.2.2" title=""><img src="https://img.shields.io/badge/Theme-Butterfly-6513df?style=flat&amp;logo=bitdefender" alt=""/></a><a class="github-badge" target="_blank" href="https://www.jsdelivr.com/" style="margin-inline:5px" data-title="本站使用JsDelivr为静态资源提供CDN加速" title=""><img src="https://img.shields.io/badge/CDN-jsDelivr-orange?style=flat&amp;logo=jsDelivr" alt=""/></a><a class="github-badge" target="_blank" href="https://github.com/" style="margin-inline:5px" data-title="本站项目由Github托管" title=""><img src="https://img.shields.io/badge/Source-Github-d021d6?style=flat&amp;logo=GitHub" alt=""/></a><a class="github-badge" target="_blank" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" style="margin-inline:5px" data-title="本站采用知识共享署名-非商业性使用-相同方式共享4.0国际许可协议进行许可" title=""><img src="https://img.shields.io/badge/Copyright-BY--NC--SA%204.0-d42328?style=flat&amp;logo=Claris" alt=""/></a></p>';
+    console.log('已挂载butterfly_footer_beautify')
+    parent_div_git.insertAdjacentHTML("beforeend",item_html)
+    }
+  var elist = 'null'.split(',');
+  var cpage = location.pathname;
+  var epage = 'all';
+  var flag = 0;
+
+  for (var i=0;i<elist.length;i++){
+    if (cpage.includes(elist[i])){
+      flag++;
+    }
+  }
+
+  if ((epage ==='all')&&(flag == 0)){
+    butterfly_footer_beautify_injector_config();
+  }
+  else if (epage === cpage){
+    butterfly_footer_beautify_injector_config();
+  }
+  </script><script async src="/js/runtime/runtime.min.js"></script><script data-pjax>
+  function butterfly_swiper_injector_config(){
+    var parent_div_git = document.getElementById('recent-posts');
+    var item_html = '<div class="recent-post-item swiper_container_card" style="height: auto;width: 100%"><div id="random"><div id="random-banner"><canvas id="peoplecanvas"></canvas></div><a id="random-hover" style="width:100%;height:auto;" href="javascript:toRandomPost()" rel="external nofollow noreferrer" one-link-mark="yes"><i class="fa fa-paper-plane" style="margin-left:10px"></i><div style="margin-left:10px">随便逛逛<i class="fa-solid fa-arrow-right" style="margin-left:10px"></i></div></a></div><div class="blog-slider swiper-container-fade swiper-container-horizontal" id="swiper_container"><div class="blog-slider__wrp swiper-wrapper" style="transition-duration: 0ms;"><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;"><a class="blog-slider__img" onclick="pjax.loadUrl(&quot;posts/6803c72c.html&quot;);" href="javascript:void(0);" alt=""><img width="48" height="48" src="https://pic.baicai.icu/imagehost/article/CoverRandomPicture/2.jpg" alt="" onerror="this.src=https://cdn.cbd.int/akilar-candyassets/image/loading.gif; this.onerror = null;"/></a><div class="blog-slider__content"><span class="blog-slider__code">2022-12-06</span><a class="blog-slider__title" onclick="pjax.loadUrl(&quot;posts/6803c72c.html&quot;);" href="javascript:void(0);" alt="">大萨达</a><div class="blog-slider__text">再怎么看我也不知道怎么描述它的啦！</div><a class="blog-slider__button" onclick="pjax.loadUrl(&quot;posts/6803c72c.html&quot;);" href="javascript:void(0);" alt="">详情       </a></div></div><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;"><a class="blog-slider__img" onclick="pjax.loadUrl(&quot;posts/b860aee8.html&quot;);" href="javascript:void(0);" alt=""><img width="48" height="48" src="https://pic.baicai.icu/imagehost/article/CoverRandomPicture/9.jpg" alt="" onerror="this.src=https://cdn.cbd.int/akilar-candyassets/image/loading.gif; this.onerror = null;"/></a><div class="blog-slider__content"><span class="blog-slider__code">2022-12-06</span><a class="blog-slider__title" onclick="pjax.loadUrl(&quot;posts/b860aee8.html&quot;);" href="javascript:void(0);" alt="">休息休息</a><div class="blog-slider__text">再怎么看我也不知道怎么描述它的啦！</div><a class="blog-slider__button" onclick="pjax.loadUrl(&quot;posts/b860aee8.html&quot;);" href="javascript:void(0);" alt="">详情       </a></div></div><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;"><a class="blog-slider__img" onclick="pjax.loadUrl(&quot;posts/98975d7d？.html&quot;);" href="javascript:void(0);" alt=""><img width="48" height="48" src="https://pic.baicai.icu/imagehost/article/CoverRandomPicture/10.jpg" alt="" onerror="this.src=https://cdn.cbd.int/akilar-candyassets/image/loading.gif; this.onerror = null;"/></a><div class="blog-slider__content"><span class="blog-slider__code">2022-12-06</span><a class="blog-slider__title" onclick="pjax.loadUrl(&quot;posts/98975d7d？.html&quot;);" href="javascript:void(0);" alt="">Hello World2</a><div class="blog-slider__text">再怎么看我也不知道怎么描述它的啦！</div><a class="blog-slider__button" onclick="pjax.loadUrl(&quot;posts/98975d7d？.html&quot;);" href="javascript:void(0);" alt="">详情       </a></div></div></div><div class="blog-slider__pagination swiper-pagination-clickable swiper-pagination-bullets"></div></div></div>';
+    console.log('已挂载butterfly_swiper')
+    parent_div_git.insertAdjacentHTML("afterbegin",item_html)
+    }
+  var elist = 'undefined'.split(',');
+  var cpage = location.pathname;
+  var epage = '/';
+  var flag = 0;
+
+  for (var i=0;i<elist.length;i++){
+    if (cpage.includes(elist[i])){
+      flag++;
+    }
+  }
+
+  if ((epage ==='all')&&(flag == 0)){
+    butterfly_swiper_injector_config();
+  }
+  else if (epage === cpage){
+    butterfly_swiper_injector_config();
+  }
+  </script><script defer src="https://npm.elemecdn.com/anzhiyu-blog@1.1.6/js/swiper.min.js"></script><script defer data-pjax src="https://cdn.cbd.int/hexo-butterfly-swiper-anzhiyu@1.0.4/lib/swiper_init.js"></script><script data-pjax src="https://lf26-cdn-tos.bytecdntp.com/cdn/expire-1-M/gsap/3.9.1/gsap.min.js"></script><script defer src="https://npm.elemecdn.com/hexo-butterfly-swiper-anzhiyu@1.0.4/lib/people.min.js"></script><script async src="/anzhiyu/random.js"></script><script async src="/js/ali_font.js"></script><div class="js-pjax"><script async="async">var arr = document.getElementsByClassName('recent-post-item');
+for(var i = 0;i<arr.length;i++){
+    arr[i].classList.add('wow');
+    arr[i].classList.add('animate__zoomIn');
+    arr[i].setAttribute('data-wow-duration', '1.5s');
+    arr[i].setAttribute('data-wow-delay', '200ms');
+    arr[i].setAttribute('data-wow-offset', '30');
+    arr[i].setAttribute('data-wow-iteration', '1');
+  }</script><script async="async">var arr = document.getElementsByClassName('card-widget');
+for(var i = 0;i<arr.length;i++){
+    arr[i].classList.add('wow');
+    arr[i].classList.add('animate__zoomIn');
+    arr[i].setAttribute('data-wow-duration', '');
+    arr[i].setAttribute('data-wow-delay', '200ms');
+    arr[i].setAttribute('data-wow-offset', '');
+    arr[i].setAttribute('data-wow-iteration', '');
+  }</script><script async="async">var arr = document.getElementsByClassName('flink-list-card');
+for(var i = 0;i<arr.length;i++){
+    arr[i].classList.add('wow');
+    arr[i].classList.add('animate__flipInY');
+    arr[i].setAttribute('data-wow-duration', '3s');
+    arr[i].setAttribute('data-wow-delay', '');
+    arr[i].setAttribute('data-wow-offset', '');
+    arr[i].setAttribute('data-wow-iteration', '');
+  }</script><script async="async">var arr = document.getElementsByClassName('flink-list-card');
+for(var i = 0;i<arr.length;i++){
+    arr[i].classList.add('wow');
+    arr[i].classList.add('animate__animated');
+    arr[i].setAttribute('data-wow-duration', '3s');
+    arr[i].setAttribute('data-wow-delay', '');
+    arr[i].setAttribute('data-wow-offset', '');
+    arr[i].setAttribute('data-wow-iteration', '');
+  }</script><script async="async">var arr = document.getElementsByClassName('article-sort-item');
+for(var i = 0;i<arr.length;i++){
+    arr[i].classList.add('wow');
+    arr[i].classList.add('animate__slideInRight');
+    arr[i].setAttribute('data-wow-duration', '1.5s');
+    arr[i].setAttribute('data-wow-delay', '');
+    arr[i].setAttribute('data-wow-offset', '');
+    arr[i].setAttribute('data-wow-iteration', '');
+  }</script><script async="async">var arr = document.getElementsByClassName('site-card');
+for(var i = 0;i<arr.length;i++){
+    arr[i].classList.add('wow');
+    arr[i].classList.add('animate__flipInY');
+    arr[i].setAttribute('data-wow-duration', '3s');
+    arr[i].setAttribute('data-wow-delay', '');
+    arr[i].setAttribute('data-wow-offset', '');
+    arr[i].setAttribute('data-wow-iteration', '');
+  }</script><script async="async">var arr = document.getElementsByClassName('site-card');
+for(var i = 0;i<arr.length;i++){
+    arr[i].classList.add('wow');
+    arr[i].classList.add('animate__animated');
+    arr[i].setAttribute('data-wow-duration', '3s');
+    arr[i].setAttribute('data-wow-delay', '');
+    arr[i].setAttribute('data-wow-offset', '');
+    arr[i].setAttribute('data-wow-iteration', '');
+  }</script></div><script defer src="https://cdn.cbd.int/hexo-butterfly-wowjs/lib/wow.min.js"></script><script defer src="https://cdn.cbd.int/hexo-butterfly-wowjs/lib/wow_init.js"></script><script data-pjax src="https://cdn.cbd.int/hexo-filter-gitcalendar/lib/gitcalendar.js"></script><script data-pjax>
+  function gitcalendar_injector_config(){
+      var parent_div_git = document.getElementById('recent-posts');
+      var item_html = '<div class="recent-post-item" style="width:100%;height:auto;padding:10px;"><style>#git_container{min-height: 280px}@media screen and (max-width:650px) {#git_container{min-height: 0px}}</style><div id="git_loading" style="width:10%;height:100%;margin:0 auto;display: block;"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 50 50" style="enable-background:new 0 0 50 50" xml:space="preserve"><path fill="#d0d0d0" d="M25.251,6.461c-10.318,0-18.683,8.365-18.683,18.683h4.068c0-8.071,6.543-14.615,14.615-14.615V6.461z" transform="rotate(275.098 25 25)"><animatetransform attributeType="xml" attributeName="transform" type="rotate" from="0 25 25" to="360 25 25" dur="0.6s" repeatCount="indefinite"></animatetransform></path></svg><style>#git_container{display: none;}</style></div><div id="git_container"></div></div>';
+      parent_div_git.insertAdjacentHTML("afterbegin",item_html)
+      console.log('已挂载gitcalendar')
+      }
+
+    if( document.getElementById('recent-posts') && (location.pathname ==='/'|| '/' ==='all')){
+        gitcalendar_injector_config()
+        GitCalendarInit("https://github.anzhiy.cn/api?Ethan-0822",['#ebedf0', '#fdcdec', '#fc9bd9', '#fa6ac5', '#f838b2', '#f5089f', '#c4067e', '#92055e', '#540336', '#48022f', '#30021f'],'Ethan-0822')
+    }
+  </script><!-- hexo injector body_end end --><script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/koharu.model.json"},"display":{"position":"left","width":150,"height":300},"mobile":{"show":false},"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/"});</script></body></html>
