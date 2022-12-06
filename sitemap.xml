@@ -11,6 +11,24 @@
   </url>
   
   <url>
+    <loc>https://baicai.icu/posts/e49bd23b.html</loc>
+    
+    <lastmod>2022-12-06</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://baicai.icu/posts/caff8000.html</loc>
+    
+    <lastmod>2022-12-06</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://baicai.icu/posts/a3a8aa53.html</loc>
     
     <lastmod>2022-12-06</lastmod>
@@ -47,6 +65,15 @@
   </url>
   
   <url>
+    <loc>https://baicai.icu/posts/d53d7bbc.html</loc>
+    
+    <lastmod>2022-12-06</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://baicai.icu/posts/cd49022.html</loc>
     
     <lastmod>2022-12-06</lastmod>
@@ -57,6 +84,33 @@
   
   <url>
     <loc>https://baicai.icu/posts/698624a2.html</loc>
+    
+    <lastmod>2022-12-06</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://baicai.icu/posts/8fdb6705.html</loc>
+    
+    <lastmod>2022-12-06</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://baicai.icu/posts/b0b06c03.html</loc>
+    
+    <lastmod>2022-12-06</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://baicai.icu/posts/fc0c0f34.html</loc>
     
     <lastmod>2022-12-06</lastmod>
     
@@ -92,42 +146,6 @@
   </url>
   
   <url>
-    <loc>https://baicai.icu/posts/98975d7d%EF%BC%9F.html</loc>
-    
-    <lastmod>2022-12-06</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://baicai.icu/posts/4a17b156.html</loc>
-    
-    <lastmod>2022-12-06</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://baicai.icu/posts/b860aee8.html</loc>
-    
-    <lastmod>2022-12-06</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://baicai.icu/posts/6803c72c.html</loc>
-    
-    <lastmod>2022-12-06</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>https://baicai.icu/about/index.html</loc>
     
     <lastmod>2022-12-06</lastmod>
@@ -155,21 +173,7 @@
 
   
   <url>
-    <loc>https://baicai.icu/tags/tags1/</loc>
-    <lastmod>2022-12-06</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://baicai.icu/tags/tags2/</loc>
-    <lastmod>2022-12-06</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://baicai.icu/tags/tags3/</loc>
+    <loc>https://baicai.icu/tags/GitHub%E4%BB%93%E5%BA%93/</loc>
     <lastmod>2022-12-06</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -197,6 +201,13 @@
   </url>
   
   <url>
+    <loc>https://baicai.icu/tags/ORM/</loc>
+    <lastmod>2022-12-06</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
     <loc>https://baicai.icu/tags/Spring%E5%85%A8%E5%AE%B6%E6%A1%B6/</loc>
     <lastmod>2022-12-06</lastmod>
     <changefreq>weekly</changefreq>
@@ -205,6 +216,13 @@
   
   <url>
     <loc>https://baicai.icu/tags/%E7%BC%96%E7%A8%8B%E7%83%AD%E7%82%B9/</loc>
+    <lastmod>2022-12-06</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://baicai.icu/tags/Java%E6%8A%80%E6%9C%AF%E7%82%B9/</loc>
     <lastmod>2022-12-06</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -225,27 +243,6 @@
   </url>
   
 
-  
-  <url>
-    <loc>https://baicai.icu/categories/categories1/</loc>
-    <lastmod>2022-12-06</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://baicai.icu/categories/categories4/</loc>
-    <lastmod>2022-12-06</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://baicai.icu/categories/categories3/</loc>
-    <lastmod>2022-12-06</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
   
   <url>
     <loc>https://baicai.icu/categories/%E6%8A%80%E6%9C%AF/</loc>

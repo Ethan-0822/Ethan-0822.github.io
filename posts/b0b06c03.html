@@ -1,0 +1,672 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>聊聊枚举怎么用 | Baicai`Blog</title><meta name="author" content="Ethan"><meta name="copyright" content="Ethan"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="⭐什么是枚举 中文的释义，指的是可以一个一个列举 即在一个特定的范围内，有穷的集合，如一年有12个月，一周有7天  正因为这种有穷的集合，通常在代码设计中，使用枚举类来定义词典，如是否删除的表示，y表示是，n表示否，也可以说，键值对的映射关系，类似与map集合，redis这种。    ⭐Java中的枚举诞生 🥝为何需要枚举类型  枚举类型是 Java 5 中增加的一个小特性，在此之前，实现枚举的">
+<meta property="og:type" content="article">
+<meta property="og:title" content="聊聊枚举怎么用">
+<meta property="og:url" content="https://baicai.icu/posts/b0b06c03.html">
+<meta property="og:site_name" content="Baicai&#96;Blog">
+<meta property="og:description" content="⭐什么是枚举 中文的释义，指的是可以一个一个列举 即在一个特定的范围内，有穷的集合，如一年有12个月，一周有7天  正因为这种有穷的集合，通常在代码设计中，使用枚举类来定义词典，如是否删除的表示，y表示是，n表示否，也可以说，键值对的映射关系，类似与map集合，redis这种。    ⭐Java中的枚举诞生 🥝为何需要枚举类型  枚举类型是 Java 5 中增加的一个小特性，在此之前，实现枚举的">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://pic.baicai.icu/imagehost/article/CoverRandomPicture/6.jpg">
+<meta property="article:published_time" content="2022-04-27T18:39:56.000Z">
+<meta property="article:modified_time" content="2022-12-06T18:49:20.000Z">
+<meta property="article:author" content="Ethan">
+<meta property="article:tag" content="Java技术点">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://pic.baicai.icu/imagehost/article/CoverRandomPicture/6.jpg"><link rel="shortcut icon" href="/img/icon.png"><link rel="canonical" href="https://baicai.icu/posts/b0b06c03"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":true,"languages":{"hits_empty":"找不到您查询的内容：${query}"}},
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":230},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '聊聊枚举怎么用',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2022-12-06 18:49:20'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          const now = new Date()
+          const hour = now.getHours()
+          const isNight = hour <= 6 || hour >= 18
+          if (t === undefined) isNight ? activateDarkMode() : activateLightMode()
+          else if (t === 'light') activateLightMode()
+          else activateDarkMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><link rel="stylesheet" href="/css/custom.css" media="defer" onload="this.media='all'"><link rel="stylesheet" href="/css/universe.css"><!-- hexo injector head_end start --><link rel="stylesheet" href="/css/runtime/runtime.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.cbd.int/hexo-butterfly-swiper-anzhiyu@1.0.4/lib/swiper.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.cbd.int/hexo-butterfly-swiper-anzhiyu@1.0.4/lib/swiperstyle.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.cbd.int/hexo-butterfly-tag-plugins-plus@latest/lib/assets/font-awesome-animation.min.css" media="defer" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.cbd.int/hexo-butterfly-tag-plugins-plus@latest/lib/tag_plugins.css" media="defer" onload="this.media='all'"><script src="https://cdn.cbd.int/hexo-butterfly-tag-plugins-plus@latest/lib/assets/carousel-touch.js"></script><link rel="stylesheet" href="https://cdn.cbd.int/hexo-butterfly-wowjs/lib/animate.min.css" media="print" onload="this.media='screen'"><link rel="stylesheet" href="https://cdn.cbd.int/hexo-filter-gitcalendar/lib/gitcalendar.css" media="print" onload="this.media='all'"><!-- hexo injector head_end end --><meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/atom.xml" title="Baicai`Blog" type="application/atom+xml">
+</head><body><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/avatar.gif" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">14</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">10</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">2</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page faa-parent animated-hover" href="/"><i class="fa-fw fas fa-home faa-tada"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page faa-parent animated-hover" href="/archives/"><i class="fa-fw fas fa-archive faa-tada"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page faa-parent animated-hover" href="/tags/"><i class="fa-fw fas fa-tags faa-tada"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page faa-parent animated-hover" href="/categories/"><i class="fa-fw fas fa-folder-open faa-tada"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page faa-parent animated-hover" href="/comments/"><i class="fa-fw fas fa-envelope faa-tada"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page faa-parent animated-hover" href="/link/"><i class="fa-fw fas fa-link faa-tada"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page faa-parent animated-hover" href="/about/"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-zhifeiji"></use></svg><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://pic.baicai.icu/imagehost/article/CoverRandomPicture/6.jpg')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">Baicai`Blog</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page faa-parent animated-hover" href="/"><i class="fa-fw fas fa-home faa-tada"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page faa-parent animated-hover" href="/archives/"><i class="fa-fw fas fa-archive faa-tada"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page faa-parent animated-hover" href="/tags/"><i class="fa-fw fas fa-tags faa-tada"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page faa-parent animated-hover" href="/categories/"><i class="fa-fw fas fa-folder-open faa-tada"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page faa-parent animated-hover" href="/comments/"><i class="fa-fw fas fa-envelope faa-tada"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page faa-parent animated-hover" href="/link/"><i class="fa-fw fas fa-link faa-tada"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page faa-parent animated-hover" href="/about/"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-zhifeiji"></use></svg><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">聊聊枚举怎么用</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2022-04-27T18:39:56.000Z" title="发表于 2022-04-27 18:39:56">2022-04-27</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2022-12-06T18:49:20.000Z" title="更新于 2022-12-06 18:49:20">2022-12-06</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E6%8A%80%E6%9C%AF/">技术</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">3.6k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>13分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="聊聊枚举怎么用"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h3 id="⭐什么是枚举"><a href="#⭐什么是枚举" class="headerlink" title="⭐什么是枚举"></a>⭐什么是枚举</h3><ul>
+<li>中文的释义，指的是可以一个一个列举</li>
+<li><p>即在一个特定的范围内，有穷的集合，如一年有12个月，一周有7天</p>
+</li>
+<li><p>正因为这种有穷的集合，通常在代码设计中，使用枚举类来定义词典，如是否删除的表示，y表示是，n表示否，也可以说，键值对的映射关系，类似与map集合，redis这种。</p>
+</li>
+</ul>
+<p><br/></p>
+<h3 id="⭐Java中的枚举诞生"><a href="#⭐Java中的枚举诞生" class="headerlink" title="⭐Java中的枚举诞生"></a>⭐Java中的枚举诞生</h3><p> 🥝为何需要枚举类型</p>
+<ul>
+<li>枚举类型是 Java 5 中增加的一个小特性，在此之前，实现枚举的方式为定义编译期常量形式。代码中使用编译期常量的方式在理解性和安全性方面存在不足，单纯的常量数值不能够直观的体现出其作为枚举实例的目的，且实际中无限的取值空间也不能很好的与理论上有限的枚举空间相匹配。</li>
+</ul>
+<p><br/></p>
+<p> 🥝静态常量实现字典</p>
+<ul>
+<li><p>假定使用int类型定义一年中的四季    </p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Season</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="type">int</span> <span class="variable">SPRING</span> <span class="operator">=</span> <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="type">int</span> <span class="variable">SUMMER</span> <span class="operator">=</span> <span class="number">2</span>;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="type">int</span> <span class="variable">AUTUMN</span> <span class="operator">=</span> <span class="number">3</span>;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="type">int</span> <span class="variable">WINTER</span> <span class="operator">=</span> <span class="number">4</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">void</span> <span class="title function_">testSeason</span><span class="params">(<span class="type">int</span> season)</span>&#123;</span><br><span class="line">	<span class="keyword">switch</span> (season)&#123;</span><br><span class="line">		<span class="keyword">case</span> <span class="number">1</span> :</span><br><span class="line">			<span class="comment">// 春天...</span></span><br><span class="line">			<span class="keyword">break</span>;</span><br><span class="line">		<span class="keyword">case</span> <span class="number">2</span> :</span><br><span class="line">			<span class="comment">// 夏天...</span></span><br><span class="line">			<span class="keyword">break</span>;</span><br><span class="line">		<span class="keyword">case</span> <span class="number">3</span> :</span><br><span class="line">			<span class="comment">// 秋天...</span></span><br><span class="line">			<span class="keyword">break</span>;</span><br><span class="line">		<span class="keyword">case</span> <span class="number">4</span> :</span><br><span class="line">			<span class="comment">// 冬天...</span></span><br><span class="line">			<span class="keyword">break</span>;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">System.out.println(Season.SPRING);</span><br><span class="line">System.out.println(Season.SUMMER);</span><br><span class="line"></span><br><span class="line">testSeason(<span class="number">1</span>);</span><br><span class="line">testSeason(Season.SPRING)</span><br><span class="line">testSeason(-<span class="number">1</span>);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong><font color="#ef7050">「可以看到没有办法通知或者限制调用者需要传递的参数，只要是int值都是合法数据，这个算不上一个好的设计」</font></strong></p>
+</li>
+</ul>
+<p><br/></p>
+<p> 🥝改进静态常量实现字典</p>
+<ul>
+<li><p>改进上述例子，就可以让一个普通类达到枚举一样效果（这也是枚举<a href="#mime">反编译</a>后的效果，下文有详述）</p>
+<ul>
+<li><p>将上述的int类型常量修改为Season类型，并将类声明为final防止被继承。构造函数声明为private，防止外部实例化。    </p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">final</span> <span class="keyword">class</span> <span class="title class_">Season</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="type">Season</span> <span class="variable">SPRING</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Season</span>();</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="type">Season</span> <span class="variable">SUMMER</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Season</span>();</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="type">Season</span> <span class="variable">AUTUMN</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Season</span>();</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="type">Season</span> <span class="variable">WINTER</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Season</span>();</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="title function_">Season</span><span class="params">()</span>&#123;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">void</span> <span class="title function_">testSeason</span><span class="params">(Season season)</span>&#123;</span><br><span class="line"><span class="comment">// ...</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">testSeason(Season.SPRING);</span><br><span class="line">testSeason(Season.SUMMER);</span><br><span class="line"></span><br><span class="line">testSeason(<span class="number">1</span>);<span class="comment">// 编译报错</span></span><br><span class="line">testSeason(<span class="string">&quot;SPRING&quot;</span>);<span class="comment">// 编译报错</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p><strong><font color="#ef7050">「可以看到没有通知调用者情况下，调用者只能传递已经定义好的Season类型，最多传递一个null，否则将无法通过编译，这也间接限制了调用者传递的数据类型」</font></strong></p>
+</li>
+</ul>
+<p><br/></p>
+<p> 🥝枚举实现字典</p>
+<ul>
+<li><p>例如：一个季节枚举即可表示一年中的四季    </p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">enum</span> <span class="title class_">SeasonEnum</span> &#123;</span><br><span class="line">    SPRING,</span><br><span class="line">    SUMMER,</span><br><span class="line">    AUTUMN,</span><br><span class="line">    WINTER;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">void</span> <span class="title function_">testSeason2</span><span class="params">(SeasonEnum season)</span>&#123;</span><br><span class="line">	<span class="keyword">switch</span> (season)&#123;</span><br><span class="line">		<span class="keyword">case</span> SPRING :</span><br><span class="line">			<span class="comment">// 春天...</span></span><br><span class="line">			<span class="keyword">break</span>;</span><br><span class="line">		<span class="keyword">case</span> SUMMER :</span><br><span class="line">			<span class="comment">// 夏天...</span></span><br><span class="line">			<span class="keyword">break</span>;</span><br><span class="line">		<span class="keyword">case</span> AUTUMN :</span><br><span class="line">			<span class="comment">// 秋天...</span></span><br><span class="line">			<span class="keyword">break</span>;</span><br><span class="line">		<span class="keyword">case</span> WINTER :</span><br><span class="line">			<span class="comment">// 冬天...</span></span><br><span class="line">			<span class="keyword">break</span>;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">testSeason(SeasonEnum.SPRING);</span><br><span class="line">testSeason(SeasonEnum.SUMMER);</span><br><span class="line"></span><br><span class="line">testSeason(<span class="number">1</span>);<span class="comment">// 编译报错	</span></span><br><span class="line">testSeason(<span class="string">&quot;SPRING&quot;</span>);<span class="comment">// 编译报错</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong><font color="#ef7050">「可以看到，枚举类型的实例摆脱了数值的限制，能够以实例自身表达其作用和目的」</font></strong></p>
+</li>
+</ul>
+<p><br/></p>
+<h3 id="⭐定义枚举"><a href="#⭐定义枚举" class="headerlink" title="⭐定义枚举"></a>⭐定义枚举</h3><p> 🥝规则</p>
+<ol>
+<li>使用关键字<code>Enum</code>定义枚举</li>
+<li>枚举值需要定义在枚举的构造方法，成员变量之前，枚举值以<code>;</code>分号结束<ul>
+<li>这里的枚举值，和Java语法要求必须先定义enum实例是同一个意思，<strong>实际上通过反编译来看就是一个 static final 构造方法</strong></li>
+</ul>
+</li>
+<li>枚举的构造方法<ul>
+<li>可以使用<code>lombok</code>的无参构造方法<code>@NoArgsConstructor</code>和全参构造构造方法<code>@AllArgsConstructor</code></li>
+<li>但是不能使用<code>lombok</code>的<code>@Data</code>，原因可能在编译的时候，枚举值编译成<code>static final</code>，无法再使用<code>@Data</code>的setter方法</li>
+</ul>
+</li>
+<li>命名（阿里巴巴Java开发手册1.4.0）<ul>
+<li><img src="https://pic.baicai.icu/枚举.assets/阿里巴巴开发手册-枚举.png" alt="阿里巴巴开发手册-枚举"></li>
+<li><img src="https://pic.baicai.icu/枚举.assets/阿里巴巴开发手册-枚举2.png" alt="阿里巴巴开发手册-枚举2"></li>
+</ul>
+</li>
+</ol>
+<ul>
+<li>需要注意的只有以上4点，其余部分和普通类一样，可以在枚举中定义普通的方法，接口，重写方法等等</li>
+</ul>
+<p><br/></p>
+<p> 🥝示例</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 最简单的枚举</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">enum</span> <span class="title class_">SeasonEnum</span> &#123;</span><br><span class="line">    SPRING,</span><br><span class="line">    SUMMER,</span><br><span class="line">    AUTUMN,</span><br><span class="line">    WINTER;</span><br><span class="line">&#125; </span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 接口</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">interface</span> <span class="title class_">Sports</span> &#123;</span><br><span class="line">    <span class="keyword">void</span> <span class="title function_">swim</span><span class="params">()</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 带参的枚举，实现接口并重写toString方法</span></span><br><span class="line"><span class="meta">@NoArgsConstructor</span></span><br><span class="line"><span class="meta">@AllArgsConstructor</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">enum</span> <span class="title class_">SeasonEnum</span> <span class="keyword">implements</span> <span class="title class_">Sports</span>&#123;</span><br><span class="line">    SPRING(<span class="string">&quot;1&quot;</span>,<span class="string">&quot;春天&quot;</span>),</span><br><span class="line">    SUMMER(<span class="string">&quot;2&quot;</span>,<span class="string">&quot;夏天&quot;</span>),</span><br><span class="line">    AUTUMN(<span class="string">&quot;3&quot;</span>,<span class="string">&quot;秋天&quot;</span>),</span><br><span class="line">    WINTER(<span class="string">&quot;4&quot;</span>,<span class="string">&quot;冬天&quot;</span>);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="meta">@Getter</span></span><br><span class="line">    <span class="keyword">private</span> String index;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Getter</span></span><br><span class="line">    <span class="keyword">private</span> String description;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> String <span class="title function_">toString</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;SeasonEnum&#123;&quot;</span> +</span><br><span class="line">                <span class="string">&quot;description=&#x27;&quot;</span> + description + <span class="string">&#x27;\&#x27;&#x27;</span> +</span><br><span class="line">                <span class="string">&quot;, index=&#x27;&quot;</span> + index + <span class="string">&#x27;\&#x27;&#x27;</span> +</span><br><span class="line">                <span class="string">&#x27;&#125;&#x27;</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">printSeason</span><span class="params">()</span>&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;该枚举值的中文描述为：&quot;</span> +<span class="built_in">this</span>.description);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">swim</span><span class="params">()</span> &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;夏天最好运动的方式是游泳...&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><br/></p>
+<h3 id="⭐反编译"><a href="#⭐反编译" class="headerlink" title="⭐反编译"></a>⭐反编译</h3><p> 🥝<span id="mime">命令反编译</span></p>
+<ul>
+<li>使用<code>javap -c SeasonEnum.class</code>命令反编译上述<code>SeasonEnum</code>枚举的字节码文件<ul>
+<li><img src="https://pic.baicai.icu/枚举.assets/反编译1.png" alt="反编译1"></li>
+<li><img src="https://pic.baicai.icu/枚举.assets/反编译2.png" alt="反编译2"></li>
+<li><img src="https://pic.baicai.icu/枚举.assets/反编译3.png" alt="反编译3"></li>
+</ul>
+</li>
+</ul>
+<p><br/></p>
+<p> 🥝还原成普通类</p>
+<ul>
+<li><p>根据字节码的图片和其他博文，尽量还原<code>SeasonEnum</code>枚举的普通类形式</p>
+<ul>
+<li><p>在第一张图片的黄色框中可以看到，<code>SeasonEnum</code>是继承了<code>Enum</code>的，而在编码时期是无法手动继承，只能使用关键字实现这一继承</p>
+</li>
+<li><font color="Orange">*从第三张图片的static方法观察到，SeasonEnum内部声明的多个实例，其构造过程是编译器在静态代码库中，调用 SeasonEnum 自身和父类的构造函数完成定义的*</font> 
+</li>
+<li><p>还原的过程省略了如<code>toString</code>等方法，可得如下普通类    </p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">final</span> <span class="keyword">class</span> <span class="title class_">SeasonEnum</span> <span class="keyword">extends</span> <span class="title class_">java</span>.lang.Enum &#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 枚举值</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> SeasonEnum SPRING;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> SeasonEnum SUMMER;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> SeasonEnum AUTUMN;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> SeasonEnum WINTER;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 枚举值数组</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> SeasonEnum[] $VALUES;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 定义的成员变量</span></span><br><span class="line">    <span class="keyword">private</span> String index;</span><br><span class="line">    <span class="keyword">private</span> String description;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 获取枚举数组</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> SeasonEnum[] values() &#123;</span><br><span class="line">        <span class="keyword">return</span> $VALUES.clone();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 根据枚举值的变量名获取枚举值</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> SeasonEnum <span class="title function_">valueOf</span><span class="params">(String name)</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> Enum.valueOf(SeasonEnum.class, name);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 带参构造方法</span></span><br><span class="line">    <span class="keyword">private</span> <span class="title function_">SeasonEnum</span><span class="params">(String name, <span class="type">int</span> ordinal, String index, String description)</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">super</span>(name, ordinal);</span><br><span class="line">        <span class="built_in">this</span>.index = index;</span><br><span class="line">        <span class="built_in">this</span>.description = description;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 初始化</span></span><br><span class="line">    <span class="keyword">static</span></span><br><span class="line">    &#123;</span><br><span class="line">        SPRING = <span class="keyword">new</span> <span class="title class_">SeasonEnum</span>(<span class="string">&quot;SPRING&quot;</span>, <span class="number">0</span>, <span class="string">&quot;1&quot;</span>, <span class="string">&quot;春天&quot;</span>);</span><br><span class="line">        SUMMER = <span class="keyword">new</span> <span class="title class_">SeasonEnum</span>(<span class="string">&quot;SUMMER&quot;</span>, <span class="number">1</span>, <span class="string">&quot;2&quot;</span>, <span class="string">&quot;夏天&quot;</span>);</span><br><span class="line">        AUTUMN = <span class="keyword">new</span> <span class="title class_">SeasonEnum</span>(<span class="string">&quot;AUTUMN&quot;</span>, <span class="number">2</span>, <span class="string">&quot;3&quot;</span>, <span class="string">&quot;秋天&quot;</span>);</span><br><span class="line">        WINTER = <span class="keyword">new</span> <span class="title class_">SeasonEnum</span>(<span class="string">&quot;WINTER&quot;</span>, <span class="number">3</span>, <span class="string">&quot;4&quot;</span>, <span class="string">&quot;冬天&quot;</span>);</span><br><span class="line">        $VALUES = (<span class="keyword">new</span> <span class="title class_">SeasonEnum</span>[] &#123;</span><br><span class="line">                SPRING, SUMMER, AUTUMN, WINTER</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ul>
+<p><br/></p>
+<p> 🥝源码分析</p>
+<ul>
+<li><p>观察 <code>java.lang</code>包下的<code>Enum</code>源代码其中定义的两个属性，及同名函数    </p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">class</span> <span class="title class_">Enum</span>&lt;E <span class="keyword">extends</span> <span class="title class_">Enum</span>&lt;E&gt;&gt; <span class="keyword">implements</span> <span class="title class_">Comparable</span>&lt;E&gt;, Serializable &#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> String name;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">final</span> String <span class="title function_">name</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> name;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> <span class="type">int</span> ordinal;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">final</span> <span class="type">int</span> <span class="title function_">ordinal</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> ordinal;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">protected</span> <span class="title function_">Enum</span><span class="params">(String name, <span class="type">int</span> ordinal)</span> &#123;</span><br><span class="line">        <span class="built_in">this</span>.name = name;</span><br><span class="line">        <span class="built_in">this</span>.ordinal = ordinal;</span><br><span class="line">    &#125;</span><br><span class="line">    ...  <span class="comment">// omit some content</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>从源码中可知 Enum的构造函数为 <strong>protected</strong> 级别，再从<a href="#mime">反编译</a>的照片观察到 SeasonEnum内部声明的四个实例，发现并未显式调用Enum父类的构造函数，甚至连SeasonEnum自身的构造函数也没有显式调用。由此可知，枚举类内部定义的多个实例，其构造过程是由编译器调用构造函数来处理完成的。从Enum构造函数的注释，也可以佐证这一点</p>
+<p><img src="https://pic.baicai.icu/枚举.assets/enum构造方法的注释说明.png" alt="enum构造方法的注释说明"></p>
+</blockquote>
+</li>
+</ul>
+<p><br/></p>
+<h3 id="⭐枚举中的方法"><a href="#⭐枚举中的方法" class="headerlink" title="⭐枚举中的方法"></a>⭐枚举中的方法</h3><p> 🥝方法汇总</p>
+<ul>
+<li><p>java.lang.Enum中的方法</p>
+<ul>
+<li><img src="https://pic.baicai.icu/枚举.assets/Enum中的方法.png" alt="Enum中的方法"></li>
+</ul>
+</li>
+<li><p>SeasonEnum中的方法</p>
+<ul>
+<li>| 返回值       | 方法     | 描述                         |<br>| —————— | ———— | —————————————— |<br>| SeasonEnum[] | values() | 返回一个此枚举所有实例的数组 |</li>
+</ul>
+</li>
+</ul>
+<p><br/></p>
+<p> 🥝name()和toString()</p>
+<ul>
+<li>name()<ul>
+<li>根据枚举值来获取该枚举成员的变量名。</li>
+</ul>
+</li>
+<li>toString()<ul>
+<li>返回枚举值的变量名。</li>
+</ul>
+</li>
+<li>相同点<ul>
+<li>作用相同，均可获取枚举成员的变量名</li>
+</ul>
+</li>
+<li>不同点<ul>
+<li>调用时的参数不同</li>
+<li>name方法是用final修饰的不能被重写，而toString是可以被重写的</li>
+</ul>
+</li>
+</ul>
+<p><br/></p>
+<p> 🥝ordinal()</p>
+<ul>
+<li><p>该方法作用是，返回定义的枚举值的顺序，从0开始计数。</p>
+</li>
+<li><p>ordinal()方法是被设计用于基于枚举的复杂数据结构，例如EnumSet和EnumMap 。 </p>
+</li>
+<li><p>如果修改了枚举值定义的顺序，就会导致枚举值<code>ordinal()</code>的返回值发生变化</p>
+<ul>
+<li><p>所以一般枚举的做法就是在枚举内增加成员变量，再通过枚举值来自定义顺序，如本文使用的<code>SeasonEnum</code>枚举    </p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">SPRING(<span class="string">&quot;1&quot;</span>,<span class="string">&quot;春天&quot;</span>),</span><br><span class="line">SUMMER(<span class="string">&quot;2&quot;</span>,<span class="string">&quot;夏天&quot;</span>),</span><br><span class="line">AUTUMN(<span class="string">&quot;3&quot;</span>,<span class="string">&quot;秋天&quot;</span>),</span><br><span class="line">WINTER(<span class="string">&quot;4&quot;</span>,<span class="string">&quot;冬天&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 自定义顺序</span></span><br><span class="line"><span class="meta">@Getter</span></span><br><span class="line"><span class="keyword">private</span> String index;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ul>
+<p><br/></p>
+<p> 🥝valueOf()    </p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 上述反编译后的SeasonEnum枚举的valueOf()方法</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> SeasonEnum <span class="title function_">valueOf</span><span class="params">(String name)</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> Enum.valueOf(SeasonEnum.class, name);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Enum源码中的valueOf()方法</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> &lt;T <span class="keyword">extends</span> <span class="title class_">Enum</span>&lt;T&gt;&gt; T <span class="title function_">valueOf</span><span class="params">(Class&lt;T&gt; enumType, String name)</span> &#123;</span><br><span class="line">    <span class="type">T</span> <span class="variable">result</span> <span class="operator">=</span> enumType.enumConstantDirectory().get(name);</span><br><span class="line">    <span class="keyword">if</span> (result != <span class="literal">null</span>)</span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">    <span class="keyword">if</span> (name == <span class="literal">null</span>)</span><br><span class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> <span class="title class_">NullPointerException</span>(<span class="string">&quot;Name is null&quot;</span>);</span><br><span class="line">    <span class="keyword">throw</span> <span class="keyword">new</span> <span class="title class_">IllegalArgumentException</span>(</span><br><span class="line">        <span class="string">&quot;No enum constant &quot;</span> + enumType.getCanonicalName() + <span class="string">&quot;.&quot;</span> + name);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li><p><strong><font color="#ef7050">「比较反编译生成的 valueOf 函数和Enum 源码中的 valueOf 函数，可以发现，编译器生成的 valueOf 函数内部调用的其实就是父类 Enum中定义的 valueOf 函数。」</font></strong></p>
+</li>
+<li><p>而父类 Enum中定义的 valueOf 函数，其实调用的是 Class 类中定义的 enumConstantDirectory 函数，在该函数内对参数 enumType 是否为枚举类型进行判断</p>
+<ul>
+<li>当传入null时，抛出<code>NullPointerException</code>异常<ul>
+<li><img src="https://pic.baicai.icu/枚举.assets/NullPointerException异常.png" alt="NullPointerException异常"></li>
+</ul>
+</li>
+<li>当传入不存在的枚举值时，抛出<span id="IllegalArgumentException">IllegalArgumentException</span>异常<ul>
+<li><img src="https://pic.baicai.icu/枚举.assets/IllegalArgumentException异常.png" alt="IllegalArgumentException异常"></li>
+</ul>
+</li>
+<li>当传入存在的枚举值时，返回枚举实例名称和枚举实例构成的 map 对象<ul>
+<li><img src="https://pic.baicai.icu/枚举.assets/valueof传入正常枚举值.png" alt="valueof传入正常枚举值"></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p><br/></p>
+<p> 🥝values()</p>
+<ul>
+<li><p>该方法在<code>java.lang.Enum</code>中不存在</p>
+</li>
+<li><p>观察反编译生成的 values 函数，返回的是枚举类内部声明的实例数组的 clone 对象，即返回一个所有枚举值的数组    </p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> SeasonEnum[] values() &#123;</span><br><span class="line">    <span class="keyword">return</span> $VALUES.clone();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p><br/></p>
+<p> 🥝compareTo()</p>
+<ul>
+<li><p>该方法用来比较两个枚举值的<code>ordinal</code>值，即枚举值的定义序号</p>
+</li>
+<li><p>观察Enum源码， Enum实现了Comparable接口，而 Comparable 接口中只有一个函数声明，即Enum重写compareTo函数。可以看到，先判断是不是同一个枚举类的变量，再返回当前枚举值和传递的枚举值差值。    </p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">final</span> <span class="type">int</span> <span class="title function_">compareTo</span><span class="params">(E o)</span> &#123;</span><br><span class="line">    Enum&lt;?&gt; other = (Enum&lt;?&gt;)o;</span><br><span class="line">    Enum&lt;E&gt; self = <span class="built_in">this</span>;</span><br><span class="line">    <span class="keyword">if</span> (self.getClass() != other.getClass() &amp;&amp; <span class="comment">// optimization</span></span><br><span class="line">        self.getDeclaringClass() != other.getDeclaringClass())</span><br><span class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> <span class="title class_">ClassCastException</span>();</span><br><span class="line">    <span class="keyword">return</span> self.ordinal - other.ordinal;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">Season</span> <span class="variable">summer</span> <span class="operator">=</span> Season.valueOf(<span class="string">&quot;SUMMER&quot;</span>);</span><br><span class="line"><span class="keyword">for</span>(Season s : Season.values())&#123;</span><br><span class="line">    System.out.print(summer.name()+<span class="string">&quot; compare to &quot;</span>+s.name());</span><br><span class="line">    System.out.println(<span class="string">&quot; result: &quot;</span>+summer.compareTo(s));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 返回正数表示当前对象较大，0 表示大小相等，负数表示当前对象较小，差值表示声明顺序的差距大小。</span></span><br><span class="line">SUMMER compare to SPRING result: <span class="number">1</span></span><br><span class="line">SUMMER compare to SUMMER result: <span class="number">0</span></span><br><span class="line">SUMMER compare to AUTUMN result: -<span class="number">1</span></span><br><span class="line">SUMMER compare to WINTER result: -<span class="number">2</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p><br/></p>
+<h3 id="⭐业务场景举例"><a href="#⭐业务场景举例" class="headerlink" title="⭐业务场景举例"></a>⭐业务场景举例</h3><blockquote>
+<ul>
+<li><strong>星期：</strong> Monday（星期一）、Tuesday（星期二）、Wednesday（星期三）、Thursday（星期四）、Firday（星期五）、Saturday（星期六）、Sunday（星期日）</li>
+<li><strong>性别：</strong> Man（男）、Woman（女）</li>
+<li><strong>季节：</strong> Spring（春天）、Summer（夏天）、Autumn（秋天）、Winter（冬天）</li>
+<li><strong>支付方式：</strong> Cash（现金）、WeChatPay（微信）、Alipay（支付宝）、BankCard（银行卡）、CreditCard（信用卡）</li>
+<li><strong>订单状态：</strong> Nonpayment（未付款）、Paid（已付款）、Fulfilled（已配货）、Delivered（已发货）、Return（退货）、Checked（已确认）</li>
+<li><strong>线程状态：</strong> Establish（创建）、Ready（就绪）、Run（运行）、Obstruct（阻塞）、Die（死亡）</li>
+</ul>
+</blockquote>
+<p><br/></p>
+<h3 id="⭐注意事项"><a href="#⭐注意事项" class="headerlink" title="⭐注意事项"></a>⭐注意事项</h3><p> 🥝阿里巴巴开发手册关于枚举建议（1.4.0）</p>
+<ul>
+<li><img src="https://pic.baicai.icu/枚举.assets/阿里巴巴开发手册-枚举3.png" alt="阿里巴巴开发手册-枚举3"></li>
+</ul>
+<p><br/></p>
+<p> 🥝二方库释义</p>
+<blockquote>
+<p>一方库指的是本项目中的依赖</p>
+<p>二方库指的是公司内部其他项目提供的依赖</p>
+<p>三方库指的是其他组织、公司等来自第三方的依赖</p>
+</blockquote>
+<p><br/></p>
+<p> 🥝为什么不建议接口的返回值包含枚举类型呢？</p>
+<ul>
+<li><p>假设有一个二方库，A系统和B系统都依赖了该二方库，同时B系统通过RPC远程调用A系统的一个接口（该接口中返回值中有一个参数类型是枚举类型）    </p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 二方库中的枚举</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">enum</span> <span class="title class_">AType</span>&#123;</span><br><span class="line">    P_T,</span><br><span class="line">    A_B</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// A系统</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">interface</span> <span class="title class_">AService</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> AResponse <span class="title function_">doSth</span><span class="params">(ARequest aRequest)</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> Class AResponse&#123;</span><br><span class="line">    <span class="keyword">private</span> Boolean success;</span><br><span class="line">    <span class="comment">// 返回值包括了枚举</span></span><br><span class="line">    <span class="keyword">private</span> AType aType;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// B系统</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">BService</span> &#123;</span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    AService aService;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">doSth</span><span class="params">()</span>&#123;</span><br><span class="line">        <span class="type">ARequest</span> <span class="variable">aRequest</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">ARequest</span>();</span><br><span class="line">        <span class="type">AResponse</span> <span class="variable">aResponse</span> <span class="operator">=</span> aService.doSth(aRequest);</span><br><span class="line">        <span class="type">AType</span> <span class="variable">aType</span> <span class="operator">=</span> aResponse.getAType();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p><br/></p>
+<ul>
+<li><p>当两个使用同一个枚举的时候是不会出现问题的，即在原来的二方库上可以继续使用。但在某天，二方库中的枚举进行了升级，A系统也跟着升级，而B系统并没有跟着升级，即    </p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 二方库中的枚举，也是A系统的枚举</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">enum</span> <span class="title class_">AType</span>&#123;</span><br><span class="line">    P_T,</span><br><span class="line">    A_B,</span><br><span class="line">    P_M</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// B系统的枚举</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">enum</span> <span class="title class_">AType</span>&#123;</span><br><span class="line">    P_T,</span><br><span class="line">    A_B,</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong><font color="#ef7050">「这种情况下，在B系统通过RPC调用A系统的时候，如果A系统返回的AResponse中的aType的类型为新增的P_M时候，B系统就会无法解析。一般在这种时候，RPC框架就会发生反序列化异常。导致程序被中断。」</font></strong></p>
+</li>
+</ul>
+<p><br/></p>
+<p> 🥝RPC反序列化枚举异常分析</p>
+<ul>
+<li>RPC框架大多数会采用JSON的格式进行数据传输，也就是客户端会将返回值序列化成JSON字符串，而服务端会再将JSON字符串反序列化成一个Java对象。</li>
+<li>而JSON在反序列化的过程中，对于一个枚举类型，会尝试调用对应的枚举类的valueOf方法来获取到对应的枚举。</li>
+<li>如果从枚举类中找不到对应的枚举项的时候，就会抛出<a href="#IllegalArgumentException">IllegalArgumentException</a>，这也是为什么阿里巴巴不推荐在接口的返回值中包含二方库枚举值的原因</li>
+</ul>
+<p><br/></p>
+<h3 id="⭐小结"><a href="#⭐小结" class="headerlink" title="⭐小结"></a>⭐小结</h3><ul>
+<li><p>总的来说，枚举在代码设计可以体现为，语义化地代表词典并作为一个独立的引用类型存在。</p>
+</li>
+<li><p>如果担心枚举使用不当，可以使用字符串常量来代表字典，这个是最常见的一刀切方式。例如上述中RPC反序列化异常的问题，如果使用字符串代替RPC接口中的枚举，那么B系统只需要传递字符串就行，至于传递的值的合法性，只需要在A系统内进行校验就可以了。</p>
+</li>
+<li>但是笔者觉得这种投鼠忌器的方式不太好，尽管枚举可能会带来扩展兼容性的问题，我们应当做的是避免出现扩展兼容性的问题（即按照阿里巴巴推荐方式）。对于单体项目或者需要快速迭代的项目，枚举便利性收益是大于兼容性的。</li>
+</ul>
+<p><br/></p>
+<h3 id="📚参考文档"><a href="#📚参考文档" class="headerlink" title="📚参考文档"></a>📚参考文档</h3><ul>
+<li><a target="_blank" rel="noopener" href="https://developer.aliyun.com/article/665108">Java枚举类型enum - 阿里云开发者社区</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1A34y1v7aL?spm_id_from=333.337.search-card.all.click">都有常量了，为啥还要用枚举？ - 哔哩哔哩</a></li>
+<li><a target="_blank" rel="noopener" href="https://blog.51cto.com/u_11440114/5102212">一文看懂Java的枚举 - 51CTO博客</a></li>
+<li><a target="_blank" rel="noopener" href="https://developer.aliyun.com/special/tech-java">Java开发手册 - 阿里云开发者社区</a></li>
+<li><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/LJuE9cH2FrwN6-1qEud6LA">求你了，不要再在对外接口中使用枚举类型了！- Hollis - 公众号</a></li>
+</ul>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="https://baicai.icu">Ethan</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://baicai.icu/posts/b0b06c03.html">https://baicai.icu/posts/b0b06c03.html</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://baicai.icu" target="_blank">Baicai`Blog</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/Java%E6%8A%80%E6%9C%AF%E7%82%B9/">Java技术点</a></div><div class="post_share"><div class="social-share" data-image="https://pic.baicai.icu/imagehost/article/CoverRandomPicture/6.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><link rel="stylesheet" href="/css/coin/coin.css" media="defer" onload="this.media='all'"/><div class="post-reward"><button class="tip-button reward-button"><span class="tip-button__text">不给糖果就捣蛋</span><div class="coin-wrapper"><div class="coin"><div class="coin__middle"></div><div class="coin__back"></div><div class="coin__front"></div></div></div><div class="reward-main"><ul class="reward-all"><li class="reward-item"><a href="/img/wechat.png" target="_blank"><img class="post-qr-code-img" src="/img/wechat.png" alt="wechat"/></a><div class="post-qr-code-desc">wechat</div></li><li class="reward-item"><a href="/img/alipay.png" target="_blank"><img class="post-qr-code-img" src="/img/alipay.png" alt="alipay"/></a><div class="post-qr-code-desc">alipay</div></li></ul></div></button></div><audio id="coinAudio" src="https://cdn.cbd.int/akilar-candyassets@1.0.36/audio/aowu.m4a"></audio><script defer="defer" src="/js/coin/coin.js"></script><nav class="pagination-post" id="pagination"><div class="next-post pull-full"><a href="/posts/fc0c0f34.html"><img class="next-cover" src="https://pic.baicai.icu/imagehost/article/CoverRandomPicture/5.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">记一次部署传统项目遇到Oracle数据库的坑</div></div></a></div></nav><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div id="twikoo-wrap"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/img/avatar.gif" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">Ethan</div><div class="author-info__description">🍺还是要好好努力的呀！</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">14</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">10</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">2</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/Ethan-0822"><i class="fab fa-github"></i><span>🚑交流一下病情可好？</span></a><div class="card-info-social-icons is-center"><a class="social-icon faa-parent animated-hover" href="https://github.com/Ethan-0822" target="_blank" title="Github"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-gitHub"></use></svg></a><a class="social-icon faa-parent animated-hover" href="https://mail.qq.com/cgi-bin/qm_share?t=qm_mailme&amp;email=1005900419@qq.com" target="_blank" title="Email"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-youxiang"></use></svg></a><a class="social-icon faa-parent animated-hover" href="/atom.xml" target="_blank" title="RSS"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-rss"></use></svg></a><a class="social-icon faa-parent animated-hover" href="https://space.bilibili.com/272053208" target="_blank" title="BiliBili"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-bilibili"></use></svg></a><a class="social-icon faa-parent animated-hover" href="tencent://Message/?Uin=1005900419&amp;amp;websiteName=local.edu.com:8888=&amp;amp;Menu=yes" target="_blank" title="QQ"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-QQ1"></use></svg></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">欢迎来到我的博客！</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E2%AD%90%E4%BB%80%E4%B9%88%E6%98%AF%E6%9E%9A%E4%B8%BE"><span class="toc-number">1.</span> <span class="toc-text">⭐什么是枚举</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E2%AD%90Java%E4%B8%AD%E7%9A%84%E6%9E%9A%E4%B8%BE%E8%AF%9E%E7%94%9F"><span class="toc-number">2.</span> <span class="toc-text">⭐Java中的枚举诞生</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E2%AD%90%E5%AE%9A%E4%B9%89%E6%9E%9A%E4%B8%BE"><span class="toc-number">3.</span> <span class="toc-text">⭐定义枚举</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E2%AD%90%E5%8F%8D%E7%BC%96%E8%AF%91"><span class="toc-number">4.</span> <span class="toc-text">⭐反编译</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E2%AD%90%E6%9E%9A%E4%B8%BE%E4%B8%AD%E7%9A%84%E6%96%B9%E6%B3%95"><span class="toc-number">5.</span> <span class="toc-text">⭐枚举中的方法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E2%AD%90%E4%B8%9A%E5%8A%A1%E5%9C%BA%E6%99%AF%E4%B8%BE%E4%BE%8B"><span class="toc-number">6.</span> <span class="toc-text">⭐业务场景举例</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E2%AD%90%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9"><span class="toc-number">7.</span> <span class="toc-text">⭐注意事项</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E2%AD%90%E5%B0%8F%E7%BB%93"><span class="toc-number">8.</span> <span class="toc-text">⭐小结</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%F0%9F%93%9A%E5%8F%82%E8%80%83%E6%96%87%E6%A1%A3"><span class="toc-number">9.</span> <span class="toc-text">📚参考文档</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/posts/b0b06c03.html" title="聊聊枚举怎么用"><img src="https://pic.baicai.icu/imagehost/article/CoverRandomPicture/6.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="聊聊枚举怎么用"/></a><div class="content"><a class="title" href="/posts/b0b06c03.html" title="聊聊枚举怎么用">聊聊枚举怎么用</a><time datetime="2022-04-27T18:39:56.000Z" title="发表于 2022-04-27 18:39:56">2022-04-27</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/fc0c0f34.html" title="记一次部署传统项目遇到Oracle数据库的坑"><img src="https://pic.baicai.icu/imagehost/article/CoverRandomPicture/5.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="记一次部署传统项目遇到Oracle数据库的坑"/></a><div class="content"><a class="title" href="/posts/fc0c0f34.html" title="记一次部署传统项目遇到Oracle数据库的坑">记一次部署传统项目遇到Oracle数据库的坑</a><time datetime="2022-04-15T18:39:56.000Z" title="发表于 2022-04-15 18:39:56">2022-04-15</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/caff8000.html" title="Git常用命令"><img src="https://pic.baicai.icu/imagehost/article/CoverRandomPicture/4.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Git常用命令"/></a><div class="content"><a class="title" href="/posts/caff8000.html" title="Git常用命令">Git常用命令</a><time datetime="2022-04-11T18:39:56.000Z" title="发表于 2022-04-11 18:39:56">2022-04-11</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/e49bd23b.html" title="Github仓库自动同步到Gitee仓库"><img src="https://pic.baicai.icu/imagehost/article/CoverRandomPicture/3.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Github仓库自动同步到Gitee仓库"/></a><div class="content"><a class="title" href="/posts/e49bd23b.html" title="Github仓库自动同步到Gitee仓库">Github仓库自动同步到Gitee仓库</a><time datetime="2022-04-06T18:39:56.000Z" title="发表于 2022-04-06 18:39:56">2022-04-06</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/8fdb6705.html" title="来说说JPA、Hibernate、Spring Data JPA之间的什么关系"><img src="https://pic.baicai.icu/imagehost/article/CoverRandomPicture/2.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="来说说JPA、Hibernate、Spring Data JPA之间的什么关系"/></a><div class="content"><a class="title" href="/posts/8fdb6705.html" title="来说说JPA、Hibernate、Spring Data JPA之间的什么关系">来说说JPA、Hibernate、Spring Data JPA之间的什么关系</a><time datetime="2022-03-23T18:39:56.000Z" title="发表于 2022-03-23 18:39:56">2022-03-23</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2022 By Ethan</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div></div></div><div id="search-mask"></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.min.js"></script><script src="/js/search/local-search.js"></script><div class="js-pjax"><script>(() => {
+  const $mermaidWrap = document.querySelectorAll('#article-container .mermaid-wrap')
+  if ($mermaidWrap.length) {
+    window.runMermaid = () => {
+      window.loadMermaid = true
+      const theme = document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'default'
+
+      Array.from($mermaidWrap).forEach((item, index) => {
+        const mermaidSrc = item.firstElementChild
+        const mermaidThemeConfig = '%%{init:{ \'theme\':\'' + theme + '\'}}%%\n'
+        const mermaidID = 'mermaid-' + index
+        const mermaidDefinition = mermaidThemeConfig + mermaidSrc.textContent
+        mermaid.mermaidAPI.render(mermaidID, mermaidDefinition, (svgCode) => {
+          mermaidSrc.insertAdjacentHTML('afterend', svgCode)
+        })
+      })
+    }
+
+    const loadMermaid = () => {
+      window.loadMermaid ? runMermaid() : getScript('https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js').then(runMermaid)
+    }
+
+    window.pjax ? loadMermaid() : document.addEventListener('DOMContentLoaded', loadMermaid)
+  }
+})()</script><script>(()=>{
+  const init = () => {
+    twikoo.init(Object.assign({
+      el: '#twikoo-wrap',
+      envId: 'https://twikoo-hexo.baicai.icu/',
+      region: '',
+      onCommentLoaded: function () {
+        btf.loadLightbox(document.querySelectorAll('#twikoo .tk-content img:not(.tk-owo-emotion)'))
+      }
+    }, null))
+  }
+
+  const getCount = () => {
+    const countELement = document.getElementById('twikoo-count')
+    if(!countELement) return
+    twikoo.getCommentsCount({
+      envId: 'https://twikoo-hexo.baicai.icu/',
+      region: '',
+      urls: [window.location.pathname],
+      includeReply: false
+    }).then(function (res) {
+      countELement.innerText = res[0].count
+    }).catch(function (err) {
+      console.error(err);
+    });
+  }
+
+  const runFn = () => {
+    init()
+    
+  }
+
+  const loadTwikoo = () => {
+    if (typeof twikoo === 'object') {
+      setTimeout(runFn,0)
+      return
+    } 
+    getScript('https://cdn.jsdelivr.net/npm/twikoo/dist/twikoo.all.min.js').then(runFn)
+  }
+
+  if ('Twikoo' === 'Twikoo' || !true) {
+    if (true) btf.loadComment(document.getElementById('twikoo-wrap'), loadTwikoo)
+    else loadTwikoo()
+  } else {
+    window.loadOtherComment = () => {
+      loadTwikoo()
+    }
+  }
+})()</script></div><div class="aplayer no-destroy" data-id="7623436042" data-server="netease" data-type="playlist"   data-order="list" data-fixed="true" data-preload="auto" data-autoplay="false" data-mutex="true" ></div><canvas id="universe"></canvas><script defer src="/js/universe.js"></script><script id="click-heart" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/click-heart.min.js" async="async" mobile="false"></script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/metingjs/dist/Meting.min.js"></script><script src="https://cdn.jsdelivr.net/npm/pjax/pjax.min.js"></script><script>let pjaxSelectors = ["head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
+
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:send', function () {
+
+  // removeEventListener scroll 
+  window.tocScrollFn && window.removeEventListener('scroll', window.tocScrollFn)
+  window.scrollCollect && window.removeEventListener('scroll', scrollCollect)
+
+  document.getElementById('rightside').style.cssText = "opacity: ''; transform: ''"
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+
+  typeof disqusjs === 'object' && disqusjs.destroy()
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof chatBtnFn === 'function' && chatBtnFn()
+  typeof panguInit === 'function' && panguInit()
+
+  // google analytics
+  typeof gtag === 'function' && gtag('config', '', {'page_path': window.location.pathname});
+
+  // baidu analytics
+  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+})
+
+document.addEventListener('pjax:error', (e) => {
+  if (e.request.status === 404) {
+    pjax.loadUrl('/404.html')
+  }
+})</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div><!-- hexo injector body_end start --><script data-pjax>
+  function butterfly_footer_beautify_injector_config(){
+    var parent_div_git = document.getElementById('footer-wrap');
+    var item_html = '<div id="workboard"></div><p id="ghbdages"><a class="github-badge" target="_blank" href="https://hexo.io/" style="margin-inline:5px" data-title="博客框架为Hexo_v5.4.0" title=""><img src="https://img.shields.io/badge/Frame-Hexo-blue?style=flat&amp;logo=hexo" alt=""/></a><a class="github-badge" target="_blank" href="https://butterfly.js.org/" style="margin-inline:5px" data-title="主题版本Butterfly_v4.2.2" title=""><img src="https://img.shields.io/badge/Theme-Butterfly-6513df?style=flat&amp;logo=bitdefender" alt=""/></a><a class="github-badge" target="_blank" href="https://www.jsdelivr.com/" style="margin-inline:5px" data-title="本站使用JsDelivr为静态资源提供CDN加速" title=""><img src="https://img.shields.io/badge/CDN-jsDelivr-orange?style=flat&amp;logo=jsDelivr" alt=""/></a><a class="github-badge" target="_blank" href="https://github.com/" style="margin-inline:5px" data-title="本站项目由Github托管" title=""><img src="https://img.shields.io/badge/Source-Github-d021d6?style=flat&amp;logo=GitHub" alt=""/></a><a class="github-badge" target="_blank" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" style="margin-inline:5px" data-title="本站采用知识共享署名-非商业性使用-相同方式共享4.0国际许可协议进行许可" title=""><img src="https://img.shields.io/badge/Copyright-BY--NC--SA%204.0-d42328?style=flat&amp;logo=Claris" alt=""/></a></p>';
+    console.log('已挂载butterfly_footer_beautify')
+    parent_div_git.insertAdjacentHTML("beforeend",item_html)
+    }
+  var elist = 'null'.split(',');
+  var cpage = location.pathname;
+  var epage = 'all';
+  var flag = 0;
+
+  for (var i=0;i<elist.length;i++){
+    if (cpage.includes(elist[i])){
+      flag++;
+    }
+  }
+
+  if ((epage ==='all')&&(flag == 0)){
+    butterfly_footer_beautify_injector_config();
+  }
+  else if (epage === cpage){
+    butterfly_footer_beautify_injector_config();
+  }
+  </script><script async src="/js/runtime/runtime.min.js"></script><script data-pjax>
+  function butterfly_swiper_injector_config(){
+    var parent_div_git = document.getElementById('recent-posts');
+    var item_html = '<div class="recent-post-item swiper_container_card" style="height: auto;width: 100%"><div id="random"><div id="random-banner"><canvas id="peoplecanvas"></canvas></div><a id="random-hover" style="width:100%;height:auto;" href="javascript:toRandomPost()" rel="external nofollow noreferrer" one-link-mark="yes"><i class="fa fa-paper-plane" style="margin-left:10px"></i><div style="margin-left:10px">随便逛逛<i class="fa-solid fa-arrow-right" style="margin-left:10px"></i></div></a></div><div class="blog-slider swiper-container-fade swiper-container-horizontal" id="swiper_container"><div class="blog-slider__wrp swiper-wrapper" style="transition-duration: 0ms;"></div><div class="blog-slider__pagination swiper-pagination-clickable swiper-pagination-bullets"></div></div></div>';
+    console.log('已挂载butterfly_swiper')
+    parent_div_git.insertAdjacentHTML("afterbegin",item_html)
+    }
+  var elist = 'undefined'.split(',');
+  var cpage = location.pathname;
+  var epage = '/';
+  var flag = 0;
+
+  for (var i=0;i<elist.length;i++){
+    if (cpage.includes(elist[i])){
+      flag++;
+    }
+  }
+
+  if ((epage ==='all')&&(flag == 0)){
+    butterfly_swiper_injector_config();
+  }
+  else if (epage === cpage){
+    butterfly_swiper_injector_config();
+  }
+  </script><script defer src="https://npm.elemecdn.com/anzhiyu-blog@1.1.6/js/swiper.min.js"></script><script defer data-pjax src="https://cdn.cbd.int/hexo-butterfly-swiper-anzhiyu@1.0.4/lib/swiper_init.js"></script><script data-pjax src="https://lf26-cdn-tos.bytecdntp.com/cdn/expire-1-M/gsap/3.9.1/gsap.min.js"></script><script defer src="https://npm.elemecdn.com/hexo-butterfly-swiper-anzhiyu@1.0.4/lib/people.min.js"></script><script async src="/anzhiyu/random.js"></script><script async src="/js/ali_font.js"></script><div class="js-pjax"><script async="async">var arr = document.getElementsByClassName('recent-post-item');
+for(var i = 0;i<arr.length;i++){
+    arr[i].classList.add('wow');
+    arr[i].classList.add('animate__zoomIn');
+    arr[i].setAttribute('data-wow-duration', '1.5s');
+    arr[i].setAttribute('data-wow-delay', '200ms');
+    arr[i].setAttribute('data-wow-offset', '30');
+    arr[i].setAttribute('data-wow-iteration', '1');
+  }</script><script async="async">var arr = document.getElementsByClassName('card-widget');
+for(var i = 0;i<arr.length;i++){
+    arr[i].classList.add('wow');
+    arr[i].classList.add('animate__zoomIn');
+    arr[i].setAttribute('data-wow-duration', '');
+    arr[i].setAttribute('data-wow-delay', '200ms');
+    arr[i].setAttribute('data-wow-offset', '');
+    arr[i].setAttribute('data-wow-iteration', '');
+  }</script><script async="async">var arr = document.getElementsByClassName('flink-list-card');
+for(var i = 0;i<arr.length;i++){
+    arr[i].classList.add('wow');
+    arr[i].classList.add('animate__flipInY');
+    arr[i].setAttribute('data-wow-duration', '3s');
+    arr[i].setAttribute('data-wow-delay', '');
+    arr[i].setAttribute('data-wow-offset', '');
+    arr[i].setAttribute('data-wow-iteration', '');
+  }</script><script async="async">var arr = document.getElementsByClassName('flink-list-card');
+for(var i = 0;i<arr.length;i++){
+    arr[i].classList.add('wow');
+    arr[i].classList.add('animate__animated');
+    arr[i].setAttribute('data-wow-duration', '3s');
+    arr[i].setAttribute('data-wow-delay', '');
+    arr[i].setAttribute('data-wow-offset', '');
+    arr[i].setAttribute('data-wow-iteration', '');
+  }</script><script async="async">var arr = document.getElementsByClassName('article-sort-item');
+for(var i = 0;i<arr.length;i++){
+    arr[i].classList.add('wow');
+    arr[i].classList.add('animate__slideInRight');
+    arr[i].setAttribute('data-wow-duration', '1.5s');
+    arr[i].setAttribute('data-wow-delay', '');
+    arr[i].setAttribute('data-wow-offset', '');
+    arr[i].setAttribute('data-wow-iteration', '');
+  }</script><script async="async">var arr = document.getElementsByClassName('site-card');
+for(var i = 0;i<arr.length;i++){
+    arr[i].classList.add('wow');
+    arr[i].classList.add('animate__flipInY');
+    arr[i].setAttribute('data-wow-duration', '3s');
+    arr[i].setAttribute('data-wow-delay', '');
+    arr[i].setAttribute('data-wow-offset', '');
+    arr[i].setAttribute('data-wow-iteration', '');
+  }</script><script async="async">var arr = document.getElementsByClassName('site-card');
+for(var i = 0;i<arr.length;i++){
+    arr[i].classList.add('wow');
+    arr[i].classList.add('animate__animated');
+    arr[i].setAttribute('data-wow-duration', '3s');
+    arr[i].setAttribute('data-wow-delay', '');
+    arr[i].setAttribute('data-wow-offset', '');
+    arr[i].setAttribute('data-wow-iteration', '');
+  }</script></div><script defer src="https://cdn.cbd.int/hexo-butterfly-wowjs/lib/wow.min.js"></script><script defer src="https://cdn.cbd.int/hexo-butterfly-wowjs/lib/wow_init.js"></script><script data-pjax src="https://cdn.cbd.int/hexo-filter-gitcalendar/lib/gitcalendar.js"></script><script data-pjax>
+  function gitcalendar_injector_config(){
+      var parent_div_git = document.getElementById('recent-posts');
+      var item_html = '<div class="recent-post-item" style="width:100%;height:auto;padding:10px;"><style>#git_container{min-height: 280px}@media screen and (max-width:650px) {#git_container{min-height: 0px}}</style><div id="git_loading" style="width:10%;height:100%;margin:0 auto;display: block;"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 50 50" style="enable-background:new 0 0 50 50" xml:space="preserve"><path fill="#d0d0d0" d="M25.251,6.461c-10.318,0-18.683,8.365-18.683,18.683h4.068c0-8.071,6.543-14.615,14.615-14.615V6.461z" transform="rotate(275.098 25 25)"><animatetransform attributeType="xml" attributeName="transform" type="rotate" from="0 25 25" to="360 25 25" dur="0.6s" repeatCount="indefinite"></animatetransform></path></svg><style>#git_container{display: none;}</style></div><div id="git_container"></div></div>';
+      parent_div_git.insertAdjacentHTML("afterbegin",item_html)
+      console.log('已挂载gitcalendar')
+      }
+
+    if( document.getElementById('recent-posts') && (location.pathname ==='/'|| '/' ==='all')){
+        gitcalendar_injector_config()
+        GitCalendarInit("https://github.anzhiy.cn/api?Ethan-0822",['#ebedf0', '#fdcdec', '#fc9bd9', '#fa6ac5', '#f838b2', '#f5089f', '#c4067e', '#92055e', '#540336', '#48022f', '#30021f'],'Ethan-0822')
+    }
+  </script><!-- hexo injector body_end end --><script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/koharu.model.json"},"display":{"position":"left","width":150,"height":300},"mobile":{"show":false},"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/"});</script></body></html>
