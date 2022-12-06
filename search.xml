@@ -107,22 +107,22 @@
     
     
     <entry>
-      <title>分类</title>
-      <link href="/categories/index.html"/>
-      <url>/categories/index.html</url>
+      <title>about</title>
+      <link href="/about/index.html"/>
+      <url>/about/index.html</url>
       
-        <content type="html"><![CDATA[<div id="categories-chart" class="js-pjax"></div><div id="categories-radar" class="js-pjax"></div>]]></content>
+        <content type="html"><![CDATA[<p style="font-size: 25px;">关于我</p><div class="table-container"><table><thead><tr><th></th><th></th></tr></thead><tbody><tr><td>英文名:</td><td>Ethan</td></tr><tr><td>职业:</td><td>程序员</td></tr><tr><td>运动:</td><td>跑步、音乐、游戏</td></tr></tbody></table></div>]]></content>
       
     </entry>
     
     
     
     <entry>
-      <title>about</title>
-      <link href="/about/index.html"/>
-      <url>/about/index.html</url>
+      <title>分类</title>
+      <link href="/categories/index.html"/>
+      <url>/categories/index.html</url>
       
-        <content type="html"><![CDATA[<p style="font-size: 25px;">关于我</p><div class="table-container"><table><thead><tr><th></th><th></th></tr></thead><tbody><tr><td>英文名:</td><td>Ethan</td></tr><tr><td>职业:</td><td>程序员</td></tr><tr><td>运动:</td><td>跑步、音乐、游戏</td></tr></tbody></table></div>]]></content>
+        <content type="html"><![CDATA[<div id="categories-chart" class="js-pjax"></div><div id="categories-radar" class="js-pjax"></div>]]></content>
       
     </entry>
     
