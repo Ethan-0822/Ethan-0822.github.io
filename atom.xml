@@ -3,11 +3,11 @@
   <title>Baicai`Blog</title>
   
   <subtitle>你会发光吗？</subtitle>
-  <link href="http://example.com/atom.xml" rel="self"/>
+  <link href="https://ethan-0822.github.io/atom.xml" rel="self"/>
   
-  <link href="http://example.com/"/>
+  <link href="https://ethan-0822.github.io/"/>
   <updated>2022-12-06T18:49:20.000Z</updated>
-  <id>http://example.com/</id>
+  <id>https://ethan-0822.github.io/</id>
   
   <author>
     <name>Ethan</name>
@@ -18,8 +18,8 @@
   
   <entry>
     <title>聊聊枚举怎么用</title>
-    <link href="http://example.com/posts/b0b06c03.html"/>
-    <id>http://example.com/posts/b0b06c03.html</id>
+    <link href="https://ethan-0822.github.io/posts/b0b06c03.html"/>
+    <id>https://ethan-0822.github.io/posts/b0b06c03.html</id>
     <published>2022-04-27T18:39:56.000Z</published>
     <updated>2022-12-06T18:49:20.000Z</updated>
     
@@ -35,17 +35,17 @@
     
     
     
-    <category term="技术" scheme="http://example.com/categories/%E6%8A%80%E6%9C%AF/"/>
+    <category term="技术" scheme="https://ethan-0822.github.io/categories/%E6%8A%80%E6%9C%AF/"/>
     
     
-    <category term="Java技术点" scheme="http://example.com/tags/Java%E6%8A%80%E6%9C%AF%E7%82%B9/"/>
+    <category term="Java技术点" scheme="https://ethan-0822.github.io/tags/Java%E6%8A%80%E6%9C%AF%E7%82%B9/"/>
     
   </entry>
   
   <entry>
     <title>记一次部署传统项目遇到Oracle数据库的坑</title>
-    <link href="http://example.com/posts/fc0c0f34.html"/>
-    <id>http://example.com/posts/fc0c0f34.html</id>
+    <link href="https://ethan-0822.github.io/posts/fc0c0f34.html"/>
+    <id>https://ethan-0822.github.io/posts/fc0c0f34.html</id>
     <published>2022-04-15T18:39:56.000Z</published>
     <updated>2022-12-06T18:49:20.000Z</updated>
     
@@ -60,17 +60,17 @@
     
     
     
-    <category term="技术" scheme="http://example.com/categories/%E6%8A%80%E6%9C%AF/"/>
+    <category term="技术" scheme="https://ethan-0822.github.io/categories/%E6%8A%80%E6%9C%AF/"/>
     
     
-    <category term="ORM" scheme="http://example.com/tags/ORM/"/>
+    <category term="ORM" scheme="https://ethan-0822.github.io/tags/ORM/"/>
     
   </entry>
   
   <entry>
     <title>Git常用命令</title>
-    <link href="http://example.com/posts/caff8000.html"/>
-    <id>http://example.com/posts/caff8000.html</id>
+    <link href="https://ethan-0822.github.io/posts/caff8000.html"/>
+    <id>https://ethan-0822.github.io/posts/caff8000.html</id>
     <published>2022-04-11T18:39:56.000Z</published>
     <updated>2022-12-06T18:49:20.000Z</updated>
     
@@ -86,17 +86,17 @@
     
     
     
-    <category term="技术" scheme="http://example.com/categories/%E6%8A%80%E6%9C%AF/"/>
+    <category term="技术" scheme="https://ethan-0822.github.io/categories/%E6%8A%80%E6%9C%AF/"/>
     
     
-    <category term="GitHub仓库" scheme="http://example.com/tags/GitHub%E4%BB%93%E5%BA%93/"/>
+    <category term="GitHub仓库" scheme="https://ethan-0822.github.io/tags/GitHub%E4%BB%93%E5%BA%93/"/>
     
   </entry>
   
   <entry>
     <title>Github仓库自动同步到Gitee仓库</title>
-    <link href="http://example.com/posts/e49bd23b.html"/>
-    <id>http://example.com/posts/e49bd23b.html</id>
+    <link href="https://ethan-0822.github.io/posts/e49bd23b.html"/>
+    <id>https://ethan-0822.github.io/posts/e49bd23b.html</id>
     <published>2022-04-06T18:39:56.000Z</published>
     <updated>2022-12-06T18:49:20.000Z</updated>
     
@@ -111,17 +111,17 @@
     
     
     
-    <category term="技术" scheme="http://example.com/categories/%E6%8A%80%E6%9C%AF/"/>
+    <category term="技术" scheme="https://ethan-0822.github.io/categories/%E6%8A%80%E6%9C%AF/"/>
     
     
-    <category term="GitHub仓库" scheme="http://example.com/tags/GitHub%E4%BB%93%E5%BA%93/"/>
+    <category term="GitHub仓库" scheme="https://ethan-0822.github.io/tags/GitHub%E4%BB%93%E5%BA%93/"/>
     
   </entry>
   
   <entry>
     <title>来说说JPA、Hibernate、Spring Data JPA之间的什么关系</title>
-    <link href="http://example.com/posts/8fdb6705.html"/>
-    <id>http://example.com/posts/8fdb6705.html</id>
+    <link href="https://ethan-0822.github.io/posts/8fdb6705.html"/>
+    <id>https://ethan-0822.github.io/posts/8fdb6705.html</id>
     <published>2022-03-23T18:39:56.000Z</published>
     <updated>2022-12-06T18:49:20.000Z</updated>
     
@@ -136,17 +136,17 @@
     
     
     
-    <category term="技术" scheme="http://example.com/categories/%E6%8A%80%E6%9C%AF/"/>
+    <category term="技术" scheme="https://ethan-0822.github.io/categories/%E6%8A%80%E6%9C%AF/"/>
     
     
-    <category term="ORM" scheme="http://example.com/tags/ORM/"/>
+    <category term="ORM" scheme="https://ethan-0822.github.io/tags/ORM/"/>
     
   </entry>
   
   <entry>
     <title>Oracle部署及入门</title>
-    <link href="http://example.com/posts/d53d7bbc.html"/>
-    <id>http://example.com/posts/d53d7bbc.html</id>
+    <link href="https://ethan-0822.github.io/posts/d53d7bbc.html"/>
+    <id>https://ethan-0822.github.io/posts/d53d7bbc.html</id>
     <published>2022-03-21T18:39:56.000Z</published>
     <updated>2022-12-06T18:49:20.000Z</updated>
     
@@ -160,17 +160,17 @@
     
     
     
-    <category term="技术" scheme="http://example.com/categories/%E6%8A%80%E6%9C%AF/"/>
+    <category term="技术" scheme="https://ethan-0822.github.io/categories/%E6%8A%80%E6%9C%AF/"/>
     
     
-    <category term="ORM" scheme="http://example.com/tags/ORM/"/>
+    <category term="ORM" scheme="https://ethan-0822.github.io/tags/ORM/"/>
     
   </entry>
   
   <entry>
     <title>分析一下权限认证过程</title>
-    <link href="http://example.com/posts/698624a2.html"/>
-    <id>http://example.com/posts/698624a2.html</id>
+    <link href="https://ethan-0822.github.io/posts/698624a2.html"/>
+    <id>https://ethan-0822.github.io/posts/698624a2.html</id>
     <published>2022-03-12T18:39:56.000Z</published>
     <updated>2022-12-06T18:49:20.000Z</updated>
     
@@ -184,17 +184,17 @@
     
     
     
-    <category term="技术" scheme="http://example.com/categories/%E6%8A%80%E6%9C%AF/"/>
+    <category term="技术" scheme="https://ethan-0822.github.io/categories/%E6%8A%80%E6%9C%AF/"/>
     
     
-    <category term="Java组件" scheme="http://example.com/tags/Java%E7%BB%84%E4%BB%B6/"/>
+    <category term="Java组件" scheme="https://ethan-0822.github.io/tags/Java%E7%BB%84%E4%BB%B6/"/>
     
   </entry>
   
   <entry>
     <title>JavaWeb之会话</title>
-    <link href="http://example.com/posts/1eb4eff1.html"/>
-    <id>http://example.com/posts/1eb4eff1.html</id>
+    <link href="https://ethan-0822.github.io/posts/1eb4eff1.html"/>
+    <id>https://ethan-0822.github.io/posts/1eb4eff1.html</id>
     <published>2022-03-07T18:39:56.000Z</published>
     <updated>2022-12-06T18:49:20.000Z</updated>
     
@@ -210,17 +210,17 @@
     
     
     
-    <category term="技术" scheme="http://example.com/categories/%E6%8A%80%E6%9C%AF/"/>
+    <category term="技术" scheme="https://ethan-0822.github.io/categories/%E6%8A%80%E6%9C%AF/"/>
     
     
-    <category term="Java组件" scheme="http://example.com/tags/Java%E7%BB%84%E4%BB%B6/"/>
+    <category term="Java组件" scheme="https://ethan-0822.github.io/tags/Java%E7%BB%84%E4%BB%B6/"/>
     
   </entry>
   
   <entry>
     <title>JavaWeb之三大组件</title>
-    <link href="http://example.com/posts/18e30e37.html"/>
-    <id>http://example.com/posts/18e30e37.html</id>
+    <link href="https://ethan-0822.github.io/posts/18e30e37.html"/>
+    <id>https://ethan-0822.github.io/posts/18e30e37.html</id>
     <published>2022-03-06T18:39:56.000Z</published>
     <updated>2022-12-06T18:49:20.000Z</updated>
     
@@ -234,17 +234,17 @@
     
     
     
-    <category term="技术" scheme="http://example.com/categories/%E6%8A%80%E6%9C%AF/"/>
+    <category term="技术" scheme="https://ethan-0822.github.io/categories/%E6%8A%80%E6%9C%AF/"/>
     
     
-    <category term="Java组件" scheme="http://example.com/tags/Java%E7%BB%84%E4%BB%B6/"/>
+    <category term="Java组件" scheme="https://ethan-0822.github.io/tags/Java%E7%BB%84%E4%BB%B6/"/>
     
   </entry>
   
   <entry>
     <title>Nginx入门</title>
-    <link href="http://example.com/posts/fbf9d696.html"/>
-    <id>http://example.com/posts/fbf9d696.html</id>
+    <link href="https://ethan-0822.github.io/posts/fbf9d696.html"/>
+    <id>https://ethan-0822.github.io/posts/fbf9d696.html</id>
     <published>2022-02-27T18:39:56.000Z</published>
     <updated>2022-12-06T18:49:20.000Z</updated>
     
@@ -259,17 +259,17 @@
     
     
     
-    <category term="技术" scheme="http://example.com/categories/%E6%8A%80%E6%9C%AF/"/>
+    <category term="技术" scheme="https://ethan-0822.github.io/categories/%E6%8A%80%E6%9C%AF/"/>
     
     
-    <category term="中间件" scheme="http://example.com/tags/%E4%B8%AD%E9%97%B4%E4%BB%B6/"/>
+    <category term="中间件" scheme="https://ethan-0822.github.io/tags/%E4%B8%AD%E9%97%B4%E4%BB%B6/"/>
     
   </entry>
   
   <entry>
     <title>研究一下HTTP协议</title>
-    <link href="http://example.com/posts/a3a8aa53.html"/>
-    <id>http://example.com/posts/a3a8aa53.html</id>
+    <link href="https://ethan-0822.github.io/posts/a3a8aa53.html"/>
+    <id>https://ethan-0822.github.io/posts/a3a8aa53.html</id>
     <published>2022-02-26T18:39:56.000Z</published>
     <updated>2022-12-06T18:49:20.000Z</updated>
     
@@ -285,17 +285,17 @@
     
     
     
-    <category term="技术" scheme="http://example.com/categories/%E6%8A%80%E6%9C%AF/"/>
+    <category term="技术" scheme="https://ethan-0822.github.io/categories/%E6%8A%80%E6%9C%AF/"/>
     
     
-    <category term="各种协议" scheme="http://example.com/tags/%E5%90%84%E7%A7%8D%E5%8D%8F%E8%AE%AE/"/>
+    <category term="各种协议" scheme="https://ethan-0822.github.io/tags/%E5%90%84%E7%A7%8D%E5%8D%8F%E8%AE%AE/"/>
     
   </entry>
   
   <entry>
     <title>什么是人们常说的认知</title>
-    <link href="http://example.com/posts/ee11ede9.html"/>
-    <id>http://example.com/posts/ee11ede9.html</id>
+    <link href="https://ethan-0822.github.io/posts/ee11ede9.html"/>
+    <id>https://ethan-0822.github.io/posts/ee11ede9.html</id>
     <published>2022-02-20T18:39:56.000Z</published>
     <updated>2022-12-06T18:49:20.000Z</updated>
     
@@ -309,17 +309,17 @@
     
     
     
-    <category term="生活" scheme="http://example.com/categories/%E7%94%9F%E6%B4%BB/"/>
+    <category term="生活" scheme="https://ethan-0822.github.io/categories/%E7%94%9F%E6%B4%BB/"/>
     
     
-    <category term="想到啥写啥" scheme="http://example.com/tags/%E6%83%B3%E5%88%B0%E5%95%A5%E5%86%99%E5%95%A5/"/>
+    <category term="想到啥写啥" scheme="https://ethan-0822.github.io/tags/%E6%83%B3%E5%88%B0%E5%95%A5%E5%86%99%E5%95%A5/"/>
     
   </entry>
   
   <entry>
     <title>关于学习与创业的一些思考</title>
-    <link href="http://example.com/posts/9ed38cc4.html"/>
-    <id>http://example.com/posts/9ed38cc4.html</id>
+    <link href="https://ethan-0822.github.io/posts/9ed38cc4.html"/>
+    <id>https://ethan-0822.github.io/posts/9ed38cc4.html</id>
     <published>2022-01-20T18:39:56.000Z</published>
     <updated>2022-12-06T19:49:20.000Z</updated>
     
@@ -334,17 +334,17 @@
     
     
     
-    <category term="生活" scheme="http://example.com/categories/%E7%94%9F%E6%B4%BB/"/>
+    <category term="生活" scheme="https://ethan-0822.github.io/categories/%E7%94%9F%E6%B4%BB/"/>
     
     
-    <category term="事教人一次就会" scheme="http://example.com/tags/%E4%BA%8B%E6%95%99%E4%BA%BA%E4%B8%80%E6%AC%A1%E5%B0%B1%E4%BC%9A/"/>
+    <category term="事教人一次就会" scheme="https://ethan-0822.github.io/tags/%E4%BA%8B%E6%95%99%E4%BA%BA%E4%B8%80%E6%AC%A1%E5%B0%B1%E4%BC%9A/"/>
     
   </entry>
   
   <entry>
     <title>springboot复现JNDI注入log4j2过程</title>
-    <link href="http://example.com/posts/cd49022.html"/>
-    <id>http://example.com/posts/cd49022.html</id>
+    <link href="https://ethan-0822.github.io/posts/cd49022.html"/>
+    <id>https://ethan-0822.github.io/posts/cd49022.html</id>
     <published>2022-01-06T18:39:56.000Z</published>
     <updated>2022-12-06T18:49:20.000Z</updated>
     
@@ -359,12 +359,12 @@
     
     
     
-    <category term="技术" scheme="http://example.com/categories/%E6%8A%80%E6%9C%AF/"/>
+    <category term="技术" scheme="https://ethan-0822.github.io/categories/%E6%8A%80%E6%9C%AF/"/>
     
     
-    <category term="Spring全家桶" scheme="http://example.com/tags/Spring%E5%85%A8%E5%AE%B6%E6%A1%B6/"/>
+    <category term="Spring全家桶" scheme="https://ethan-0822.github.io/tags/Spring%E5%85%A8%E5%AE%B6%E6%A1%B6/"/>
     
-    <category term="编程热点" scheme="http://example.com/tags/%E7%BC%96%E7%A8%8B%E7%83%AD%E7%82%B9/"/>
+    <category term="编程热点" scheme="https://ethan-0822.github.io/tags/%E7%BC%96%E7%A8%8B%E7%83%AD%E7%82%B9/"/>
     
   </entry>
   
